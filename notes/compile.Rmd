@@ -1,0 +1,10 @@
+
+```{r}
+library(tidyverse)
+library(rmarkdown)
+
+setwd("notes")
+files <- list.files(pattern = "week01*", full.names = TRUE)
+print(files)
+map(files, ~ render(.))
+```
