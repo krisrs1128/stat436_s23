@@ -1,23 +1,24 @@
 ---
-title: "IMDB Shiny Application"
-description: |
-  Using Shiny to explore a movies dataset.
-author:
-  - name: Kris Sankaran
+title: IMDB Shiny Application
 layout: post
 output:
   md_document:
     preserve_yaml: true
 ---
 
+_Using Shiny to explore a movies dataset_
+
+[Recording](https://mediaspace.wisc.edu/media/Week+2+-+3A+IMDB+Shiny+Application/1_yitx0198), [Code](https://github.com/krisrs1128/stat679_code/blob/main/notes/week2-3.Rmd)
+
 ```{r, echo = FALSE}
 library(knitr)
-library(webshot)
-knitr::opts_chunk$set(cache = TRUE, message = FALSE, warning = FALSE, echo = TRUE, fig.height = 5, retina = 4)
+opts_knit$set(base_dir = "/", base.url = "/")
+opts_chunk$set(
+  warning = FALSE,
+  message = FALSE,
+  fig.path = "stat679_notes/assets/week1-3/"
+  )
 ```
-
-
-_[Reading](https://search.library.wisc.edu/catalog/9911196629502121), [Recording](https://mediaspace.wisc.edu/media/Week%204%20%5B3%5D%20IMDB%20Shiny%20Application/1_xcl1c85h),  [Rmarkdown](https://github.com/krisrs1128/stat479_s22/blob/main/_posts/2022-02-10-week04-03/week04-03.Rmd)_
 
 1. So far, all of our Shiny applications have been based on toy simulated data.
 In this set of notes, we'll use Shiny to explore a real dataset, illustrating
@@ -45,16 +46,13 @@ recreated each time the selection is changed, and the `selected` column is used
 to shade in the points. This process of changing the visual encoding of
 graphical marks depending on user selections is called "conditional encoding."
 
-    ```{r code=readLines("apps/app1.R")}
-    ```
-    
-    ```{r, echo = FALSE}
-    appshot(app = "apps/app1.R", file = "app1.png", vheight = 400, delay=5)
-    include_graphics("app1.png")
+    ```{r code=readLines("https://raw.githubusercontent.com/krisrs1128/stat479_s22/main/_posts/2022-02-10-week04-03/apps/app1.R")}
     ```
 
+    <iframe src="https://data-viz.it.wisc.edu/content/02971f81-3af5-4fdb-89d7-84a663778546/" allowfullscreen="" data-external="1" height=550 width=600></iframe>
+
     ```{r, echo = FALSE}
-    include_graphics("figures/initial_imdb.png")
+    include_graphics("https://raw.githubusercontent.com/krisrs1128/stat479_s22/main/_posts/2022-02-10-week04-03/figures/initial_imdb.png")
     ```
 
 1. We can extend this further. Let's allow the user to filter by year and MPAA
@@ -62,18 +60,15 @@ rating. Notice that there are some years in the future! We also find that there
 are systematic differences in IMDB and Rotten Tomatoes ratings as a function of
 these variables.
 
-    ```{r code=readLines("apps/app2.R")}
-    ```
-    
-    ```{r, echo = FALSE}
-    appshot(app = "apps/app2.R", file = "app2.png", vheight = 400, delay=5)
-    include_graphics("app2.png")
+    ```{r code=readLines("https://raw.githubusercontent.com/krisrs1128/stat479_s22/main/_posts/2022-02-10-week04-03/apps/app2.R")}
     ```
 
+    <iframe src="https://data-viz.it.wisc.edu/content/9036974c-176a-4e9b-963d-c25eb45f5635/" allowfullscreen="" data-external="1" height=900 width=600></iframe>
+
     ```{r, echo = FALSE}
-    include_graphics("figures/final_imdb.png")
+    include_graphics("https://raw.githubusercontent.com/krisrs1128/stat479_s22/main/_posts/2022-02-10-week04-03/figures/final_imdb.png")
     ```
-    
+
 1. We'll include a final version of this plot which additionally shows the movie
 name when points are hovered. To accomplish this, we can no longer use `ggplot2`
 on its own -- it has to be linked with a plotting library that renders web-based
@@ -81,18 +76,15 @@ visualizations (not just static image files). This is what the `ggplotly()` call
 does in the updated version of the app. The mouseover text is added through the
 `tooltip` argument.
 
-    ```{r code=readLines("apps/app3.R")}
+    ```{r code=readLines("https://raw.githubusercontent.com/krisrs1128/stat479_s22/main/_posts/2022-02-10-week04-03/apps/app3.R")}
     ```
-    
-    ```{r, echo = FALSE}
-    appshot(app = "apps/app3.R", file = "app3.png", vheight = 400, delay=5)
-    include_graphics("app3.png")
-    ```
-    
+
+    <iframe src="https://data-viz.it.wisc.edu/content/2151742d-4b80-4200-9b91-55dda592a9f6/" allowfullscreen="" data-external="1" height=900 width=600></iframe>
+
 1. These visualizations are an instance of the more general idea of using
 filtering to reduce complexity in data. Filtering is an especially powerful
 technique in the interactive paradigm, where it is possible to easily reverse
-(or compare) filtering choices. 
+(or compare) filtering choices.
 
 1. Conceptually, what we are doing falls under the name of "Dynamic Querying,"
 which refers more generally to updating a visualization based on user queries.

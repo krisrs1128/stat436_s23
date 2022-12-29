@@ -1,21 +1,24 @@
 ---
-title: "Graphical Queries: Click Events"
-description: |
-  An introduction to click events in Shiny.
-author:
-  - name: Kris Sankaran
+title: Graphical Queries - Click Events
 layout: post
-output:
+output: 
   md_document:
     preserve_yaml: true
 ---
 
+_An introduction to click events in Shiny_
+
+[Code](https://github.com/krisrs1128/stat679_code/blob/main/notes/week3-1.Rmd), [Recording](https://mediaspace.wisc.edu/media/Week%207%20-%201%3A%20Time%20Series%20Visualization%20(I)/1_dubryjey)
+
 ```{r, echo = FALSE}
 library(knitr)
-knitr::opts_chunk$set(cache = TRUE, message = FALSE, warning = FALSE, echo = TRUE, fig.height = 5, retina = 4)
+opts_knit$set(base_dir = "/", base.url = "/")
+opts_chunk$set(
+  warning = FALSE, 
+  message = FALSE,
+  fig.path = "stat679_notes/assets/week3-1/"
+  )
 ```
-
-_[Reading](https://mastering-shiny.org/action-graphics.html), [Recording](https://mediaspace.wisc.edu/media/Week%205%20%5B2%5D%20Graphical%20Queries%3A%20Click%20Events/1_lmlkeubk),  [Rmarkdown](https://github.com/krisrs1128/stat479_s22/tree/main/_posts/2022-02-16-week05-01)_
 
 1. Some of the most sophisticated interactive data visualizations are based on
 the idea that user queries can themselves be defined visually. For example, to
@@ -99,7 +102,6 @@ logic is captured by the block below,
     }
     ```
     
-    
     The code above uses one new concept, the `reactiveVal` on the first line of
     the function. It is a variable that doesn't directly depend on any inputs,
     which can become a source node for downstream `reactive` and `render` nodes
@@ -132,13 +134,11 @@ of `renderPlot`. Let's look at the full application in action. It makes a
 scatterplot using the cars dataset and resizes points every time the plot is
 clicked.
 
-    ```{r code=readLines("apps/app1.R")}
+    ```{r code=readLines("https://raw.githubusercontent.com/krisrs1128/stat479_s22/main/_posts/2022-02-16-week05-01/apps/app1.R"), eval = FALSE}
     ```
     
-    ```{r, echo = FALSE}
-    appshot(app = "apps/app1.R", file = "app1.png", vheight = 400, delay=5)
-    ```
-
+    <iframe src="https://data-viz.it.wisc.edu/content/17a54e4c-5237-4018-b6fe-20c1555cf337/" allowfullscreen="" data-external="1" height=400 width=600></iframe>
+    
 1. The `reset_dist` function uses `nearPoints` to compute the distance between
 each sample and the plot, each time the plot is clicked. The associated reactive
 value `dist` gets changed, which triggers `scatterplot` to run, and it is
@@ -148,9 +148,7 @@ encoded using size in the downstream ggplot2 figure.
 original dataset. Using the same `dist()` call, we can sort the table by
 distance each time the plot is clicked.
 
-    ```{r code=readLines("apps/app2.R")}
+    ```{r code=readLines("https://raw.githubusercontent.com/krisrs1128/stat479_s22/main/_posts/2022-02-16-week05-01/apps/app2.R"), eval = FALSE}
     ```
     
-    ```{r, echo = FALSE}
-    appshot(app = "apps/app2.R", file = "app2.png", vheight = 400, delay=5)
-    ```
+    <iframe src="https://data-viz.it.wisc.edu/content/9fcf3583-a74f-4d84-8d7c-68ac3595bf6b/" allowfullscreen="" data-external="1" height=750 width=800></iframe>

@@ -1,124 +1,158 @@
 ---
-title: "Dynamic Queries (Part 1)"
+title: "Ridge Plots"
 description: |
-  Using visualization to support query building.
+  An extended example of faceting with data summaries.
 author:
   - name: Kris Sankaran
-    affiliation: UW Madison
+    url: {}
 layout: post
 output:
   md_document:
     preserve_yaml: true
 ---
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(cache = FALSE, message = FALSE, warning = FALSE, echo = TRUE)
-library("robservable")
 ```
 
-_[Reading](https://observablehq.com/@uwdata/interaction?collection=@uwdata/visualization-curriculum), [Recording](https://mediaspace.wisc.edu/media/1_gjjsi7da), [Notebook](https://observablehq.com/@krisrs1128/week-3-2),  [Rmarkdown](https://raw.githubusercontent.com/krisrs1128/stat479/master/_posts/2021-01-12-week1-2/week1-2.Rmd)_
+_[Reading](https://rafalab.github.io/dsbook/gapminder.html), [Recording](https://mediaspace.wisc.edu/media/1_9kea0t1o),  [Rmarkdown](https://raw.githubusercontent.com/krisrs1128/stat479/master/_posts/2021-01-20-week2-4/week2-4.Rmd)_
 
-1. Before, we only selected based on observations. How can we select based on attributes? One idea is to introduce widgets outside of the visualization through which the user can define queries. Selections are then _bound_ to widgets, letting us use conditional encodings like before, but with respect to this new class of inputs.
-
-````js
-{
-  const selection = vl.selectSingle('Select') // name the selection 'Select'
-    .fields('Major_Genre')          // limit selection to the Major_Genre field
-    .init({Major_Genre: genres[0]}) // use first genre entry as initial value
-    .bind(vl.menu(genres));         // bind to a menu of unique genre values
-  
-  // scatter plot, modify opacity based on genre selection
-  return vl.markCircle()
-    .data(movies)
-    .select(selection)
-    .encode(
-      vl.x().fieldQ('Rotten_Tomatoes_Rating'),
-      vl.y().fieldQ('IMDB_Rating'),
-      vl.tooltip().fieldN('Title'),
-      vl.opacity().if(selection, vl.value(0.75)).value(0.05)
-    )
-    .render();
-}
-````
+Ridge plots are a special case of small multiples that are particularly suited
+to displaying multiple parallel time series or densities.
 
 ```{r}
-robservable("@krisrs1128/week-3-2", include = 6, height = 325)
+library("dplyr")
+library("dslabs")
+library("ggplot2")
+library("ggridges")
+theme_set(theme_bw())
+```
+
+An example ridge plot for the gapminder dataset is shown below. The
+effectiveness of this plot comes from the fact that multiple densities can be
+displayed in close proximity to one another, making it possible to facet across
+many variables in a space-efficient way.
+
+```{r}
+data(gapminder)
+gapminder <- gapminder %>%
+  mutate(
+    dollars_per_day = (gdp / population) / 365,
+    group = case_when(
+      region %in% c("Western Europe", "Northern Europe","Southern Europe",  "Northern America",  "Australia and New Zealand") ~ "West",
+      region %in% c("Eastern Asia", "South-Eastern Asia") ~ "East Asia",
+      region %in% c("Caribbean", "Central America",  "South America") ~ "Latin America",
+      continent == "Africa" &  region != "Northern Africa" ~ "Sub-Saharan", 
+      TRUE ~ "Others"
+    ),
+    group = factor(group, levels = c("Others", "Latin America",  "East Asia", "Sub-Saharan", "West")),
+    west = ifelse(group == "West", "West", "Developing")
+  )
 ```
 
 
-2. Besides `menu` bindings, there are `checkbox`, `radio`, and `slider` inputs. If you revisit the gapminder visualization in [Lecture 1-3](https://krisrs1128.github.io/stat479/posts/2021-01-16-week1-3/), you will see that the interaction was accomplished by binding a selection to a `slider` input.
-3. A selection can combine multiple bindings. For example, in the block below, we filter by both MPAA rating and genre. The only part of the code that is different is the definition of the `selection` object in the first few lines.
-
-````js
- {  
-  // single-value selection over [Major_Genre, MPAA_Rating] pairs
-  // use specific hard-wired values as the initial selected values
-  const selection = vl.selectSingle('Select')
-    .fields('Major_Genre', 'MPAA_Rating')
-    .init({Major_Genre: 'Drama', MPAA_Rating: 'R'})
-    .bind({Major_Genre: vl.menu(genres), MPAA_Rating: vl.radio(mpaa)});
-  
-  // scatterplot, modify opacity based on selection
-  return vl.markCircle()
-    .data(movies)
-    .select(selection)
-    .encode(
-      vl.x().fieldQ('Rotten_Tomatoes_Rating'),
-      vl.y().fieldQ('IMDB_Rating'),
-      vl.tooltip().fieldN('Title'),
-      vl.opacity().if(selection, vl.value(0.75)).value(0.05)
-    )
-    .render();
-}
-````
-
 ```{r}
-robservable("@krisrs1128/week-3-2", include = 7, height = 335)
+past_year <- 1970
+gapminder_subset <- gapminder %>%
+  filter(year == past_year, !is.na(dollars_per_day))
+
+ggplot(gapminder_subset, aes(dollars_per_day, group)) +  
+  geom_density_ridges() +
+  scale_x_log10()
 ```
 
-4. Interpretation 1: Dynamic queries create the visual analog of a database interaction. Rather than using a programming-based interface to `filter` elements or `select` attributes, we can design interactive visual equivalents.
-5. Interpretation 2: Dynamic queries allow rapid evaluation of conditional probabilities. The visualization above was designed to answer: What is the joint distribution of movie ratings, conditional on being a drama?
-6. These visualizations are an instance of the more general idea of using filtering to reduce complexity in data. Filtering is an especially powerful technique in the interactive paradigm, where it is possible to easily reverse (or compare) filtering choices.
-
-## Scented Widgets
-
-1. Queries can be improved by using _scented widgets_. These are widgets that are themselves mini-visualizations, designed to provide guidance (« scent ») about potentially interesting queries.
-2. This is an example of selecting films between two years, using a traditional text-based input. While easy to implement, the user is left to guess about when would be interesting combinations of years, and transitions between queries are clumsy — you have to reclick a new value each time.
-3. A scented widget approach both reveals when most movies were made and makes it easy to transition between queries. (Notice the future movies! Real data always have quality issues...)
-
-````js
-{
-  const brush = vl.selectInterval()
-    .encodings('x'); // limit selection to x-axis (year) values
-  
-  // dynamic query histogram
-  const years = vl.markBar()
-    .data(movies)
-    .select(brush)
-    .encode(
-      vl.x().year('Release_Date').title('Films by Release Year'),
-      vl.y().count().title(null)
-    )
-    .width(500)
-    .height(40);
-  
-  // ratings scatter plot
-  const ratings = vl.markCircle()
-    .data(movies)
-    .encode(
-      vl.x().fieldQ('Rotten_Tomatoes_Rating'),
-      vl.y().fieldQ('IMDB_Rating'),
-      vl.tooltip().fieldN('Title'),
-      vl.opacity().if(brush, vl.value(0.75)).value(0.05)
-    )
-    .width(500)
-    .height(350);
-
-  return vl.vconcat(years, ratings).render();
-}
-````
+You might wonder, why not plot the raw data? We do this using a `geom_point`
+below. The result isn’t as satisfying, because, while the shape of the ridges
+popped out immediately in the original plot, we have to invest a bit more effort
+to understand the regions of higher density in the raw data plot. Also, when
+there are many samples, the entire range might appeared covered in marks when in
+fact there are some intervals with higher density than others.
 
 ```{r}
-robservable("@krisrs1128/week-3-2", include = 8, height = 390)
+ggplot(gapminder_subset, aes(dollars_per_day, group)) +
+  geom_point(shape = "|", size = 5) +
+  scale_x_log10()
+```
+
+A nice compromise is to include both the raw positions and the smoothed
+densities.
+
+```{r}
+ggplot(gapminder_subset, aes(dollars_per_day, group)) +
+  geom_density_ridges(
+    jittered_points = TRUE, 
+    position = position_points_jitter(height = 0),
+    point_shape = '|', point_size = 3
+  ) +
+  scale_x_log10()
+```
+
+To exercise our knowledge of both faceting and ridge plots, let’s study a
+particular question in depth: How did the gap between rich and poor countries
+change between 1970 and 2010?
+
+A first reasonable plot is to facet year and development status. While the rich
+countries have become slightly richer, there is a larger shift in the incomes
+for the poorer countries.
+
+```{r}
+past_year <- 1970
+present_year <- 2010
+years <- c(past_year, present_year)
+
+gapminder_subset <- gapminder %>%
+  filter(year %in% years, !is.na(dollars_per_day))
+
+ggplot(gapminder_subset, aes(dollars_per_day)) +
+  geom_histogram(binwidth = 0.25) +
+  scale_x_log10() +
+  facet_grid(year ~ west)
+```
+
+We can express this message more compactly by overlaying densities, but the
+attempt below is misleading, because it gives the same total area to both groups
+of countries. This doesn’t make sense, considering there are more than 4 times
+as many developing vs. western countries (87 vs. 21).
+
+```{r}
+ggplot(gapminder_subset, aes(dollars_per_day, fill = west)) +
+  geom_density(alpha = 0.8, bw = 0.12) +
+  scale_x_log10() +
+  scale_fill_brewer(palette = "Set2") +
+  facet_grid(year ~ .)
+```
+
+We can adjust the areas of the curves by directly referencing the `..count`
+variable, which is implicitly computed by ggplot2 while it’s computing these
+densities.
+
+```{r}
+ggplot(gapminder_subset, aes(dollars_per_day, y = ..count.., fill = west)) +
+  geom_density(alpha = 0.8, bw = 0.12) +
+  scale_x_log10() +
+  scale_fill_brewer(palette = "Set2") +
+  facet_grid(year ~ .)
+```
+
+Can we attribute the changes to specific regions? Let’s apply our knowledge of
+ridge plots.
+
+```{r}
+ggplot(gapminder_subset, aes(dollars_per_day, y = group, fill = as.factor(year))) +
+  geom_density_ridges(alpha = 0.7) +
+  scale_fill_brewer(palette = "Set1") +
+  scale_x_log10()
+```
+
+Alternatively, we can overlay densities from the different regions. Both plots
+suggest that much of the increase in incomes can be attributed to countries in
+Latin America and East Asia.
+
+```{r}
+ggplot(gapminder_subset, aes(dollars_per_day, fill = group, y = ..count..)) +
+  geom_density(alpha = 0.7, bw = .12, position = "stack") +
+  scale_fill_brewer(palette = "Set2") +
+  scale_x_log10(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0, 0.15, 0)) +
+  facet_grid(year ~ .)
 ```

@@ -1,21 +1,27 @@
 ---
-title: "Linked Brushing"
-description: |
-  More examples defining brush queries using Shiny and `ggplot2`.
-author:
-  - name: Kris Sankaran
+title: Linked Brushing
 layout: post
-output:
+output: 
   md_document:
     preserve_yaml: true
 ---
 
+_More examples defining brush queries using Shiny and `ggplot2`._
+
+[Code](https://github.com/krisrs1128/stat679_code/blob/main/notes/week3-3.Rmd), [Recording](https://mediaspace.wisc.edu/media/Week%203%20-%203%3A%20Linked%20Brushing/1_jdtr6xg6)
+
 ```{r, echo = FALSE}
 library(knitr)
-knitr::opts_chunk$set(cache = TRUE, message = FALSE, warning = FALSE, echo = TRUE, fig.height = 5, retina = 4)
+opts_knit$set(base_dir = "/", base.url = "/")
+opts_chunk$set(
+  warning = FALSE, 
+  message = FALSE,
+  fig.path = "stat679_notes/assets/week3-3/",
+  cache = TRUE,
+  fig.height = 5,
+  retine = 4
+  )
 ```
-
-_[Reading](https://mastering-shiny.org/action-graphics.html), [Recording](https://mediaspace.wisc.edu/media/Week%205%20%5B4%5D%20Linked%20Brushing/1_n402dlqy),  [Rmarkdown](https://github.com/krisrs1128/stat479_s22/tree/main/_posts/2022-02-16-week05-03)_
 
 1. These notes provide more realistic examples of linked brushing. Though the
 visual design problems they address are more complex, they follow the same
@@ -28,9 +34,7 @@ recipe described earlier,
     the `reactiveVal` is changed.
 
 1. The first example implements linked brushing on the movie ratings dataset
-presented
-[earlier](https://krisrs1128.github.io/stat479_s22/posts/2022-02-10-week04-03/).
-Before we had graphical queries, we used a slider to select movies within a
+presented earlier. Before we used a slider to select movies within a
 user-specified time range. Our graphical alternative is to allow selections over
 a histogram of movie release dates within the dataset. Specifically, we will
 create an interactive version of the histogram below,
@@ -62,8 +66,8 @@ create an interactive version of the histogram below,
       geom_point(aes(Rotten_Tomatoes_Rating, IMDB_Rating))
     ```
     
-1. Viewed more abstractly, we are going to use a brush to linking the histogram
-and the scatterplot views. We will be able to evaluate the change in a
+1. Viewed more abstractly, we are going to use a brush to link the histogram
+and scatterplot views. We will be able to evaluate the change in a
 visualization (the scatterplot) after "conditioning" on a subset defined by a
 complementary view (the histogram). This is analogous to the penguins dataset
 example -- only the form of the base plots has changed.
@@ -103,16 +107,11 @@ regenerated, highlighting those movies that appear in the `selected()` list.
 1. We haven't included the full code for `histogram`, `scatterplot`, and
 `data_table`, since they in and of themselves don't require any logic for
 interactivity. You can try out the full code
-[here](https://github.com/krisrs1128/stat479_s22/blob/main/_posts/2022-02-16-week05-03/apps/app1.R),
-and a screenshot of the initial interface is below.
-    
-    ```{r, echo = FALSE}
-    appshot(app = "apps/app1.R", file = "app1.png", vheight = 400, delay=5)
-    ```
-    ```{r, echo = FALSE}
-    include_graphics("app1.png")
-    ```
-    
+[here](https://github.com/krisrs1128/stat679_code/blob/main/examples/week3/3-3/3-3-1/app.R)
+and tinker with the interface below.
+
+    <iframe src="https://data-viz.it.wisc.edu/content/1014c0e9-cf88-4b8d-93a6-52fd77669c23/" allowfullscreen="" data-external="1" height=700 width=600></iframe>
+
 1. A natural extension of the previous app is to allow brushing on both the
 histogram and the scatterplot. Brushing over the scatterplot would show the
 years during which the selected movies were released -- this can be used to find
@@ -150,7 +149,6 @@ ranges, for example.
     shinyApp(ui, server)
     ```
   
-  
 1. For the scatterplot, we simply reduced the transparency for the movies that
 weren't selected. We cannot do this for the histogram, though, because the
 movies are not directly represented in this plot, only their counts over time.
@@ -173,15 +171,16 @@ corresponding only to the first 500 movies in the dataset.
     ```
     
  1. Combining these ideas leads to the app
- [here](https://github.com/krisrs1128/stat479_s22/blob/main/_posts/2022-02-16-week05-03/apps/app2.R).
- A screenshot of the initial view is given below. Try running the code and
- brushing on both the scatterplot and the histogram. The especially interesting
- thing about this approach is that, without introducing any new screen elements,
- we've widened the class of questions of that can be answered. In a sense, we've
- increased the information density of the display -- we can present more
- information without having to introduce any peripheral UI components or
- graphical marks.
+ [here](https://github.com/krisrs1128/stat679_code/blob/main/examples/week3/3-3/3-3-2/app.R)
+ and included below. Try brushing on both the scatterplot and the histogram. The
+ especially interesting thing about this approach is that, without introducing
+ any new screen elements, we've widened the class of questions of that can be
+ answered. In a sense, we've increased the information density of the display --
+ we can present more information without having to introduce any peripheral UI
+ components or graphical marks.
  
+    <iframe src="https://data-viz.it.wisc.edu/content/fae55716-8e52-4f6e-ae29-4db14c063002/" allowfullscreen="" data-external="1" height=700 width=600></iframe>
+  
  1. In our last problem, we would like to use a dataset of flight delays to
  understand what characteristics of the flights make some more / less likely to
  be delayed. The basic difficulty is that there are many potentially relevant
@@ -202,8 +201,8 @@ corresponding only to the first 500 movies in the dataset.
  introduces a brush. We will plan on brushing one histogram at a time, which is
  then used to update overlays on each.
  
-    ```{r}
-    ui <- fluidPage(
+    ```{r, eval = FALSE}
+      ui <- fluidPage(
       fluidRow(
         column(
           6, 
@@ -220,13 +219,13 @@ corresponding only to the first 500 movies in the dataset.
 The `bar_plot` function draws two bar plots over one another, one referring to a
 global `counts` object of unchanging histogram bar heights. The second refers to
 the bar heights for the continually updated overlays. Notice that we use
-`aes_string` to use variable names encoded in strings. The `plot_overlay`
+`.data[[v]]` to use variable names encoded in strings. The `plot_overlay`
 function provides the histogram bar heights for variable `v` after brushing over
-the movies in `selected_`.
+the flights in `selected_`.
     
     ```{r}
     bar_plot <- function(sub_flights, v) {
-      ggplot(counts[[v]], aes_string(v, "n")) +
+      ggplot(counts[[v]], aes(.data[[v]], n)) +
         geom_bar(fill = "#d3d3d3", stat = "identity") +
         geom_bar(data = sub_flights, stat = "identity")
     }
@@ -240,8 +239,10 @@ the movies in `selected_`.
     ```
     
 1. Code for the full application is linked
-[here](https://github.com/krisrs1128/stat479_s22/blob/main/_posts/2022-02-16-week05-03/apps/app3.R).
+[here](https://github.com/krisrs1128/stat679_code/blob/main/examples/week3/3-3/3-3-3/app.R).
 Thanks to shiny's `reactiveVal` and `brushedPoints` definitions, implementing
 interactivity only requires about 20 lines (starting from `ui <- ...` to the
 end). The rest of the code is used to draw new static plots depending on the
 current selection.
+
+    <iframe src="https://data-viz.it.wisc.edu/content/02da9288-2810-4ce8-b92c-75177bb4cdc9/" allowfullscreen="" data-external="1" height=700 width=600></iframe>

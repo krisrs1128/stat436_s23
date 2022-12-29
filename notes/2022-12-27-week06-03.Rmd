@@ -20,7 +20,6 @@ knitr::opts_chunk$set(cache = FALSE, message = FALSE, warning = FALSE, echo = TR
 ```{r}
 library("dplyr")
 library("ggplot2")
-library("robservable")
 library("feasts")
 library("fpp2")
 library("tsibbledata")
@@ -49,31 +48,4 @@ we can view them all using the `period` argument.
 ```{r}
 gg_season(vic_elec, Demand, period = "day", pal = cols)
 gg_season(vic_elec, Demand, period = "week", pal = cols)
-```
-
-3. In vega-lite, we can use tooltips, instead of trying to encode the season’s
-period using color. This lets us isolate specific series that have interesting
-behavior (e.g., week number in the plot below). The downside is that we have to
-manually calculate the variable that goes on the $x$-axis, rather than relying
-on the `period` argument like above.
-
-````js
-{
-  let line = vl.markLine({opacity: 0.8, size: 0.9})
-    .data(data)
-    .encode(
-      vl.x().fieldQ("time_in_week_").scale({domain: [0, 7]}),
-      vl.y().fieldQ("Demand"), 
-      vl.detail().fieldN("week"),
-      vl.color().fieldN("year"),
-      vl.tooltip().fieldN("week")
-    )    
-    .width(600);
-  
-  return line.render()
- }
-````
-
-```{r}
-robservable("@krisrs1128/seasonality", 4)
 ```

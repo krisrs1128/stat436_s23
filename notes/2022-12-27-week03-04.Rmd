@@ -47,7 +47,7 @@ printing them right away.
     library(tidyverse)
     library(patchwork)
     
-    athletes <- read_csv("data/athletes.csv") %>%
+    athletes <- read_csv("../data/athletes.csv") %>%
       filter(sport %in% c("basketball", "field", "rowing", "swimming", "tennis", "track (400m)")) %>%
       mutate(sex = recode(sex, "m" = "male", "f" = "female"))
     

@@ -18,13 +18,9 @@ knitr::opts_chunk$set(cache = FALSE, message = FALSE, warning = FALSE, echo = TR
 ```
 
 ```{r}
-library("dplyr")
-library("tsibbledata")
-library("feasts")
-library("tidyr")
-library("lubridate")
-library("ggplot2")
-library("stringr")
+library(tidyverse)
+library(tsibbledata)
+library(feasts)
 theme_set(theme_minimal())
 ```
 
@@ -57,7 +53,7 @@ regions in short time intervals. This is just the 2D consequence of the time
 series varying smoothly.
 
 ```{r}
-lagged <- rbind(vic_2014[-1, ], NA) %>%
+lagged <- vic_2014[c(2:nrow(vic_2014), 2), ] %>%
   setNames(str_c("lagged_", colnames(vic_2014)))
 
 ggplot(bind_cols(vic_2014, lagged), aes(x = Temperature, y = Demand)) +

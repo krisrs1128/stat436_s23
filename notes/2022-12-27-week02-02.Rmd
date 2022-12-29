@@ -1,193 +1,102 @@
 ---
-title: "Faceting (Part 2)"
+title: "Pivoting"
 description: |
-  A look at faceting in vega-lite.  
 author:
   - name: Kris Sankaran
-    url: {}
+    affiliation: UW Madison
 layout: post
 output:
   md_document:
     preserve_yaml: true
 ---
 
+_ Tools for reshaping data into tidy format._
+
+_[Reading](https://r4ds.had.co.nz/tidy-data.html), [Recording](https://mediaspace.wisc.edu/media/Week%204%20%5B2%5D%20Pivoting/1_dp7cqka3), [Rmarkdown](https://raw.githubusercontent.com/krisrs1128/stat479/master/_posts/2021-01-27-week4-2/week4-2.Rmd)_
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(cache = FALSE, message = FALSE, warning = FALSE, echo = TRUE)
-library("robservable")
+```
+```{r}
+library("dplyr")
+library("tidyr")
+library("ggplot2")
+theme_set(theme_bw())
 ```
 
-_[Reading](https://observablehq.com/@uwdata/multi-view-composition?collection=@uwdata/visualization-curriculum), [Recording](https://mediaspace.wisc.edu/media/1_o82g7gyk), [Notebook](https://observablehq.com/@krisrs1128/examples-of-faceting), [Rmarkdown](https://raw.githubusercontent.com/krisrs1128/stat479/master/_posts/2021-01-20-week2-2/week2-2.Rmd)_
+1. Pivoting refers to the process of changing the interpretation of each row in a data frame. It is useful for addressing problems 1 - 2 in the previous lecture, which we repeat here for completeness.
+	
+	a. A variable might be implicitly stored within column names, rather than explicitly stored in its own column.
+	b. The same observation may appear in multiple rows, where each instance of the row is associated with a different variable.
 
-In these notes, we’re going to see how to facet using vega-lite. We’re going to
-look at the weather data, which shows the precipitation and temperature for NYC
-and Seattle over the course of a year.
+2. To address (a), we can use the `pivot_longer` function in `tidyr`. It takes an implicitly stored variable and explicitly stores it in a column defined by the `names_to` argument. In
+3. The example below shows `pivot_longer` being used to tidy one of the non-tidy tuberculosis datasets. Note that the data has doubled in length, because there are now two rows per country (one per year).
+
+For reference, these are the original data.
 
 ```{r}
-robservable("@krisrs1128/examples-of-faceting", include = 4, height = 280)
+table4a
 ```
 
-The most direct way to facet is to use the row and column encoding types. For
-example, here we are faceting histograms of temperature across the type of
-weather.
-````js
-{
-  const seattle = weather.filter(d => d.location == "Seattle");
-  const colors = {
-    domain: ['drizzle', 'fog', 'rain', 'snow', 'sun'],
-    range: ['#aec7e8', '#c7c7c7', '#1f77b4', '#9467bd', '#e7ba52'] // weather themed colors
-  };
-  
-  return vl.markBar()
-    .data(seattle)
-    .encode(
-      vl.x().fieldQ('temp_max').title('Temperature (°C)'),
-      vl.y().count().title("Number of Days"),
-      vl.color().fieldN("weather").scale(colors),
-      vl.column().fieldN("weather")
-    )
-    .width(175)
-    .height(120)
-    .render()
-}
-````
-
-```{r layout="l-page"}
-robservable("@krisrs1128/examples-of-faceting", include = 5, height = 200)
-```
-
-If we want, we can facet by both weather and city, using `row` and `column` to
-distinguish between variations along rows and columns.
-
-````js
-{
-  const colors = {
-    domain: ['drizzle', 'fog', 'rain', 'snow', 'sun'],
-    range: ['#aec7e8', '#c7c7c7', '#1f77b4', '#9467bd', '#e7ba52'] // weather themed colors
-  };
-  
-  return vl.markBar()
-    .data(weather)
-    .encode(
-      vl.x().fieldQ('temp_max').title('Temperature (°C)'),
-      vl.y().count().title("Number of Days"),
-      vl.color().fieldN("weather").scale(colors),
-      vl.column().fieldN("weather"),
-      vl.row().fieldN("location")
-    )
-    .width(175)
-    .height(120)
-    .render()
-}
-````
-
-```{r layout="l-page"}
-robservable("@krisrs1128/examples-of-faceting", include = 6)
-```
-
-There is an alternative approach which is more general. The approach above
-defined the facet within the encoding for the `markBar`. There are situations
-where we might want to facet a plot that is made from more than just one type of
-mark (e.g., a line overlaid on points). In this case, we will want to create a
-facet call that can be applied to a full plot specification. This is exactly
-analogous to `facet_wrap` and `facet_grid`, where the faceting operator can be
-applied to several geom layers simultaneously. Notice that we need to put the
-`data` call *after* the facet -- the faceting won't know to what it should apply
-otherwise (try moving the command up).
-
-````js
-{
-  const colors = {
-    domain: ['drizzle', 'fog', 'rain', 'snow', 'sun'],
-    range: ['#aec7e8', '#c7c7c7', '#1f77b4', '#9467bd', '#e7ba52']
-  };
-  
-  return vl.markBar()
-    .encode(
-      vl.x().fieldQ('temp_max').title('Temperature (°C)'),
-      vl.y().count().title("Number of Days"),
-      vl.color().fieldN("weather").scale(colors)
-    )
-    .width(175)
-    .height(120)
-    .facet({column: vl.field("weather"), row: vl.field("location")})
-    .data(weather)
-    .render()
-}
-````
-
-```{r layout="l-page"}
-robservable("@krisrs1128/examples-of-faceting", include = 7)
-```
-
-Here’s an example that shows why this is useful: How do the minimum and maximum
-temperatures vary between NYC and Seattle? In addition to showing the minimum
-and maximum temperatures (a ribbon), we may want to show the midpoint between
-these as its own line. For just NYC, we can make this plot using `vl.layer` to
-superimpose the two marks,
-
-````js
-{
-  const nyc_ = weather.derive({temp_mid: d => 0.5 * (d.temp_min + d.temp_max)})
-    .filter(d => d.location == "New York")
-  
-  // ribbon layer
-  const tempMinMax = vl.markArea({opacity: 0.3}).encode(
-    vl.x().month('date'), // averages months over several years
-    vl.y().average('temp_max').title('Temperature (°C)'),
-    vl.y2().average('temp_min')
-  );
-
-  // line layer
-  const tempMid = vl.markLine().encode(
-    vl.x().month('date'),
-    vl.y().average('temp_mid')
-  );
-
-  // overlay
-  return vl.layer(tempMinMax, tempMid)
-    .data(nyc_)
-    .render();
-}
-````
+This step lengthens the data,
 
 ```{r}
-robservable("@krisrs1128/examples-of-faceting", include = 8, height = 220)
+table4a_longer <- table4a %>% 
+  pivot_longer(c(`1999`, `2000`), names_to = "year", values_to = "cases")
+
+table4a_longer
 ```
 
-Now, within each facet, we want to overlay two types of marks. We can no longer
-specify `.column()` or `.row()` within the `.encode()` calls for each mark.
-Instead, we have to specify a facet at the end, after we've already overlayed
-the two elements.
+```{r}
+dim(table4a)
+dim(table4a_longer)
+```
 
-````js
-{
-  const weather_ = weather.derive({temp_mid: d => 0.5 * (d.temp_min + d.temp_max)});
-
-  // same ribbon, colored by location
-  const tempMinMax = vl.markArea({opacity: 0.3}).encode(
-    vl.x().month('date'),
-    vl.y().average('temp_max').title('Temperature (°C)'),
-    vl.y2().average('temp_min'),
-    vl.color().fieldN("location")
-  );
-
-  // same line, colored by location
-  const tempMid = vl.markLine().encode(
-    vl.x().month('date'),
-    vl.y().average('temp_mid'),
-    vl.color().fieldN("location")
-  );
-
-  return vl.layer(tempMinMax, tempMid)
-    .width(300)
-    .height(200)
-    .facet({column: vl.field("location")})
-    .data(weather_)
-    .render();
-}
-````
+4. We can pivot both the population and the cases table, then combine them using
+a join operation. A join operation matches rows across two tables according to
+their shared columns.
 
 ```{r}
-robservable("@krisrs1128/examples-of-faceting", include = 9, height = 230)
+# helper function, to avoid copying and pasting code
+pivot_fun <- function(x, value_column = "cases") {
+  x %>%
+    pivot_longer(c(`1999`, `2000`), names_to = "year", values_to = value_column)
+}
+
+table4 <- left_join(
+  pivot_fun(table4a), # look for all country x year combinations in left table
+  pivot_fun(table4b, "population") # and find matching rows in right table
+)
+table4
+```
+
+This lets us make the year vs. rate plot that we had tried to put together in
+the last lecture. It's much easier to recognize trends when comparing the rates,
+than when looking at the raw case counts.
+
+```{r}
+ggplot(table4, aes(x = year, y = cases / population, col = country)) +
+  geom_point() +
+  geom_line(aes(group = country))
+```
+
+
+5. To address (b), we can use the `pivot_wider` function. It spreads the column
+in the `values_from` argument across new columns specified by the `names_from`
+argument.
+
+6. The example below shows `pivot_wider` being used to tidy one of the other non-tidy datasets. Note when there are more than two levels in the `names_from` column, this will always be wider than the starting data frame, which is why this operation is called `pivot_wider`.
+
+For reference, here is `table2` before pivoting.
+
+```{r}
+table2
+```
+
+Now, we spread the `cases` and `population` variables into their own columns.
+
+```{r}
+table2 %>%
+    pivot_wider(names_from = type, values_from = count)
 ```

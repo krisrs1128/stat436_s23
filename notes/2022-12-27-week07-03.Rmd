@@ -14,7 +14,7 @@ output:
 _[Reading](https://geocompr.robinlovelace.net/spatial-class.html), [Recording](https://mediaspace.wisc.edu/media/Week%207%20%5B3%5D%20Raster%20Data/1_k5px5f53), [Rmarkdown](https://github.com/krisrs1128/stat479/blob/master/_posts/2021-03-02-week7-3/week7-3.Rmd)_
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(cache = FALSE, message = FALSE, warning = FALSE, echo = TRUE)
+knitr::opts_chunk$set(cache = FALSE, message = FALSE, warning = FALSE, echo = TRUE, eval = FALSE)
 ```
 
 ```{r}
