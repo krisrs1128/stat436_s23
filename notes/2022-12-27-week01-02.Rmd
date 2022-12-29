@@ -4,6 +4,7 @@ description: |
   Examples of encodings and sequential refinement of a plot.
 author:
   - name: Kris Sankaran
+layout: post
 date: 01-29-2022
 output:
   md_document:

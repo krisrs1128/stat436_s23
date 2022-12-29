@@ -4,6 +4,7 @@ description: |
   More examples defining brush queries using Shiny and `ggplot2`.
 author:
   - name: Kris Sankaran
+layout: post
 output:
   md_document:
     preserve_yaml: true

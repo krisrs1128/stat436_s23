@@ -4,6 +4,7 @@ description: |
   Using Shiny to explore a movies dataset.
 author:
   - name: Kris Sankaran
+layout: post
 output:
   md_document:
     preserve_yaml: true

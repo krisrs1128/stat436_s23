@@ -1,7 +1,12 @@
 ---
 title: "Introduction to ggplot2"
 layout: post
+author:
+  - name: Kris Sankaran
 ---
+
+A discussion of ggplot2 terminology, and an example of iteratively refining a
+simple scatterplot.
 
 *[Reading](https://rafalab.github.io/dsbook/ggplot2.html),
 [Recording](https://mediaspace.wisc.edu/media/1_w7aw5yln),
@@ -27,7 +32,7 @@ These are libraries we’ll use in this lecture.
 
 We’re going to create this plot in these notes.
 
-![](week01-01_files/figure-markdown_strict/unnamed-chunk-3-1.png)
+![](2022-12-27-week01-01_files/figure-markdown_strict/unnamed-chunk-3-1.png)
 
 Every ggplot2 plot is made from three components,
 
@@ -94,7 +99,7 @@ point and text layers. For now, let’s just tell the plot to put all the
       geom_point(x = 0, y = 0) +
       geom_text(x = 0, y = 0, label = "test")
 
-![](week01-01_files/figure-markdown_strict/unnamed-chunk-6-1.png)
+![](2022-12-27-week01-01_files/figure-markdown_strict/unnamed-chunk-6-1.png)
 
 You can see all the types of `geoms` in the [cheat
 sheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf).
@@ -119,9 +124,9 @@ to the `murders` data frame in `ggplot(murders)`.
     ggplot(murders) +
       geom_point(aes(x = population, y = total, col = region))
 
-![](week01-01_files/figure-markdown_strict/unnamed-chunk-7-1.png) The
-original plot used a log-scale. To transform the x and y axes, we can
-use
+![](2022-12-27-week01-01_files/figure-markdown_strict/unnamed-chunk-7-1.png)
+The original plot used a log-scale. To transform the x and y axes, we
+can use
 [scales](https://ggplot2.tidyverse.org/reference/index.html#section-scales).
 
     ggplot(murders) +
@@ -129,7 +134,7 @@ use
       scale_x_log10() +
       scale_y_log10()
 
-![](week01-01_files/figure-markdown_strict/unnamed-chunk-8-1.png)
+![](2022-12-27-week01-01_files/figure-markdown_strict/unnamed-chunk-8-1.png)
 
 Once nuance is that scales aren’t limited to *x* and *y*
 transformations. They can be applied to modify any relationship between
@@ -142,7 +147,7 @@ the mapping between the region field and circle color.
       scale_y_log10() +
       scale_color_manual(values = c("#6a4078", "#aa1518", "#9ecaf8", "#50838c")) # exercise: find better colors using https://imagecolorpicker.com/
 
-![](week01-01_files/figure-markdown_strict/unnamed-chunk-9-1.png)
+![](2022-12-27-week01-01_files/figure-markdown_strict/unnamed-chunk-9-1.png)
 
 A problem with this graph is that it doesn’t tell us which state each
 point corresponds to. For that, we’ll need text labels. We can encode
@@ -158,7 +163,7 @@ a `geom_text` layer.
       scale_x_log10() +
       scale_y_log10()
 
-![](week01-01_files/figure-markdown_strict/unnamed-chunk-10-1.png)
+![](2022-12-27-week01-01_files/figure-markdown_strict/unnamed-chunk-10-1.png)
 
 Note that each type of layer uses different visual properties to encode
 the data – the argument `label` is only available for the `geom_text`
@@ -178,7 +183,7 @@ done by defining a “global” aesthetic, putting it inside the initial
       scale_x_log10() +
       scale_y_log10()
 
-![](week01-01_files/figure-markdown_strict/unnamed-chunk-11-1.png)
+![](2022-12-27-week01-01_files/figure-markdown_strict/unnamed-chunk-11-1.png)
 
 ## Finishing touches
 
@@ -205,7 +210,7 @@ links when necessary.
       scale_x_log10() +
       scale_y_log10()
 
-![](week01-01_files/figure-markdown_strict/unnamed-chunk-12-1.png)
+![](2022-12-27-week01-01_files/figure-markdown_strict/unnamed-chunk-12-1.png)
 
 For 2., let’s first compute the national murder rate,
 
@@ -226,7 +231,7 @@ encodes a slope and intercept as a line on a graph.
       scale_x_log10() +
       scale_y_log10()
 
-![](week01-01_files/figure-markdown_strict/unnamed-chunk-14-1.png)
+![](2022-12-27-week01-01_files/figure-markdown_strict/unnamed-chunk-14-1.png)
 
 For 3., we can add a `labs` layer to write labels and a `theme` to
 reposition the legend. I used `unit_format` from the `scales` package to
@@ -247,7 +252,7 @@ readable.
       ) +
       theme(legend.position = "top")
 
-![](week01-01_files/figure-markdown_strict/unnamed-chunk-15-1.png)
+![](2022-12-27-week01-01_files/figure-markdown_strict/unnamed-chunk-15-1.png)
 
 For 5., I find the gray background with reference lines a bit
 distracting. We can simplify the appearance using `theme_bw`. I also
@@ -273,7 +278,7 @@ color scale.
         panel.grid.minor = element_blank()
       )
 
-![](week01-01_files/figure-markdown_strict/unnamed-chunk-16-1.png)
+![](2022-12-27-week01-01_files/figure-markdown_strict/unnamed-chunk-16-1.png)
 
 Some bonus exercises, which will train you to look at your graphics more
 carefully, as well as build your familiarity with ggplot2.

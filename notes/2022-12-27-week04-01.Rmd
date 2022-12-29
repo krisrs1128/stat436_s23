@@ -4,7 +4,7 @@ description: |
   Vocabulary used by R Shiny Library, and a few example apps.
 author:
   - name: Kris Sankaran
-date: 02-14-2022
+layout: post
 output:
   md_document:
     preserve_yaml: true

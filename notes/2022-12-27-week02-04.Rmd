@@ -5,7 +5,7 @@ description: |
 author:
   - name: Kris Sankaran
     url: {}
-date: 02-04-2021
+layout: post
 output:
   md_document:
     preserve_yaml: true

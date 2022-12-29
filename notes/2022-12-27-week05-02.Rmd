@@ -4,6 +4,7 @@ description: |
   An introduction to brush events in Shiny.
 author:
   - name: Kris Sankaran
+layout: post
 output:
   md_document:
     preserve_yaml: true

@@ -5,8 +5,7 @@ description: |
   simple scatterplot.
 author:
   - name: Kris Sankaran
-    affiliation: UW Madison
-date: 01-26-2021
+layout: post
 output:
   md_document:
     preserve_yaml: true

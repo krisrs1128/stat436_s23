@@ -4,6 +4,7 @@ description: |
   Viewing shiny code execution as a graph.
 author:
   - name: Kris Sankaran
+layout: post
 output:
   md_document:
     preserve_yaml: true

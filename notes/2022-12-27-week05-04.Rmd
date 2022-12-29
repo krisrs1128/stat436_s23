@@ -4,6 +4,7 @@ description: |
   Linking in web-based visualizations.
 author:
   - name: Kris Sankaran
+layout: post
 output:
   md_document:
     preserve_yaml: true

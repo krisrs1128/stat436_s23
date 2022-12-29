@@ -3,8 +3,7 @@
 library(tidyverse)
 library(rmarkdown)
 
-setwd("notes")
-files <- list.files(pattern = "week01*", full.names = TRUE)
+files <- list.files(pattern = "2022*", full.names = TRUE)
 print(files)
 map(files, ~ render(.))
 ```
