@@ -7,8 +7,8 @@ author:
     url: {}
 layout: post
 output:
-  md_document:
-    preserve_yaml: true
+  distill::distill_article:
+    self_contained: false
 ---
 
 ```{r setup, include=FALSE}
@@ -21,10 +21,9 @@ Ridge plots are a special case of small multiples that are particularly suited
 to displaying multiple parallel time series or densities.
 
 ```{r}
-library("dplyr")
-library("dslabs")
-library("ggplot2")
-library("ggridges")
+library(tidyverse)
+library(dslabs)
+library(ggridges)
 theme_set(theme_bw())
 ```
 

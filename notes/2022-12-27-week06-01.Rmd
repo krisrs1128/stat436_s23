@@ -7,9 +7,8 @@ author:
     affiliation: UW Madison
 layout: post
 output:
-  md_document:
-    preserve_yaml: true
-    df_print: default
+  distill::distill_article:
+    self_contained: false
 ---
 
 ```{r setup, include=FALSE}

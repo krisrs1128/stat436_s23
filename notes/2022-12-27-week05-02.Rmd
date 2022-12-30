@@ -2,8 +2,8 @@
 title: Graphical Queries - Brush Events
 layout: post
 output: 
-  md_document:
-    preserve_yaml: true
+  distill::distill_article:
+    self_contained: false
 ---
 
 _An introduction to brush events in Shiny_

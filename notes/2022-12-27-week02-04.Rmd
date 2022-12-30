@@ -1,15 +1,15 @@
 ---
 title: "Tidy Data Example"
+description: |
+  An extended example of tidying a real-world dataset.
 author:
   - name: Kris Sankaran
     affiliation: UW Madison
 layout: post
 output:
-  md_document:
-    preserve_yaml: true
+  distill::distill_article:
+    self_contained: false
 ---
-  
-_An extended example of tidying a real-world dataset._
 
 _[Reading](https://r4ds.had.co.nz/tidy-data.html), [Recording](https://mediaspace.wisc.edu/media/Week%204%20%5B4%5D%20Tidy%20Data%20Example/1_5qy0fl9h), [Rmarkdown](https://raw.githubusercontent.com/krisrs1128/stat479/master/_posts/2021-01-27-week4-4/week4-4.Rmd)_
 

@@ -8,8 +8,8 @@ author:
 date: 02-01-2021
 layout: post
 output:
-  md_document:
-    preserve_yaml: true
+  distill::distill_article:
+    self_contained: false
 ---
 
 ```{r setup, include=FALSE}

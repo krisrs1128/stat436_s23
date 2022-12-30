@@ -2,8 +2,8 @@
 title: IMDB Shiny Application
 layout: post
 output:
-  md_document:
-    preserve_yaml: true
+  distill::distill_article:
+    self_contained: false
 ---
 
 _Using Shiny to explore a movies dataset_

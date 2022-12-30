@@ -1,4 +1,15 @@
-_Vocabulary used by R Shiny Library, and a few example apps._
+---
+title: "Elements of a Shiny App"
+author:
+  - name: Kris Sankaran
+    affiliation: UW Madison
+layout: post
+description: |
+  Vocabulary used by the R Shiny Library, and a few example apps.
+output:
+  distill::distill_article:
+    self_contained: false
+---
 
 [Recording](https://mediaspace.wisc.edu/media/Week+2+-+1A+Elements+of+a+Shiny+App/1_rlzn96xp), [Code](https://github.com/krisrs1128/stat679_code/blob/main/notes/week2-1.Rmd)
 

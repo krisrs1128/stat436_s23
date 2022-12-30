@@ -1,16 +1,16 @@
 ---
 title: "Deriving Variables"
-description: |
 author:
   - name: Kris Sankaran
     affiliation: UW Madison
 layout: post
+description: |
+  Using `separate`, `mutate`, and `summarise` to derive new variables for
+  downstream visualization.
 output:
-  md_document:
-    preserve_yaml: true
+  distill::distill_article:
+    self_contained: false
 ---
-
-_Using `separate`, `mutate`, and `summarise` to derive new variables for downstream visualization._
 
 _[Reading](https://r4ds.had.co.nz/tidy-data.html), [Recording](https://mediaspace.wisc.edu/media/Week%204%20%5B3%5D%20Deriving%20Variables/1_b40dfhtt), [Rmarkdown](https://raw.githubusercontent.com/krisrs1128/stat479/master/_posts/2021-01-27-week4-3/week4-3.Rmd)_
 

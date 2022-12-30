@@ -6,8 +6,8 @@ author:
   - name: Kris Sankaran
 layout: post
 output:
-  md_document:
-    preserve_yaml: true
+  distill::distill_article:
+    self_contained: false
 always_allow_html: true
 ---
 

@@ -2,8 +2,8 @@
 title: Linked Brushing
 layout: post
 output: 
-  md_document:
-    preserve_yaml: true
+  distill::distill_article:
+    self_contained: false
 ---
 
 _More examples defining brush queries using Shiny and `ggplot2`._

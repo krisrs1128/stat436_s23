@@ -1,13 +1,13 @@
 ---
 title: Geospatial Interaction
 layout: post
+description: |
+  Idioms for interacting with geographic data.
 output:
-  md_document:
-    preserve_yaml: true
+  distill::distill_article:
+    self_contained: false
   always_allow_html: true
 ---
-
-_Idioms for interacting with geographic data_
 
 [Code](https://github.com/krisrs1128/stat679_code/blob/main/notes/week8-4.Rmd), [Recording](https://mediaspace.wisc.edu/media/Week%208%20-%204%3A%20Geospatial%20Interaction/1_e0i2pm2s)
 
@@ -17,7 +17,7 @@ opts_knit$set(base_dir = "/", base.url = "/")
 opts_chunk$set(
   warning = FALSE,
   message = FALSE,
-  fig.path = "stat679_notes/assets/week8-4/"
+  fig.path = "stat436_s23/assets/week8-4/"
   )
 ```
 
