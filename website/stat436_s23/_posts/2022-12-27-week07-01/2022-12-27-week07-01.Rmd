@@ -13,17 +13,16 @@ output:
 
 _[Reading](https://geocompr.robinlovelace.net/spatial-class.html), [Recording](https://mediaspace.wisc.edu/media/Week%207%20%5B1%5D%20Spatial%20Data%20Formats/1_r6gnm2cv), [Rmarkdown](https://github.com/krisrs1128/stat479/blob/master/_posts/2021-03-02-week7-1/week7-1.Rmd)_
 
-```{r setup, include=FALSE}
+```{r setup}
 knitr::opts_chunk$set(cache = FALSE, message = FALSE, warning = FALSE, echo = TRUE, eval = FALSE)
 ```
 
-```{r}
+```{r, eval = FALSE}
 library(ggmap)
 library(ggrepel)
 library(sf)
 library(tidyverse)
 library(raster)
-library(RStoolbox)
 theme_set(theme_minimal())
 ```
 

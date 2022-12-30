@@ -7,7 +7,7 @@
     <description>STAT 436 (Spring 2023)
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Thu, 29 Dec 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 30 Dec 2022 00:00:00 +0000</lastBuildDate>
     <item>
       <title>Introduction to ggplot2</title>
       <dc:creator>Kris Sankaran</dc:creator>
@@ -15,7 +15,7 @@
       <description>A discussion of ggplot2 terminology, and an example of iteratively refining a
 simple scatterplot.</description>
       <guid>/posts/2022-12-27-week01-01</guid>
-      <pubDate>Thu, 29 Dec 2022 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
       <media:content url="/posts/2022-12-27-week01-01/2022-12-27-week01-01_files/figure-html5/unnamed-chunk-3-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
@@ -24,7 +24,7 @@ simple scatterplot.</description>
       <link>/posts/2022-12-27-week01-02</link>
       <description>Examples of encodings and sequential refinement of a plot.</description>
       <guid>/posts/2022-12-27-week01-02</guid>
-      <pubDate>Thu, 29 Dec 2022 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
       <media:content url="/posts/2022-12-27-week01-02/2022-12-27-week01-02_files/figure-html5/unnamed-chunk-4-1.png" medium="image" type="image/png" width="1248" height="960"/>
     </item>
     <item>
@@ -33,7 +33,7 @@ simple scatterplot.</description>
       <link>/posts/2022-12-27-week02-01</link>
       <description>The definition of tidy data, and why it's often helpful for visualization.</description>
       <guid>/posts/2022-12-27-week02-01</guid>
-      <pubDate>Thu, 29 Dec 2022 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
       <media:content url="/posts/2022-12-27-week02-01/2022-12-27-week02-01_files/figure-html5/unnamed-chunk-3-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
@@ -42,7 +42,7 @@ simple scatterplot.</description>
       <link>/posts/2022-12-27-week02-02</link>
       <description>Tools for reshaping data into tidy format.</description>
       <guid>/posts/2022-12-27-week02-02</guid>
-      <pubDate>Thu, 29 Dec 2022 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
       <media:content url="/posts/2022-12-27-week02-02/2022-12-27-week02-02_files/figure-html5/unnamed-chunk-6-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
@@ -52,7 +52,7 @@ simple scatterplot.</description>
       <description>Using `separate`, `mutate`, and `summarise` to derive new variables for
 downstream visualization.</description>
       <guid>/posts/2022-12-27-week02-03</guid>
-      <pubDate>Thu, 29 Dec 2022 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Tidy Data Example</title>
@@ -60,16 +60,7 @@ downstream visualization.</description>
       <link>/posts/2022-12-27-week02-04</link>
       <description>An extended example of tidying a real-world dataset.</description>
       <guid>/posts/2022-12-27-week02-04</guid>
-      <pubDate>Thu, 29 Dec 2022 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Ridge Plots</title>
-      <dc:creator>Kris Sankaran</dc:creator>
-      <link>/posts/2022-12-27-week03-02</link>
-      <description>An extended example of faceting with data summaries.</description>
-      <guid>/posts/2022-12-27-week03-02</guid>
-      <pubDate>Thu, 29 Dec 2022 00:00:00 +0000</pubDate>
-      <media:content url="/posts/2022-12-27-week03-02/2022-12-27-week03-02_files/figure-html5/unnamed-chunk-3-1.png" medium="image" type="image/png" width="1248" height="768"/>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Faceting (Part 1)</title>
@@ -78,8 +69,170 @@ downstream visualization.</description>
       <link>/posts/2022-12-27-week03-01</link>
       <description>Using small multiples to create information dense plots.</description>
       <guid>/posts/2022-12-27-week03-01</guid>
-      <pubDate>Mon, 01 Feb 2021 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
       <media:content url="/posts/2022-12-27-week03-01/2022-12-27-week03-01_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1344" height="576"/>
+    </item>
+    <item>
+      <title>Ridge Plots</title>
+      <dc:creator>Kris Sankaran</dc:creator>
+      <link>/posts/2022-12-27-week03-02</link>
+      <description>An extended example of faceting with data summaries.</description>
+      <guid>/posts/2022-12-27-week03-02</guid>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
+      <media:content url="/posts/2022-12-27-week03-02/2022-12-27-week03-02_files/figure-html5/unnamed-chunk-3-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Compound Figures</title>
+      <dc:creator>Kris Sankaran</dc:creator>
+      <link>/posts/2022-12-27-week03-03</link>
+      <description>Showing different variables across subpanels.</description>
+      <guid>/posts/2022-12-27-week03-03</guid>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
+      <media:content url="/posts/2022-12-27-week03-03/2022-12-27-week03-03_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1920" height="768"/>
+    </item>
+    <item>
+      <title>Patchwork</title>
+      <dc:creator>Kris Sankaran</dc:creator>
+      <link>/posts/2022-12-27-week03-04</link>
+      <description>Implementing compound figures in R</description>
+      <guid>/posts/2022-12-27-week03-04</guid>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
+      <media:content url="/posts/2022-12-27-week03-04/2022-12-27-week03-04_files/figure-html5/unnamed-chunk-3-1.png" medium="image" type="image/png" width="1248" height="960"/>
+    </item>
+    <item>
+      <title>Elements of a Shiny App</title>
+      <dc:creator>Kris Sankaran</dc:creator>
+      <link>/posts/2022-12-27-week04-01</link>
+      <description>Vocabulary used by the R Shiny Library, and a few example apps.</description>
+      <guid>/posts/2022-12-27-week04-01</guid>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Introduction to Reactivity</title>
+      <link>/posts/2022-12-27-week04-02</link>
+      <description>Viewing shiny code execution as a graph.</description>
+      <guid>/posts/2022-12-27-week04-02</guid>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>IMDB Shiny Application</title>
+      <link>/posts/2022-12-27-week04-03</link>
+      <description>Using Shiny to explore a movies dataset</description>
+      <guid>/posts/2022-12-27-week04-03</guid>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Graphical Queries - Click Events</title>
+      <link>/posts/2022-12-27-week05-01</link>
+      <description>An introduction to click events in Shiny</description>
+      <guid>/posts/2022-12-27-week05-01</guid>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Graphical Queries - Brush Events</title>
+      <link>/posts/2022-12-27-week05-02</link>
+      <description>An introduction to brush events in Shiny.</description>
+      <guid>/posts/2022-12-27-week05-02</guid>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Linked Brushing</title>
+      <link>/posts/2022-12-27-week05-03</link>
+      <description>More examples defining brush queries using Shiny and `ggplot2`.</description>
+      <guid>/posts/2022-12-27-week05-03</guid>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
+      <media:content url="/posts/2022-12-27-week05-03//stat679_notes/assets/week3-3/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="960"/>
+    </item>
+    <item>
+      <title>Linking using Crosstalk</title>
+      <dc:creator>Kris Sankaran</dc:creator>
+      <link>/posts/2022-12-27-week05-04</link>
+      <description>Linking in web-based visualizations.</description>
+      <guid>/posts/2022-12-27-week05-04</guid>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>tsibble Objects</title>
+      <dc:creator>Kris Sankaran</dc:creator>
+      <link>/posts/2022-12-27-week06-01</link>
+      <description>A data structure for managing time series data.</description>
+      <guid>/posts/2022-12-27-week06-01</guid>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Time Series Patterns</title>
+      <dc:creator>Kris Sankaran</dc:creator>
+      <link>/posts/2022-12-27-week06-02</link>
+      <description>Vocabulary for describing visual structure in time series.</description>
+      <guid>/posts/2022-12-27-week06-02</guid>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
+      <media:content url="/posts/2022-12-27-week06-02/2022-12-27-week06-02_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Seasonal Plots</title>
+      <dc:creator>Kris Sankaran</dc:creator>
+      <link>/posts/2022-12-27-week06-03</link>
+      <description>Approaches for visualizing seasonality.</description>
+      <guid>/posts/2022-12-27-week06-03</guid>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
+      <media:content url="/posts/2022-12-27-week06-03/2022-12-27-week06-03_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Cross and Auto-Correlation</title>
+      <dc:creator>Kris Sankaran</dc:creator>
+      <link>/posts/2022-12-27-week06-04</link>
+      <description>Summaries of relationships between and within time series.</description>
+      <guid>/posts/2022-12-27-week06-04</guid>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
+      <media:content url="/posts/2022-12-27-week06-04/2022-12-27-week06-04_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Collections of Time Series</title>
+      <dc:creator>Kris Sankaran</dc:creator>
+      <link>/posts/2022-12-27-week06-05</link>
+      <description>Navigating across related time series.</description>
+      <guid>/posts/2022-12-27-week06-05</guid>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
+      <media:content url="/posts/2022-12-27-week06-05/2022-12-27-week06-05_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Spatial Data Formats</title>
+      <dc:creator>Kris Sankaran</dc:creator>
+      <link>/posts/2022-12-27-week07-01</link>
+      <description>An overview of common formats, with illustrative examples.</description>
+      <guid>/posts/2022-12-27-week07-01</guid>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Vector Data</title>
+      <dc:creator>Kris Sankaran</dc:creator>
+      <link>/posts/2022-12-27-week07-02</link>
+      <description>Manipulating and visualizing spatial vector data.</description>
+      <guid>/posts/2022-12-27-week07-02</guid>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Raster Data</title>
+      <dc:creator>Kris Sankaran</dc:creator>
+      <link>/posts/2022-12-27-week07-03</link>
+      <description>Storing spatially gridded information in rasters.</description>
+      <guid>/posts/2022-12-27-week07-03</guid>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Coordinate Reference Systems</title>
+      <dc:creator>Kris Sankaran</dc:creator>
+      <link>/posts/2022-12-27-week07-04</link>
+      <description>The projection problem, and how to check your CRS.</description>
+      <guid>/posts/2022-12-27-week07-04</guid>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Geospatial Interaction</title>
+      <link>/posts/2022-12-27-week07-05</link>
+      <description>Idioms for interacting with geographic data.</description>
+      <guid>/posts/2022-12-27-week07-05</guid>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
     </item>
   </channel>
 </rss>

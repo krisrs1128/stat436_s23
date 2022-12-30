@@ -1,12 +1,13 @@
 ---
 title: Graphical Queries - Click Events
 layout: post
+description: |
+  An introduction to click events in Shiny
 output: 
   distill::distill_article:
     self_contained: false
 ---
 
-_An introduction to click events in Shiny_
 
 [Code](https://github.com/krisrs1128/stat679_code/blob/main/notes/week3-1.Rmd), [Recording](https://mediaspace.wisc.edu/media/Week%207%20-%201%3A%20Time%20Series%20Visualization%20(I)/1_dubryjey)
 

@@ -18,8 +18,8 @@ knitr::opts_chunk$set(cache = FALSE, message = FALSE, warning = FALSE, echo = TR
 ```
 
 ```{r}
-library("ggplot2")
-library("sf")
+library(tidyverse)
+library(sf)
 theme_set(theme_minimal())
 ```
 
