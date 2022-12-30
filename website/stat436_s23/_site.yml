@@ -3,7 +3,7 @@ title: "STAT 436 (Spring 2023)"
 description: |
   STAT 436 (Spring 2023)
 output_dir: "_site"
-base_url: "/"
+base_url: "https://krisrs1128.github.io/stat436_s23/website/stat436_s23"
 navbar:
   right:
     - text: "Home"
