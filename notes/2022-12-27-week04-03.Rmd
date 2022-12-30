@@ -1,12 +1,12 @@
 ---
 title: IMDB Shiny Application
 layout: post
+description: Using Shiny to explore a movies dataset
 output:
   distill::distill_article:
     self_contained: false
 ---
 
-_Using Shiny to explore a movies dataset_
 
 [Recording](https://mediaspace.wisc.edu/media/Week+2+-+3A+IMDB+Shiny+Application/1_yitx0198), [Code](https://github.com/krisrs1128/stat679_code/blob/main/notes/week2-3.Rmd)
 

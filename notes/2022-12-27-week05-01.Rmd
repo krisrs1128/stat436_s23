@@ -1,12 +1,13 @@
 ---
 title: Graphical Queries - Click Events
 layout: post
+description: |
+  An introduction to click events in Shiny
 output: 
   distill::distill_article:
     self_contained: false
 ---
 
-_An introduction to click events in Shiny_
 
 [Code](https://github.com/krisrs1128/stat679_code/blob/main/notes/week3-1.Rmd), [Recording](https://mediaspace.wisc.edu/media/Week%207%20-%201%3A%20Time%20Series%20Visualization%20(I)/1_dubryjey)
 
@@ -15,9 +16,8 @@ library(knitr)
 opts_knit$set(base_dir = "/", base.url = "/")
 opts_chunk$set(
   warning = FALSE, 
-  message = FALSE,
-  fig.path = "stat679_notes/assets/week3-1/"
-  )
+  message = FALSE
+)
 ```
 
 1. Some of the most sophisticated interactive data visualizations are based on

@@ -46,7 +46,7 @@ number of degrees using the area plot.
     # trends in bachelor's degrees plot
     library(tidyverse)
     library(patchwork)
-    degrees <- read_csv("../data/degrees.csv") %>%
+    degrees <- read_csv("https://raw.githubusercontent.com/krisrs1128/stat436_s23/main/data/degrees.csv") %>%
         filter(field %in% c("Business", "Health professions and related programs", "Social sciences and history", "Psychology", "Education"))
     
     p <- list()
@@ -104,7 +104,7 @@ is (1) encoded using the same color scheme across all panels and (2) ordered so
 that female repeatedly appears on the right of male.
     
     ```{r}
-    athletes <- read_csv("../data/athletes.csv") %>%
+    athletes <- read_csv("https://raw.githubusercontent.com/krisrs1128/stat436_s23/main/data/athletes.csv") %>%
       filter(sport %in% c("basketball", "field", "rowing", "swimming", "tennis", "track (400m)"))
     p <- list()
     

@@ -1,11 +1,10 @@
 ---
-title: "Faceting (Part 1)"
+title: "Faceting"
 description: |
   Using small multiples to create information dense plots.
 author:
   - name: Kris Sankaran
   - affiliation: UW Madison
-date: 02-01-2021
 layout: post
 output:
   distill::distill_article:
