@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" version="1.0">
+  <url>
+    <loc>/about.html</loc>
+    <lastmod>2022-12-29T21:11:46-08:00</lastmod>
+  </url>
+  <url>
+    <loc>/</loc>
+    <lastmod>2022-12-29T21:14:19-08:00</lastmod>
+  </url>
+  <url>
+    <loc>/posts/2022-12-27-week01-01/</loc>
+    <lastmod>2022-12-29T21:54:25-08:00</lastmod>
+  </url>
+  <url>
+    <loc>/posts/2022-12-27-week01-02/</loc>
+    <lastmod>2022-12-29T21:54:28-08:00</lastmod>
+  </url>
+  <url>
+    <loc>/posts/2022-12-27-week02-01/</loc>
+    <lastmod>2022-12-29T21:54:33-08:00</lastmod>
+  </url>
+  <url>
+    <loc>/posts/2022-12-27-week02-02/</loc>
+    <lastmod>2022-12-29T21:54:36-08:00</lastmod>
+  </url>
+  <url>
+    <loc>/posts/2022-12-27-week02-03/</loc>
+    <lastmod>2022-12-29T21:54:38-08:00</lastmod>
+  </url>
+  <url>
+    <loc>/posts/2022-12-27-week02-04/</loc>
+    <lastmod>2022-12-29T21:54:46-08:00</lastmod>
+  </url>
+  <url>
+    <loc>/posts/2022-12-27-week03-02/</loc>
+    <lastmod>2022-12-29T21:55:12-08:00</lastmod>
+  </url>
+  <url>
+    <loc>/posts/2022-12-27-week03-01/</loc>
+    <lastmod>2022-12-29T21:55:02-08:00</lastmod>
+  </url>
+</urlset>

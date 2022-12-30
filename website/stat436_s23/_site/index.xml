@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+  <channel>
+    <title>STAT 436 (Spring 2023)</title>
+    <link>/</link>
+    <atom:link href="/index.xml" rel="self" type="application/rss+xml"/>
+    <description>STAT 436 (Spring 2023)
+</description>
+    <generator>Distill</generator>
+    <lastBuildDate>Thu, 29 Dec 2022 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Introduction to ggplot2</title>
+      <dc:creator>Kris Sankaran</dc:creator>
+      <link>/posts/2022-12-27-week01-01</link>
+      <description>A discussion of ggplot2 terminology, and an example of iteratively refining a
+simple scatterplot.</description>
+      <guid>/posts/2022-12-27-week01-01</guid>
+      <pubDate>Thu, 29 Dec 2022 00:00:00 +0000</pubDate>
+      <media:content url="/posts/2022-12-27-week01-01/2022-12-27-week01-01_files/figure-html5/unnamed-chunk-3-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>A Vocabulary of Marks</title>
+      <dc:creator>Kris Sankaran</dc:creator>
+      <link>/posts/2022-12-27-week01-02</link>
+      <description>Examples of encodings and sequential refinement of a plot.</description>
+      <guid>/posts/2022-12-27-week01-02</guid>
+      <pubDate>Thu, 29 Dec 2022 00:00:00 +0000</pubDate>
+      <media:content url="/posts/2022-12-27-week01-02/2022-12-27-week01-02_files/figure-html5/unnamed-chunk-4-1.png" medium="image" type="image/png" width="1248" height="960"/>
+    </item>
+    <item>
+      <title>Tidy Data</title>
+      <dc:creator>Kris Sankaran</dc:creator>
+      <link>/posts/2022-12-27-week02-01</link>
+      <description>The definition of tidy data, and why it's often helpful for visualization.</description>
+      <guid>/posts/2022-12-27-week02-01</guid>
+      <pubDate>Thu, 29 Dec 2022 00:00:00 +0000</pubDate>
+      <media:content url="/posts/2022-12-27-week02-01/2022-12-27-week02-01_files/figure-html5/unnamed-chunk-3-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Pivoting</title>
+      <dc:creator>Kris Sankaran</dc:creator>
+      <link>/posts/2022-12-27-week02-02</link>
+      <description>Tools for reshaping data into tidy format.</description>
+      <guid>/posts/2022-12-27-week02-02</guid>
+      <pubDate>Thu, 29 Dec 2022 00:00:00 +0000</pubDate>
+      <media:content url="/posts/2022-12-27-week02-02/2022-12-27-week02-02_files/figure-html5/unnamed-chunk-6-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Deriving Variables</title>
+      <dc:creator>Kris Sankaran</dc:creator>
+      <link>/posts/2022-12-27-week02-03</link>
+      <description>Using `separate`, `mutate`, and `summarise` to derive new variables for
+downstream visualization.</description>
+      <guid>/posts/2022-12-27-week02-03</guid>
+      <pubDate>Thu, 29 Dec 2022 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Tidy Data Example</title>
+      <dc:creator>Kris Sankaran</dc:creator>
+      <link>/posts/2022-12-27-week02-04</link>
+      <description>An extended example of tidying a real-world dataset.</description>
+      <guid>/posts/2022-12-27-week02-04</guid>
+      <pubDate>Thu, 29 Dec 2022 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Ridge Plots</title>
+      <dc:creator>Kris Sankaran</dc:creator>
+      <link>/posts/2022-12-27-week03-02</link>
+      <description>An extended example of faceting with data summaries.</description>
+      <guid>/posts/2022-12-27-week03-02</guid>
+      <pubDate>Thu, 29 Dec 2022 00:00:00 +0000</pubDate>
+      <media:content url="/posts/2022-12-27-week03-02/2022-12-27-week03-02_files/figure-html5/unnamed-chunk-3-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Faceting (Part 1)</title>
+      <dc:creator>Kris Sankaran</dc:creator>
+      <dc:creator/>
+      <link>/posts/2022-12-27-week03-01</link>
+      <description>Using small multiples to create information dense plots.</description>
+      <guid>/posts/2022-12-27-week03-01</guid>
+      <pubDate>Mon, 01 Feb 2021 00:00:00 +0000</pubDate>
+      <media:content url="/posts/2022-12-27-week03-01/2022-12-27-week03-01_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1344" height="576"/>
+    </item>
+  </channel>
+</rss>
