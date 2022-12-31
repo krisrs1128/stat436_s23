@@ -7,8 +7,8 @@ author:
     affiliation: UW Madison
 layout: post
 output:
-  md_document:
-    preserve_yaml: true
+  distill::distill_article:
+    self_contained: false
 ---
 
 ```{r setup, include=FALSE}
@@ -19,10 +19,9 @@ opts_chunk$set(cache = FALSE, message = FALSE, warning = FALSE, echo = TRUE)
 _[Reading](http://ema.drwhy.ai/partialDependenceProfiles.html), [Recording](https://mediaspace.wisc.edu/media/Week%2012%20%5B2%5D%20Partial%20Dependence%20Profiles%20II/1_3e93x8o8), [Rmarkdown](https://github.com/krisrs1128/stat479/blob/master/_posts/2021-04-05-week12-2/week12-2.Rmd)_
 
 ```{r}
-library("ggplot2")
-library("dplyr")
-library("caret")
-library("DALEX")
+library(tidyverse)
+library(caret)
+library(DALEX)
 theme479 <- theme_minimal() + 
   theme(
     panel.grid.minor = element_blank(),
