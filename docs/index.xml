@@ -342,5 +342,23 @@ downstream visualization.</description>
       <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
       <media:content url="https://www.huber.embl.de/msmb/images/CAM4.png" medium="image" type="image/png"/>
     </item>
+    <item>
+      <title>Principal Components Analysis II</title>
+      <dc:creator>Kris Sankaran</dc:creator>
+      <link>https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-27-week10-3</link>
+      <description>Visualizing and interpreting PCA.</description>
+      <guid>https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-27-week10-3</guid>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
+      <media:content url="https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-27-week10-3/2022-12-28-week10-3_files/figure-html5/unnamed-chunk-6-1.png" medium="image" type="image/png" width="1248" height="1152"/>
+    </item>
+    <item>
+      <title>Uniform Manifold Approximation and Projection</title>
+      <dc:creator>Kris Sankaran</dc:creator>
+      <link>https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-27-week10-4</link>
+      <description>An overview of the UMAP algorithm.</description>
+      <guid>https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-27-week10-4</guid>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
+      <media:content url="https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-27-week10-4/2022-12-28-week10-4_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
   </channel>
 </rss>
