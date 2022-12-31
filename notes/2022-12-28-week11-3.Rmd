@@ -7,8 +7,8 @@ author:
     affiliation: UW Madison
 layout: post
 output:
-  md_document:
-    preserve_yaml: true
+  distill::distill_article:
+    self_contained: false
 ---
 
 ```{r setup, include=FALSE}
@@ -19,17 +19,11 @@ opts_chunk$set(cache = TRUE, message = FALSE, warning = FALSE, echo = TRUE)
 _Reading [1](https://www.tidytextmining.com/topicmodeling.html) and [2](https://github.com/krisrs1128/stat479/blob/master/_posts/2021-03-30-week11-3/week11-3.Rmd), [Recording](https://mediaspace.wisc.edu/media/Week%2011%20%5B3%5D%20Visualizing%20Topic%20Models/1_t6bn2guv), [Rmarkdown](https://github.com/krisrs1128/stat479/blob/master/_posts/2021-03-30-week11-3/week11-3.Rmd)_
 
 ```{r}
-library("dplyr")
-library("forcats")
-library("ggplot2")
-library("ggrepel")
-library("readr")
-library("stringr")
-library("superheat")
-library("tibble")
-library("tidyr")
-library("tidytext")
-library("topicmodels")
+library(tidyverse)
+library(ggrepel)
+library(superheat)
+library(tidytext)
+library(topicmodels)
 theme479 <- theme_minimal() + 
   theme(
     panel.grid.minor = element_blank(),
@@ -82,7 +76,7 @@ differences of interest are between low and high probability words.
 ```{r, fig.height = 2, fig.cap = "An equivalent heatmap view of the above faceted barplot."}
 topics %>%
   filter(beta > 3e-4) %>%
-  pivot_wider(topic, term, values_from = "beta", values_fill = 0, names_repair = "unique") %>%
+  pivot_wider(names_from = "term", values_from = "beta", values_fill = 0) %>%
   select(-1) %>%
   superheat(
     pretty.order.cols = TRUE,
@@ -195,8 +189,9 @@ discriminative_terms <- topics %>%
   mutate(term = fct_reorder(term, -D))
 
 discriminative_terms %>%
-  pivot_wider(term, topic, values_from = "beta") %>%
+  pivot_wider(names_from = "topic", values_from = "beta") %>%
   column_to_rownames("term") %>%
+  select(-D) %>%
   superheat(
     pretty.order.rows = TRUE,
     left.label.size = 1.5,
@@ -252,7 +247,7 @@ scatterplot above.
 
 ```{r, fig.height = 10, fig.width = 4, fig.cap = "A structure plot view of each chapter's topic memberships."}
 gamma <- memberships %>%
-  pivot_wider(document:book, topic, values_from = gamma)
+  pivot_wider(names_from = topic, values_from = gamma)
 ```
 
 ```{r, fig.height = 10, fig.width = 4, fig.cap = "A structure plot view of each chapter's topic memberships."}
