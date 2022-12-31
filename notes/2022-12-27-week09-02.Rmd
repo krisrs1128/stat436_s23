@@ -7,8 +7,8 @@ author:
     affiliation: UW Madison
 layout: post
 output:
-  md_document:
-    preserve_yaml: true
+  distill::distill_article:
+    self_contained: false
 ---
 
 ```{r setup, include=FALSE}
@@ -18,13 +18,10 @@ knitr::opts_chunk$set(cache = FALSE, message = FALSE, warning = FALSE, echo = TR
 _[Reading](https://rafalab.github.io/dsbook/clustering.html), [Recording](https://mediaspace.wisc.edu/media/Week%209%20%5B2%5D%20Hierarchical%20Clustering/1_8f9hgzpc), [Rmarkdown](https://github.com/krisrs1128/stat479/blob/master/_posts/2021-03-17-week9-2/week9-2.Rmd)_
 
 ```{r}
-library("dplyr")
-library("ggplot2")
-library("ggraph")
-library("knitr")
-library("readr")
-library("robservable")
-library("tidygraph")
+library(tidyverse)
+library(ggraph)
+library(knitr)
+library(tidygraph)
 theme_set(theme_graph())
 ```
 
@@ -48,9 +45,7 @@ include_graphics("https://drive.google.com/uc?id=11YZtI_rbkRNAwj5rArUBh1nNYZBmSR
 the taxonomic trees. Instead of relating species, they relate observations in a
 dataset.
 
-```{r}
-robservable("@mbostock/tree-of-life", height = 1150)
-```
+<iframe width="100%" height="1286" frameborder="0" src="https://observablehq.com/embed/@d3/tree-of-life?cells=viewof+showLength%2Cchart"></iframe>
 
 4. Elaborating on this analogy, the leaves of a hierarchical clustering tree are
 the original observations. The more recently two nodes share a common

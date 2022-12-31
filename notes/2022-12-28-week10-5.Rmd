@@ -7,8 +7,8 @@ author:
     affiliation: UW Madison
 layout: post
 output:
-  md_document:
-    preserve_yaml: true
+  distill::distill_article:
+    self_contained: false
 ---
 
 ```{r setup, include=FALSE}
@@ -19,13 +19,11 @@ opts_chunk$set(cache = FALSE, message = FALSE, warning = FALSE, echo = TRUE)
 _Reading [1](https://juliasilge.com/blog/cocktail-recipes-umap/) and [2](https://pair-code.github.io/understanding-umap), [Recording](https://mediaspace.wisc.edu/media/Week%2010%20%5B5%5D/1_nivmh3v2), [Rmarkdown](https://github.com/krisrs1128/stat479/blob/master/_posts/2021-03-25-week10-5/week10-5.Rmd)_
 
 ```{r}
-library("embed")
-library("ggplot2")
-library("ggrepel")
-library("readr")
-library("stringr")
-library("tidymodels")
-library("tidytext")
+library(embed)
+library(tidyverse)
+library(ggrepel)
+library(tidymodels)
+library(tidytext)
 theme479 <- theme_minimal() + 
   theme(
     panel.grid.minor = element_blank(),
@@ -75,7 +73,7 @@ each moon.
 
 ```{r, fig.height = 4, fig.width = 6, fig.cap = "1D PCA and UMAP representations of the 2D two moons dataset."}
 scores <- bind_cols(
-  prep(umap_rec) %>% juice() %>% mutate(umap_1 = scale(umap_1)),
+  prep(umap_rec) %>% juice() %>% mutate(UMAP1 = scale(UMAP1)),
   prep(pca_rec) %>% juice() %>% select(-Class)
 ) %>%
   pivot_longer(-Class, names_to = "method")
@@ -166,7 +164,7 @@ umap_rec <- step_umap(antibiotic_, all_predictors(), min_dist = 1.5)
 umap_prep <- prep(umap_rec)
 
 scores <- juice(umap_prep) 
-ggplot(scores, aes(umap_1, umap_2, col = antibiotic)) +
+ggplot(scores, aes(UMAP1, UMAP2, col = antibiotic)) +
   geom_point(aes(shape = ind), size = 1.5) +
   geom_text_repel(aes(label = sample), max.overlaps = 10) +
   scale_color_brewer(palette = "Set2")
@@ -266,7 +264,7 @@ from shirts and sweaters.
 umap_rec <- step_umap(fashion_, all_predictors(), num_comp = 2, min_dist = 0.5)
 umap_prep <- prep(umap_rec)
 scores <- juice(umap_prep) %>%
-  rename(x = umap_1, y = umap_2)
+  rename(x = UMAP1, y = UMAP2)
 ggplot(scores, aes(x, y, col = label)) +
   geom_point() +
   scale_color_brewer(palette = "Set3") +

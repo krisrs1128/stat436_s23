@@ -7,8 +7,8 @@ author:
     affiliation: UW Madison
 layout: post
 output:
-  md_document:
-    preserve_yaml: true
+  distill::distill_article:
+    self_contained: false
 ---
 
 ```{r setup, include=FALSE}
@@ -19,12 +19,10 @@ opts_chunk$set(cache = FALSE, message = FALSE, warning = FALSE, echo = TRUE)
 _[Reading](https://juliasilge.com/blog/cocktail-recipes-umap/), [Recording](https://mediaspace.wisc.edu/media/Week%2010%20%5B3%5D%20Principal%20Components%20Analysis%20II/1_uows5d33), [Rmarkdown](https://github.com/krisrs1128/stat479/blob/master/_posts/2021-03-24-week10-3/week10-3.Rmd)_
 
 ```{r}
-library("ggplot2")
-library("ggrepel")
-library("readr")
-library("stringr")
-library("tidymodels")
-library("tidytext")
+library(tidyverse)
+library(ggrepel)
+library(tidymodels)
+library(tidytext)
 theme479 <- theme_minimal() + 
   theme(
     panel.grid.minor = element_blank(),
@@ -126,6 +124,7 @@ data pipeline. This compartmentalization makes it easier to design and reuse
 across settings.
 
 ```{r}
+cocktails_df <- read_csv("https://uwmadison.box.com/shared/static/qyqof2512qsek8fpnkqqiw3p1jb77acf.csv")
 pca_rec <- recipe(~., data = cocktails_df) %>%
   update_role(name, category, new_role = "id") %>%
   step_normalize(all_predictors()) %>%

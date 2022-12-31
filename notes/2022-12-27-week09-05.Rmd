@@ -7,8 +7,8 @@ author:
     affiliation: UW Madison
 layout: post
 output:
-  md_document:
-    preserve_yaml: true
+  distill::distill_article:
+    self_contained: false
 ---
 
 ```{r setup, include=FALSE}
@@ -106,7 +106,7 @@ each gene and each centroid changes, so the genes might be assigned to different
 clusters.
 
 ```{r, echo = FALSE}
-include_graphics("bootstrap.png")
+include_graphics("https://krisrs1128.github.io/stat479/posts/2021-03-17-week9-5/bootstrap.png")
 ```
 
 ```{r}

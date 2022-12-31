@@ -7,26 +7,23 @@ author:
     affiliation: UW Madison
 layout: post
 output:
-  md_document:
-    preserve_yaml: true
+  distill::distill_article:
+    self_contained: false
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(cache = FALSE, message = FALSE, warning = FALSE, echo = TRUE)
-library("robservable")
 ```
 
 _[Reading](https://search.library.wisc.edu/catalog/9911196629502121) (Chapter 9), [Recording](https://mediaspace.wisc.edu/media/Week%208%20%5B3%5D%20Adjacency%20Matrix%20Views/1_awa2aoj0), [Rmarkdown](https://raw.githubusercontent.com/krisrs1128/stat479/master/_posts/2021-03-06-week8-3/week8-3.Rmd)_
 
 ```{r}
-library("dplyr")
-library("knitr")
-library("ggplot2")
-library("gridExtra")
-library("igraph")
-library("readr")
-library("ggraph")
-library("tidygraph")
+library(tidyverse)
+library(knitr)
+library(gridExtra)
+library(igraph)
+library(ggraph)
+library(tidygraph)
 theme_set(theme_graph())
 ```
 
