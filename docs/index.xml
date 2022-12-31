@@ -79,7 +79,7 @@ downstream visualization.</description>
       <description>An extended example of faceting with data summaries.</description>
       <guid>https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-27-week03-02</guid>
       <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
-      <media:content url="https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-27-week03-02/2022-12-27-week03-02_files/figure-html5/unnamed-chunk-3-1.png" medium="image" type="image/png" width="1248" height="768"/>
+      <media:content url="https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-27-week03-02/distill-preview.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
       <title>Compound Figures</title>
@@ -233,6 +233,24 @@ downstream visualization.</description>
       <description>Idioms for interacting with geographic data.</description>
       <guid>https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-27-week07-05</guid>
       <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Introduction to Networks and Trees</title>
+      <dc:creator>Kris Sankaran</dc:creator>
+      <link>https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-27-week08-01</link>
+      <description>Typical tasks and example network datasets.</description>
+      <guid>https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-27-week08-01</guid>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
+      <media:content url="https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-27-week08-01/2022-12-27-week08-01_files/figure-html5/unnamed-chunk-7-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Node - Link Diagrams</title>
+      <dc:creator>Kris Sankaran</dc:creator>
+      <link>https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-27-week08-02</link>
+      <description>The most common network visualization strategy.</description>
+      <guid>https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-27-week08-02</guid>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
+      <media:content url="https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-27-week08-02/2022-12-27-week08-02_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
   </channel>
 </rss>
