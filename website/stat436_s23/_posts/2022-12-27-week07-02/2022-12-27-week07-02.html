@@ -118,7 +118,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"NULL"}
+  {"type":"character","attributes":{},"value":["2022-12-27-week07-02_files/anchor-4.2.2/anchor.min.js","2022-12-27-week07-02_files/bowser-1.9.3/bowser.min.js","2022-12-27-week07-02_files/distill-2.2.21/template.v2.js","2022-12-27-week07-02_files/header-attrs-2.18/header-attrs.js","2022-12-27-week07-02_files/jquery-3.6.0/jquery-3.6.0.js","2022-12-27-week07-02_files/jquery-3.6.0/jquery-3.6.0.min.js","2022-12-27-week07-02_files/jquery-3.6.0/jquery-3.6.0.min.map","2022-12-27-week07-02_files/popper-2.6.0/popper.min.js","2022-12-27-week07-02_files/tippy-6.2.7/tippy-bundle.umd.min.js","2022-12-27-week07-02_files/tippy-6.2.7/tippy-light-border.css","2022-12-27-week07-02_files/tippy-6.2.7/tippy.css","2022-12-27-week07-02_files/tippy-6.2.7/tippy.umd.min.js","2022-12-27-week07-02_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1549,7 +1549,7 @@ from the defining coordinates, we can use <code>st_point</code> to create a poin
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># make a point</span></span>
 <span><span class='va'>p</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://r-spatial.github.io/sf/reference/st.html'>st_point</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>5</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span></span>
-<span><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>p</span><span class='op'>)</span></span></code></pre>
+<span><span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span><span class='op'>(</span><span class='va'>p</span><span class='op'>)</span></span></code></pre>
 </div>
 </div>
 <p><code>st_linestring</code> to create a linestring,</p>
@@ -1558,7 +1558,7 @@ from the defining coordinates, we can use <code>st_point</code> to create a poin
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># make a line</span></span>
 <span><span class='va'>linestring_matrix</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>rbind</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>5</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4</span>, <span class='fl'>4</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4</span>, <span class='fl'>1</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='fl'>2</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span></span>
 <span><span class='va'>p</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://r-spatial.github.io/sf/reference/st.html'>st_linestring</a></span><span class='op'>(</span><span class='va'>linestring_matrix</span><span class='op'>)</span></span>
-<span><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>p</span><span class='op'>)</span></span></code></pre>
+<span><span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span><span class='op'>(</span><span class='va'>p</span><span class='op'>)</span></span></code></pre>
 </div>
 </div>
 <p>and <code>st_polygon</code> to create a polygon.</p>
@@ -1567,7 +1567,7 @@ from the defining coordinates, we can use <code>st_point</code> to create a poin
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># make a polygon</span></span>
 <span><span class='va'>polygon_list</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>rbind</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>5</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='fl'>2</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4</span>, <span class='fl'>1</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4</span>, <span class='fl'>4</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></span>
 <span><span class='va'>p</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://r-spatial.github.io/sf/reference/st.html'>st_polygon</a></span><span class='op'>(</span><span class='va'>polygon_list</span><span class='op'>)</span></span>
-<span><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>p</span><span class='op'>)</span></span></code></pre>
+<span><span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span><span class='op'>(</span><span class='va'>p</span><span class='op'>)</span></span></code></pre>
 </div>
 </div>
 <ol start="4" type="1">
@@ -1578,7 +1578,7 @@ from the defining coordinates, we can use <code>st_point</code> to create a poin
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>point1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://r-spatial.github.io/sf/reference/st.html'>st_point</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>5</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span></span>
 <span><span class='va'>point2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://r-spatial.github.io/sf/reference/st.html'>st_point</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span></span>
 <span><span class='va'>points_sfc</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://r-spatial.github.io/sf/reference/sfc.html'>st_sfc</a></span><span class='op'>(</span><span class='va'>point1</span>, <span class='va'>point2</span><span class='op'>)</span></span>
-<span><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>points_sfc</span><span class='op'>)</span></span></code></pre>
+<span><span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span><span class='op'>(</span><span class='va'>points_sfc</span><span class='op'>)</span></span></code></pre>
 </div>
 </div>
 <ol start="5" type="1">
@@ -1623,7 +1623,7 @@ India geometry.</p>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>name_long</span> <span class='op'>==</span> <span class='st'>"India"</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
 <span>  <span class='fu'><a href='https://r-spatial.github.io/sf/reference/st_geometry.html'>st_geometry</a></span><span class='op'>(</span><span class='op'>)</span></span>
 <span></span>
-<span><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>india_geom</span><span class='op'>)</span></span></code></pre>
+<span><span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span><span class='op'>(</span><span class='va'>india_geom</span><span class='op'>)</span></span></code></pre>
 </div>
 </div>
 <ol start="6" type="1">
@@ -1634,8 +1634,8 @@ India geometry.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>world_asia</span> <span class='op'>&lt;-</span> <span class='va'>world</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>continent</span> <span class='op'>==</span> <span class='st'>"Asia"</span><span class='op'>)</span></span>
 <span></span>
-<span><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>india_geom</span>, expandBB <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>0.2</span>, <span class='fl'>0.1</span>, <span class='fl'>1</span><span class='op'>)</span>, col <span class='op'>=</span> <span class='st'>"gray"</span>, lwd <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span></span>
-<span><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='fu'><a href='https://r-spatial.github.io/sf/reference/geos_combine.html'>st_union</a></span><span class='op'>(</span><span class='va'>world_asia</span><span class='op'>)</span>, add <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span></code></pre>
+<span><span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span><span class='op'>(</span><span class='va'>india_geom</span>, expandBB <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>0.2</span>, <span class='fl'>0.1</span>, <span class='fl'>1</span><span class='op'>)</span>, col <span class='op'>=</span> <span class='st'>"gray"</span>, lwd <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span><span class='op'>(</span><span class='fu'><a href='https://r-spatial.github.io/sf/reference/geos_combine.html'>st_union</a></span><span class='op'>(</span><span class='va'>world_asia</span><span class='op'>)</span>, add <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span></code></pre>
 </div>
 </div>
 <ol start="7" type="1">
