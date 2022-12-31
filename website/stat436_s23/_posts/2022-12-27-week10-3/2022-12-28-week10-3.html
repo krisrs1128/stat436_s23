@@ -88,9 +88,9 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>Introduction to Dimensionality Reduction</title>
+  <title>Principal Components Analysis II</title>
 
-  <meta property="description" itemprop="description" content="Examples of high-dimensional data."/>
+  <meta property="description" itemprop="description" content="Visualizing and interpreting PCA."/>
 
 
   <!--  https://schema.org/Article -->
@@ -99,26 +99,26 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <meta name="article:author" content="Kris Sankaran"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Introduction to Dimensionality Reduction"/>
+  <meta property="og:title" content="Principal Components Analysis II"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="Examples of high-dimensional data."/>
+  <meta property="og:description" content="Visualizing and interpreting PCA."/>
   <meta property="og:locale" content="en_US"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Introduction to Dimensionality Reduction"/>
-  <meta property="twitter:description" content="Examples of high-dimensional data."/>
+  <meta property="twitter:title" content="Principal Components Analysis II"/>
+  <meta property="twitter:description" content="Visualizing and interpreting PCA."/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","layout","output","date"]}},"value":[{"type":"character","attributes":{},"value":["Introduction to Dimensionality Reduction"]},{"type":"character","attributes":{},"value":["Examples of high-dimensional data.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","affiliation"]}},"value":[{"type":"character","attributes":{},"value":["Kris Sankaran"]},{"type":"character","attributes":{},"value":["UW Madison"]}]}]},{"type":"character","attributes":{},"value":["post"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["12-30-2022"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","layout","output","date"]}},"value":[{"type":"character","attributes":{},"value":["Principal Components Analysis II"]},{"type":"character","attributes":{},"value":["Visualizing and interpreting PCA.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","affiliation"]}},"value":[{"type":"character","attributes":{},"value":["Kris Sankaran"]},{"type":"character","attributes":{},"value":["UW Madison"]}]}]},{"type":"character","attributes":{},"value":["post"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["12-30-2022"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["2022-12-28-week10-1_files/anchor-4.2.2/anchor.min.js","2022-12-28-week10-1_files/bowser-1.9.3/bowser.min.js","2022-12-28-week10-1_files/distill-2.2.21/template.v2.js","2022-12-28-week10-1_files/header-attrs-2.18/header-attrs.js","2022-12-28-week10-1_files/jquery-3.6.0/jquery-3.6.0.js","2022-12-28-week10-1_files/jquery-3.6.0/jquery-3.6.0.min.js","2022-12-28-week10-1_files/jquery-3.6.0/jquery-3.6.0.min.map","2022-12-28-week10-1_files/popper-2.6.0/popper.min.js","2022-12-28-week10-1_files/tippy-6.2.7/tippy-bundle.umd.min.js","2022-12-28-week10-1_files/tippy-6.2.7/tippy-light-border.css","2022-12-28-week10-1_files/tippy-6.2.7/tippy.css","2022-12-28-week10-1_files/tippy-6.2.7/tippy.umd.min.js","2022-12-28-week10-1_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["2022-12-28-week10-3_files/figure-html5/unnamed-chunk-3-1.png","2022-12-28-week10-3_files/figure-html5/unnamed-chunk-4-1.png","2022-12-28-week10-3_files/figure-html5/unnamed-chunk-5-1.png","2022-12-28-week10-3_files/figure-html5/unnamed-chunk-6-1.png","2022-12-28-week10-3_files/figure-html5/unnamed-chunk-8-1.png","2022-12-28-week10-3_files/figure-markdown_strict/unnamed-chunk-3-1.png","2022-12-28-week10-3_files/figure-markdown_strict/unnamed-chunk-4-1.png","2022-12-28-week10-3_files/figure-markdown_strict/unnamed-chunk-5-1.png","2022-12-28-week10-3_files/figure-markdown_strict/unnamed-chunk-6-1.png","2022-12-28-week10-3_files/figure-markdown_strict/unnamed-chunk-8-1.png"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1475,16 +1475,16 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="2022-12-28-week10-1_files/header-attrs-2.18/header-attrs.js"></script>
-  <script src="2022-12-28-week10-1_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-  <script src="2022-12-28-week10-1_files/popper-2.6.0/popper.min.js"></script>
-  <link href="2022-12-28-week10-1_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
-  <link href="2022-12-28-week10-1_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
-  <script src="2022-12-28-week10-1_files/tippy-6.2.7/tippy.umd.min.js"></script>
-  <script src="2022-12-28-week10-1_files/anchor-4.2.2/anchor.min.js"></script>
-  <script src="2022-12-28-week10-1_files/bowser-1.9.3/bowser.min.js"></script>
-  <script src="2022-12-28-week10-1_files/webcomponents-2.0.0/webcomponents.js"></script>
-  <script src="2022-12-28-week10-1_files/distill-2.2.21/template.v2.js"></script>
+  <script src="2022-12-28-week10-3_files/header-attrs-2.18/header-attrs.js"></script>
+  <script src="2022-12-28-week10-3_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+  <script src="2022-12-28-week10-3_files/popper-2.6.0/popper.min.js"></script>
+  <link href="2022-12-28-week10-3_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="2022-12-28-week10-3_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="2022-12-28-week10-3_files/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="2022-12-28-week10-3_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="2022-12-28-week10-3_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="2022-12-28-week10-3_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="2022-12-28-week10-3_files/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
   <!--/radix_placeholder_site_in_header-->
 
@@ -1496,7 +1496,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Introduction to Dimensionality Reduction","description":"Examples of high-dimensional data.","authors":[{"author":"Kris Sankaran","authorURL":"#","affiliation":"UW Madison","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-12-30T00:00:00.000-08:00","citationText":"Sankaran, 2022"}
+{"title":"Principal Components Analysis II","description":"Visualizing and interpreting PCA.","authors":[{"author":"Kris Sankaran","authorURL":"#","affiliation":"UW Madison","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-12-30T00:00:00.000-08:00","citationText":"Sankaran, 2022"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1506,10 +1506,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Introduction to Dimensionality Reduction</h1>
+<h1>Principal Components Analysis II</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>Examples of high-dimensional data.</p></p>
+<p><p>Visualizing and interpreting PCA.</p></p>
 </div>
 
 <div class="d-byline">
@@ -1519,62 +1519,211 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 
 <div class="d-article">
-<p><em><a href="https://idyll.pub/post/visxai-dimensionality-reduction-1dbad0a67a092b007c526a45/">Reading</a>, <a href="https://mediaspace.wisc.edu/media/Week%2010%20%5B1%5D%20Introduction%20to%20Dimensionality%20Reduction/1_z4difn4d">Recording</a>, <a href="https://github.com/krisrs1128/stat479/blob/master/_posts/2021-03-24-week10-1/week10-1.Rmd">Rmarkdown</a></em></p>
+<p><em><a href="https://juliasilge.com/blog/cocktail-recipes-umap/">Reading</a>, <a href="https://mediaspace.wisc.edu/media/Week%2010%20%5B3%5D%20Principal%20Components%20Analysis%20II/1_uows5d33">Recording</a>, <a href="https://github.com/krisrs1128/stat479/blob/master/_posts/2021-03-24-week10-3/week10-3.Rmd">Rmarkdown</a></em></p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/slowkow/ggrepel'>ggrepel</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidymodels.tidymodels.org'>tidymodels</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/juliasilge/tidytext'>tidytext</a></span><span class='op'>)</span></span>
+<span><span class='va'>theme479</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_minimal</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span></span>
+<span>    panel.grid.minor <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_blank</a></span><span class='op'>(</span><span class='op'>)</span>,</span>
+<span>    panel.background <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_rect</a></span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"#f7f7f7"</span><span class='op'>)</span>,</span>
+<span>    panel.border <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_rect</a></span><span class='op'>(</span>fill <span class='op'>=</span> <span class='cn'>NA</span>, color <span class='op'>=</span> <span class='st'>"#0c0c0c"</span>, size <span class='op'>=</span> <span class='fl'>0.6</span><span class='op'>)</span>,</span>
+<span>    legend.position <span class='op'>=</span> <span class='st'>"bottom"</span></span>
+<span>  <span class='op'>)</span></span>
+<span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme_get.html'>theme_set</a></span><span class='op'>(</span><span class='va'>theme479</span><span class='op'>)</span></span></code></pre>
+</div>
+</div>
 <ol type="1">
-<li><em>High-dimensional data</em> are data where many features are collected for each
-observation. These tend to be wide datasets with many columns. The name comes
-from the fact that each row of the dataset can be viewed as a vector in a
-high-dimensional space (one dimension for each feature). These data are common
-in modern applications,</li>
-</ol>
-<ul>
-<li>Each cell in a genomics dataset might have measurements for hundreds of molecules.</li>
-<li>Each survey respondent might provide answers to dozens of questions.</li>
-<li>Each image might have several thousand pixels.</li>
-<li>Each document might have counts across several thousand relevant words.</li>
-</ul>
-<ol start="2" type="1">
-<li><p>For low-dimensional data, we could visually encode all the features in our
-data directly, either using properties of marks or through faceting. In
-high-dimensional data, this is no longer possible.</p></li>
-<li><p>However, though there are many features associated with each observation, it
-may still be possible to organize samples across a smaller number of meaningful,
-derived features.</p></li>
-<li><p>For example, consider the Metropolitan Museum of Art dataset, which contains
-images of many artworks. Abstractly, each artwork is a high-dimensional object,
-containing pixel intensities across many pixels. But it is reasonable to derive
-a feature based on the average brightness.</p></li>
+<li>How should we visualize the results from PCA? There are three artifacts
+produced by the procedure worth considering — components, scores, and variances.
+The components describe derived features, the scores lay samples out on a map,
+and the variances summarize how much information was preserved by each
+dimension.</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-1"></span>
-<img src="https://github.com/krisrs1128/stat436_s23/raw/main/activities/figure/brightness.png" alt="An arrangement of artworks according to their average pixel brightness, as given in the reading."  />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># produced by code in previous notes</span></span>
+<span><span class='va'>components</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"https://uwmadison.box.com/shared/static/dituepd0751qqsims22v2liukuk0v4bf.csv"</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>component</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='fu'><a href='https://stringr.tidyverse.org/reference/str_c.html'>str_c</a></span><span class='op'>(</span><span class='st'>"PC"</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='va'>scores</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"https://uwmadison.box.com/shared/static/qisbw1an4lo8naifoxyu4dqv4bfsotcu.csv"</span><span class='op'>)</span></span>
+<span><span class='va'>variances</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"https://uwmadison.box.com/shared/static/ye125xf8800zc5eh3rfeyzszagqkaswf.csv"</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>terms</span> <span class='op'>==</span> <span class='st'>"percent variance"</span><span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li>First, let’s see how much variance is explained by each dimension of the PCA.
+Without detouring into the mathematical explanation, the main idea is that, the
+more rapid the dropoff in variance explained, the better the low-dimensional
+approximation. For example, if the data actually lie on a 2D plane in a
+high-dimensional space, then the first two bars would contain all the variance
+(the rest would be zero).</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>variances</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_col</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>component</span>, <span class='va'>value</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+</div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-3"></span>
+<img src="2022-12-28-week10-3_files/figure-html5/unnamed-chunk-3-1.png" alt="Proportion of variance explained by each component in the PCA." width="384" />
 <p class="caption">
-Figure 1: An arrangement of artworks according to their average pixel brightness, as given in the reading.
+Figure 1: Proportion of variance explained by each component in the PCA.
+</p>
+</div>
+</div>
+<ol start="2" type="1">
+<li>We can interpret components by looking at the linear coefficients of the
+variables used to define them. From the plot below, we see that the first PC
+mostly captures variation related to whether the drink is made with powdered
+sugar or simple syrup. Drinks with high values of PC1 are usually to be made
+from simple syrup, those with low values of PC1 are usually made from powdered
+sugar. From the two largest bars in PC2, we can see that it highlights the
+vermouth vs. non-vermouth distinction.</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>components</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>value</span>, <span class='va'>terms</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_col</a></span><span class='op'>(</span>show.legend <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></span><span class='op'>(</span><span class='op'>~</span><span class='va'>component</span>, nrow <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>axis.text <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>7</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+</div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-4"></span>
+<img src="2022-12-28-week10-3_files/figure-html5/unnamed-chunk-4-1.png" alt="The top 5 principal components associated with the cocktails dataset." width="624" />
+<p class="caption">
+Figure 2: The top 5 principal components associated with the cocktails dataset.
+</p>
+</div>
+</div>
+<ol start="3" type="1">
+<li>It is often easier read the components when the bars are sorted according to
+their magnitude. The usual ggplot approach to reordering axes labels, using
+either <code>reorder()</code> or releveling the associated factor, will reorder all the
+facets in the same way. If we want to reorder each facet on its own, we can use
+the <code>reorder_within</code> function coupled with <code>scale_*_reordered</code>, both from the
+tidytext package.</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>components_</span> <span class='op'>&lt;-</span> <span class='va'>components</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>component</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='fu'><a href='https://stringr.tidyverse.org/reference/str_c.html'>str_c</a></span><span class='op'>(</span><span class='st'>"PC"</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>terms <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/tidytext/man/reorder_within.html'>reorder_within</a></span><span class='op'>(</span><span class='va'>terms</span>, <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span><span class='op'>(</span><span class='va'>value</span><span class='op'>)</span>, <span class='va'>component</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>components_</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>value</span>, <span class='va'>terms</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_col</a></span><span class='op'>(</span>show.legend <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></span><span class='op'>(</span><span class='op'>~</span> <span class='va'>component</span>, scales <span class='op'>=</span> <span class='st'>"free_y"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/tidytext/man/reorder_within.html'>scale_y_reordered</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>axis.text <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>7</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+</div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-5"></span>
+<img src="2022-12-28-week10-3_files/figure-html5/unnamed-chunk-5-1.png" alt="The top 3 principal components, with defining variables sorted by the magnitude of their coefficient." width="960" />
+<p class="caption">
+Figure 3: The top 3 principal components, with defining variables sorted by the magnitude of their coefficient.
+</p>
+</div>
+</div>
+<ol start="4" type="1">
+<li>Next, we can visualize the scores of each sample with respect to these
+components. The plot below shows <span class="math inline">\(\left(z_{i1}, z_{i2}\right)\)</span>. Suppose that the
+columns of <span class="math inline">\(\Phi\)</span> are <span class="math inline">\(\varphi_{1}, \dots, \varphi_{K}\)</span>. Then, since <span class="math inline">\(x_{i} \approx \varphi_{1}z_{i1} + \varphi_{2} z_{i2}\)</span>, the samples have large values
+for variables with large component values in the coordinate directions where
+<span class="math inline">\(z_{i}\)</span> is farther along.</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>scores</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>PC1</span>, <span class='va'>PC2</span>, label <span class='op'>=</span> <span class='va'>name</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='va'>category</span><span class='op'>)</span>, alpha <span class='op'>=</span> <span class='fl'>0.7</span>, size <span class='op'>=</span> <span class='fl'>1.5</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggrepel/man/geom_text_repel.html'>geom_text_repel</a></span><span class='op'>(</span>check_overlap <span class='op'>=</span> <span class='cn'>TRUE</span>, size <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_fixed.html'>coord_fixed</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span><span class='op'>(</span><span class='va'>variances</span><span class='op'>$</span><span class='va'>value</span><span class='op'>[</span><span class='fl'>2</span><span class='op'>]</span> <span class='op'>/</span> <span class='va'>variances</span><span class='op'>$</span><span class='va'>value</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span> <span class='co'># rescale axes to reflect variance</span></span></code></pre>
+</div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-6"></span>
+<img src="2022-12-28-week10-3_files/figure-html5/unnamed-chunk-6-1.png" alt="The scores associated with the cocktails dataset." width="624" data-distill-preview=1 />
+<p class="caption">
+Figure 4: The scores associated with the cocktails dataset.
 </p>
 </div>
 </div>
 <ol start="5" type="1">
-<li>In general, manual feature construction can be difficult. Algorithmic
-approaches try streamline the process of generating these maps by optimizing
-some more generic criterion. Different algorithms use different criteria, which
-we will review in the next couple of lectures.</li>
+<li><p>For example, El Nino has high value for PC1, which means it has a high value
+of variables that are positive for PC1 (like simple syrup) and low value for
+those variables that are negative (like powdered sugar). Similarly, since
+<span class="math inline">\(\varphi_{2}\)</span> puts high positive weight on vermouth-related variables, so H. P.
+W. Cocktail has many vermouth-related ingredients.</p></li>
+<li><p>In practice, it will often be important to visualize several pairs of PC
+dimensions against one another, not just the top 2.</p></li>
+<li><p>Let’s examine the original code in a little more detail. We are using
+tidymodels, which is a package for decoupling the definition and execution of a
+data pipeline. This compartmentalization makes it easier to design and reuse
+across settings.</p></li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-2"></span>
-<img src="https://github.com/krisrs1128/stat436_s23/raw/main/activities/figure/dimred-animation.gif" alt="The dimensionality reduction algorithm in this animation converts a large number of raw features into a position on a one-dimensional axis defined by average pixel brightness. In general, we might reduce to dimensions other than 1D, and we will often want to define features tailored to the dataset at hand." width="400" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>cocktails_df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"https://uwmadison.box.com/shared/static/qyqof2512qsek8fpnkqqiw3p1jb77acf.csv"</span><span class='op'>)</span></span>
+<span><span class='va'>pca_rec</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://recipes.tidymodels.org/reference/recipe.html'>recipe</a></span><span class='op'>(</span><span class='op'>~</span><span class='va'>.</span>, data <span class='op'>=</span> <span class='va'>cocktails_df</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span>  <span class='fu'><a href='https://recipes.tidymodels.org/reference/roles.html'>update_role</a></span><span class='op'>(</span><span class='va'>name</span>, <span class='va'>category</span>, new_role <span class='op'>=</span> <span class='st'>"id"</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span>  <span class='fu'><a href='https://recipes.tidymodels.org/reference/step_normalize.html'>step_normalize</a></span><span class='op'>(</span><span class='fu'><a href='https://recipes.tidymodels.org/reference/has_role.html'>all_predictors</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span>  <span class='fu'><a href='https://recipes.tidymodels.org/reference/step_pca.html'>step_pca</a></span><span class='op'>(</span><span class='fu'><a href='https://recipes.tidymodels.org/reference/has_role.html'>all_predictors</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>pca_prep</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://recipes.tidymodels.org/reference/prep.html'>prep</a></span><span class='op'>(</span><span class='va'>pca_rec</span><span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<ol start="8" type="1">
+<li>Here is how you would apply PCA without the tidymodels package. You have to
+first split the data into the “metadata” that is used to interpret the scores
+and the numerical variables used as input to PCA. Then at the end, you have to
+join the metadata back in. It’s not impossible, but the code is not as readable.</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># split name and category out of the data frame</span></span>
+<span><span class='va'>pca_result</span> <span class='op'>&lt;-</span> <span class='va'>cocktails_df</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='op'>-</span><span class='va'>name</span>, <span class='op'>-</span><span class='va'>category</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/r/base/scale.html'>scale</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/r/stats/princomp.html'>princomp</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='co'># join them back into the PCA result</span></span>
+<span><span class='va'>metadata</span> <span class='op'>&lt;-</span> <span class='va'>cocktails_df</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>name</span>, <span class='va'>category</span><span class='op'>)</span></span>
+<span><span class='va'>scores_direct</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span><span class='va'>metadata</span>, <span class='va'>pca_result</span><span class='op'>$</span><span class='va'>scores</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>scores_direct</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>Comp.1</span>, <span class='va'>Comp.2</span>, label <span class='op'>=</span> <span class='va'>name</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='va'>category</span><span class='op'>)</span>, alpha <span class='op'>=</span> <span class='fl'>0.7</span>, size <span class='op'>=</span> <span class='fl'>1.5</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggrepel/man/geom_text_repel.html'>geom_text_repel</a></span><span class='op'>(</span>check_overlap <span class='op'>=</span> <span class='cn'>TRUE</span>, size <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_fixed.html'>coord_fixed</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span><span class='op'>(</span><span class='va'>variances</span><span class='op'>$</span><span class='va'>value</span><span class='op'>[</span><span class='fl'>2</span><span class='op'>]</span> <span class='op'>/</span> <span class='va'>variances</span><span class='op'>$</span><span class='va'>value</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span> <span class='co'># rescale axes to reflect variance</span></span></code></pre>
+</div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-8"></span>
+<img src="2022-12-28-week10-3_files/figure-html5/unnamed-chunk-8-1.png" alt="A plot of the PCA scores made without using tidymodels." width="624" />
 <p class="caption">
-Figure 2: The dimensionality reduction algorithm in this animation converts a large number of raw features into a position on a one-dimensional axis defined by average pixel brightness. In general, we might reduce to dimensions other than 1D, and we will often want to define features tailored to the dataset at hand.
+Figure 5: A plot of the PCA scores made without using tidymodels.
 </p>
 </div>
 </div>
-<ol start="6" type="1">
-<li>Informally, the goal of dimensionality reduction techniques is to produce a
-low-dimensional “atlas” relating members of a collection of complex objects.
-Samples that are similar to one another in the high-dimensional space should be
-placed near one another in the low-dimensional view. For example, we might want
-to make an atlas of artworks, with similar styles and historical periods being
-placed near to one another.</li>
+<ol start="10" type="1">
+<li><p>The equivalent tidymodels implementation handles the difference between
+supplementary and modeling data less bluntly, setting the <code>name</code> and <code>category</code>
+variables to <code>id</code> roles, so that <code>all_predictors()</code> knows to skip them.</p></li>
+<li><p>We conclude with some characteristics of PCA, which can guide the choice
+between alternative dimensionality reduction methods.</p></li>
 </ol>
+<ul>
+<li><em>Global structure</em>: Since PCA is looking for high-variance overall, it tends
+to focus on global structure.</li>
+<li><em>Linear</em>: PCA can only consider linear combinations of the original
+features. If we expect nonlinear features to be more meaningful, then another
+approach should be considered.</li>
+<li><em>Interpretable features</em>: The PCA components exactly specify how to
+construct each of the derived features.</li>
+<li><em>Fast</em>: Compared to most dimensionality reduction methods, PCA is quite
+fast. Further, it is easy to implement approximate versions of PCA that scale
+to very large datasets.</li>
+<li><em>Deterministic</em>: Some embedding algorithms perform an optimization process,
+which means there might be some variation in the results due to randomness in
+the optimization. In contrast, PCA is deterministic, with the components being
+unique up to sign (i.e., you could reflect the components across an axis, but
+that is the most the results might change).</li>
+</ul>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
@@ -1583,6 +1732,15 @@ placed near to one another.</li>
 <div class="d-appendix">
 </div>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 
 <!--radix_placeholder_site_after_body-->
 <!--/radix_placeholder_site_after_body-->
