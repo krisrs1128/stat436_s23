@@ -360,5 +360,40 @@ downstream visualization.</description>
       <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
       <media:content url="https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-27-week10-4/2022-12-28-week10-4_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
+    <item>
+      <title>Introduction to Topic Models</title>
+      <dc:creator>Kris Sankaran</dc:creator>
+      <link>https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-26-week11-1</link>
+      <description>An overview of dimensionality reduction via topics.</description>
+      <guid>https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-26-week11-1</guid>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
+      <media:content url="https://uwmadison.box.com/shared/static/3shdh2f5vqarkwjucmmebigj2rwm4wyh.png" medium="image" type="image/png"/>
+    </item>
+    <item>
+      <title>Fitting Topic Models</title>
+      <dc:creator>Kris Sankaran</dc:creator>
+      <link>https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-26-week11-2</link>
+      <description>Data preparation and model fitting code for topics.</description>
+      <guid>https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-26-week11-2</guid>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Visualizing Topic Models</title>
+      <dc:creator>Kris Sankaran</dc:creator>
+      <link>https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-26-week11-3</link>
+      <description>Once we've fit a topic model, how should we inspect it?</description>
+      <guid>https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-26-week11-3</guid>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
+      <media:content url="https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-26-week11-3/2022-12-28-week11-3_files/figure-html5/unnamed-chunk-5-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Topic Modeling Case Study</title>
+      <dc:creator>Kris Sankaran</dc:creator>
+      <link>https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-26-week11-4</link>
+      <description>An application to a gene expression dataset.</description>
+      <guid>https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-26-week11-4</guid>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
+      <media:content url="https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-26-week11-4/2022-12-28-week11-4_files/figure-html5/unnamed-chunk-8-1.png" medium="image" type="image/png" width="960" height="1536"/>
+    </item>
   </channel>
 </rss>
