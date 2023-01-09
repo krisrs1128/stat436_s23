@@ -16,7 +16,7 @@ library("knitr")
 opts_chunk$set(cache = FALSE, message = FALSE, warning = FALSE, echo = FALSE)
 ```
 
-_[Reading](https://simplystatistics.org/2019/04/17/tukey-design-thinking-and-better-questions/), [Recording](https://mediaspace.wisc.edu/media/Week%2014%20%5B3%5D%20Asking%20Better%20Questions/1_de62tpn9), [Rmarkdown](https://github.com/krisrs1128/stat479/blob/master/_posts/2021-04-23-week14-3/week14-3.Rmd)_
+_[Reading](https://simplystatistics.org/posts/2019-04-17-tukey-design-thinking-and-better-questions/), [Recording](https://mediaspace.wisc.edu/media/Week%2014%20%5B3%5D%20Asking%20Better%20Questions/1_de62tpn9), [Rmarkdown](https://github.com/krisrs1128/stat479/blob/master/_posts/2021-04-23-week14-3/week14-3.Rmd)_
 
 1. In these notes, we will review "Tukey, Design Thinking, and Better Questions,"
 a blog post by Roger Peng. In the post, he discusses the importance of
@@ -48,7 +48,7 @@ a good data scientist should focus on improving the quality of the questions
 asked, even if that means that the answers will be less definitive.
 
 ```{r, fig.cap = "Peng's summary of misplaced priorities in the data science process.", preview = TRUE, out.width = "90%"}
-include_graphics("https://simplystatistics.org/post/2019-04-17-tukey-design-thinking-and-better-questions_files/question_evidence.png")
+include_graphics("https://raw.githubusercontent.com/krisrs1128/stat436_s23/main/activities/figure/question_evidence.png")
 ```
 
 4. What does it mean to ask better questions? Peng argues that better questions
