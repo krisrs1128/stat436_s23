@@ -6,14 +6,14 @@
       "description": "This site includes notes from the Spring 2023 iteration of STAT 436 at UW Madison.",
       "author": [],
       "contents": "\nThis is a website for STAT 436.\n\n\n\n",
-      "last_modified": "2023-01-04T16:48:55-08:00"
+      "last_modified": "2023-01-09T14:14:41-06:00"
     },
     {
       "path": "index.html",
       "title": "STAT 436 (Spring 2023)",
       "author": [],
       "contents": "\n\n\n\n",
-      "last_modified": "2023-01-04T16:48:56-08:00"
+      "last_modified": "2023-01-09T14:14:46-06:00"
     }
   ],
   "collections": ["posts/posts.json"]

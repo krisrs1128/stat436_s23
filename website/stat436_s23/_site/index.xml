@@ -7,7 +7,42 @@
     <description>STAT 436 (Spring 2023)
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Wed, 04 Jan 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 09 Jan 2023 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Final Takeaways</title>
+      <dc:creator>Kris Sankaran</dc:creator>
+      <link>https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-27-week14-1</link>
+      <description>Some major themes from STAT 479, in a nutshell.</description>
+      <guid>https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-27-week14-1</guid>
+      <pubDate>Mon, 09 Jan 2023 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Design Process Case Study</title>
+      <dc:creator>Kris Sankaran</dc:creator>
+      <link>https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-27-week14-2</link>
+      <description>Tracing the refinement of questions and design.</description>
+      <guid>https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-27-week14-2</guid>
+      <pubDate>Mon, 09 Jan 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://uploads-ssl.webflow.com/5fa9d88da1855554db37b1e1/5fc61cc4356e0d312965c372_split_beeswarm.png" medium="image" type="image/png"/>
+    </item>
+    <item>
+      <title>Asking Better Questions</title>
+      <dc:creator>Kris Sankaran</dc:creator>
+      <link>https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-27-week14-3</link>
+      <description>What is the purpose of data analysis?</description>
+      <guid>https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-27-week14-3</guid>
+      <pubDate>Mon, 09 Jan 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://simplystatistics.org/post/2019-04-17-tukey-design-thinking-and-better-questions_files/question_evidence.png" medium="image" type="image/png"/>
+    </item>
+    <item>
+      <title>A History of Data Visualization up to 1900</title>
+      <dc:creator>Kris Sankaran</dc:creator>
+      <link>https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-27-week14-4</link>
+      <description>A look at the origins of the field.</description>
+      <guid>https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-27-week14-4</guid>
+      <pubDate>Mon, 09 Jan 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://uwmadison.box.com/shared/static/c79fbmfc3mff9ota1tzxtvv4gp7e3pul.jpeg" medium="image" type="image/jpeg"/>
+    </item>
     <item>
       <title>Introduction to Feature Learning</title>
       <dc:creator>Kris Sankaran</dc:creator>
