@@ -29,9 +29,8 @@ expression.
 These are libraries we'll use in this lecture.
 
 ```{r}
-library(dplyr)
+library(tidyverse)
 library(dslabs)
-library(ggplot2)
 library(ggrepel)
 library(scales)
 ```
@@ -47,7 +46,7 @@ r <- murders %>%
   pull(rate)
 
 ggplot(murders, aes(x = population, y = total)) +
-  geom_abline(intercept = log10(r), size = 0.4, col = "#b3b3b3") +
+  geom_abline(intercept = log10(r), linewidth = 0.4, col = "#b3b3b3") +
   geom_text_repel(aes(label = abb), segment.size = 0.2) + # I moved it up so that the geom_point's appear on top of the lines
   geom_point(aes(col = region)) +
   scale_x_log10(labels = unit_format(unit = "million", scale = 1e-6)) + # used to convert scientific notation to readable labels
@@ -239,7 +238,7 @@ slope and intercept as a line on a graph.
 
 ```{r}
 ggplot(murders, aes(x = population, y = total)) +
-  geom_abline(intercept = log10(r), size = 0.4, col = "#b3b3b3") +
+  geom_abline(intercept = log10(r), linewidth = 0.4, col = "#b3b3b3") +
   geom_text_repel(aes(label = abb), segment.size = 0.2) +
   geom_point(aes(col = region)) +
   scale_x_log10() +
@@ -252,7 +251,7 @@ scientific notation in the $x$-axis labels to something more readable.
 
 ```{r}
 ggplot(murders, aes(x = population, y = total)) +
-  geom_abline(intercept = log10(r), size = 0.4, col = "#b3b3b3") +
+  geom_abline(intercept = log10(r), linewidth = 0.4, col = "#b3b3b3") +
   geom_text_repel(aes(label = abb), segment.size = 0.2) +
   geom_point(aes(col = region)) +
   scale_x_log10(labels = unit_format(unit = "million", scale = 1e-6)) + # used to convert scientific notation to readable labels
@@ -272,7 +271,7 @@ palette, which can be used by calling a different color scale.
 
 ```{r}
 ggplot(murders, aes(x = population, y = total)) +
-  geom_abline(intercept = log10(r), size = 0.4, col = "#b3b3b3") +
+  geom_abline(intercept = log10(r), linewidth = 0.4, col = "#b3b3b3") +
   geom_text_repel(aes(label = abb), segment.size = 0.2) +
   geom_point(aes(col = region)) +
   scale_x_log10(labels = unit_format(unit = "million", scale = 1e-6)) +

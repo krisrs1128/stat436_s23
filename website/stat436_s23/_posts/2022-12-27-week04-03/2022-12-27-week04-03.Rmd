@@ -15,7 +15,8 @@ library(knitr)
 opts_knit$set(base_dir = "/", base.url = "/")
 opts_chunk$set(
   warning = FALSE,
-  message = FALSE
+  message = FALSE,
+  fig.path = "stat679_notes/assets/week1-3/"
   )
 ```
 

@@ -32,10 +32,8 @@ across the plots.
 Let's see these ideas in action. These are libraries we need.
 
 ```{r}
-library("ggplot2")
-library("dplyr")
-library("dslabs")
-library("readr")
+library(tidyverse)
+library(dslabs)
 theme_set(theme_bw())
 ```
 In ggplot2, we can implement this idea using the `facet_wrap` and `facet_grid`

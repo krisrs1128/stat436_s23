@@ -1,5 +1,5 @@
 ---
-title: "Faceting (Part 1)"
+title: "Faceting"
 description: |
   Using small multiples to create information dense plots.
 author:
