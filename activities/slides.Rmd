@@ -116,15 +116,6 @@ this poll:  https://go.wisc.edu/828r85
 
 ---
 
-### Canvas Page Walkthrough
-
-```{r, echo = FALSE}
-include_graphics("figures/canvas.png")
-```
-
-
----
-
 ### Class Resources
 
 1. [Canvas page](https://canvas.wisc.edu/courses/346654/modules)
