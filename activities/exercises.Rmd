@@ -22,13 +22,10 @@ Plural](https://docs.google.com/spreadsheets/d/1wZhPLMCHKJvwOkP4juclhjFgqIY8fQFM
 [Kaggle Datasets](https://www.kaggle.com/datasets), [Google Dataset
 Search](https://datasetsearch.research.google.com/), or your own personal
 studies that you would like to visualize this semester. 
-    a. What makes you interested in this dataset? Please provide a link, so we
-    can use it to create future exercises.
-    b. Using whatever software that you are familar with, prepare a
-    visualization to answer one question you have based on the data. This will
-    not be evaluated except for effort -- the purpose of the problem is to
-    create a record your data visualization skills at the start of the course.
-    Submit both your visualization and code used to create it.
+    a. What makes you interested in this dataset? Please provide a link, so we can
+use it to create future exercises.
+    b. Using any tools of your choice, make one example visualization from your
+dataset. What question does it help to answer?
 
 1. [Data Types] For the following parts, specify whether the data field is
 Nominal, Ordinal, or Quantitative.
@@ -47,7 +44,7 @@ would do differently if you were redesigning it?
     include_graphics("figure/info-food-waste.png")
     ```
   
-1. [Critique - Science Paper] Figure 2 below is from the scientific article *Both consumptive and non-consumptive effects of predators impact mosquito populations and have implications for disease transmission* by Russell et al. (2022). It describes the predators of mosquitos at different points in their life cycles. Give an example of a question that this visualization helps answer. How
+1. [Critique - Science Paper I] Figure 2 below is from the scientific article *Both consumptive and non-consumptive effects of predators impact mosquito populations and have implications for disease transmission* by Russell et al. (2022). It describes the predators of mosquitos at different points in their life cycles. Give an example of a question that this visualization helps answer. How
 easy / difficult is it to answer based on the current design? What is one design
 choice that you like? What is one thing you would do differently if you were
 redesigning it?
@@ -56,7 +53,7 @@ redesigning it?
     include_graphics("figure/mosquito-predators.jpeg")
     ```
   
-1. [Critique - Science Paper] Figure 3 below is from the scientific article *Genetic basis and dual adaptive role of floral pigmentation in sunflowers* by Todesco et al. (2022).
+1. [Critique - Science Paper II] Figure 3 below is from the scientific article *Genetic basis and dual adaptive role of floral pigmentation in sunflowers* by Todesco et al. (2022).
 While all sunflower petals look the same to us (they look yellow), they actually
 vary quite a bit in how they reflect ultraviolet light, which is visible to
 pollinators. The figure studies the variation in this ultraviolet proportion
