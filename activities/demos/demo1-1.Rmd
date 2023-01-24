@@ -4,20 +4,17 @@ output: html_document
 date: "`r Sys.Date()`"
 ---
 
-[London Olympics] The data at this [link](https://uwmadison.box.com/s/rzw8h2x6dp5693gdbpgxaf2koqijo12l) describes
-all participants in the London 2012 Olympics.
-    
-```{r}
+The data below measures properties of various Antarctic penguins.
+
+```{r, echo = TRUE}
 library(tidyverse)
-olympics <- read_csv("https://uwmadison.box.com/shared/static/rzw8h2x6dp5693gdbpgxaf2koqijo12l.csv")
-head(olympics)
+penguins <- read_csv("https://uwmadison.box.com/shared/static/ijh7iipc9ect1jf0z8qa2n3j7dgem1gh.csv")
 ```
+Create a single plot that makes it easy to answer both of these questions, (i)
+How is bill length related to bill depth within and across species? (ii) On
+which islands are which species found?
 
-a. Create a layered display that shows (i) the ages of athletes across sports
-and (ii) the average age within each sport.
-
-b. Sort the sports from lowest to highest average age.
-
-c. Develop one new question based on these data. What makes you interested
-in it? Provide a visualization that supports the comparisons needed to
-arrive at an answer.
+Read about [Simpson's
+paradox](https://en.wikipedia.org/wiki/Simpson%27s_paradox) and summarize it in
+your own words. Then, explain how part (i) provides a real-world example of this
+paradox.
