@@ -133,7 +133,8 @@ install.packages("tidyverse")
 one of: a recent hobby, favorite movie, favorite food. Share your chosen
 datasets in groups of 2 - 3 people.
 
-1. Submit a response to [Formulating Questions] in the exercise sheet. 
+1. Submit a response to [Formulating Questions] on
+[Gradescope](https://www.gradescope.com/courses/498858/assignments/2595893). The course entry code is WV68WB.
 
 1. We will not grade the plot's quality -- we just want to get a sense of
 everyone's starting point.
@@ -159,23 +160,34 @@ dataset. What question does it help to answer?
 
 ## January 26, 2023
 
+1. Review Exercise 1 - 1
+1. [In-Class Demo 1 - 1](https://github.com/krisrs1128/stat436_s23/blob/main/activities/demos/demo1-1-starter.Rmd)
+1. [In-Class Exercise 1 - 2](https://www.gradescope.com/courses/498858/assignments/2603279)
+
+---
+
+### Exercise Review
+
+---
+
 ---
 
 ### [In-Class Demo 1-1](https://github.com/krisrs1128/stat436_s23/blob/main/activities/demos/demo1-1-starter.Rmd)
 
-[London Olympics] The data at this
-[link](https://uwmadison.box.com/s/rzw8h2x6dp5693gdbpgxaf2koqijo12l) describes
-all participants in the London 2012 Olympics.
 
-a. Create a layered display that shows (i) the ages of athletes across sports
-and (ii) the average age within each sport.
+The data below measures properties of various Antarctic penguins.
 
-b. Sort the sports from lowest to highest average age.
 
-c. Develop one new question based on these data. What makes you interested
-in it? Provide a visualization that supports the comparisons needed to
-arrive at an answer.
-  
+```r
+library(tidyverse)
+theme_set(theme_bw())
+penguins &lt;- read_csv("https://uwmadison.box.com/shared/static/ijh7iipc9ect1jf0z8qa2n3j7dgem1gh.csv")
+```
+
+Create a single plot that makes it easy to answer both of these questions, (i)
+How is bill length related to bill depth within and across species? (ii) On
+which islands are which species found?
+
 ---
 
 ### Exercise 1-2
