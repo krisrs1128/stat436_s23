@@ -1,0 +1,23 @@
+---
+title: "Untitled"
+output: html_document
+date: "`r Sys.Date()`"
+---
+
+[London Olympics] The data at this [link](https://uwmadison.box.com/s/rzw8h2x6dp5693gdbpgxaf2koqijo12l) describes
+all participants in the London 2012 Olympics.
+    
+```{r}
+library(tidyverse)
+olympics <- read_csv("https://uwmadison.box.com/shared/static/rzw8h2x6dp5693gdbpgxaf2koqijo12l.csv")
+head(olympics)
+```
+
+a. Create a layered display that shows (i) the ages of athletes across sports
+and (ii) the average age within each sport.
+
+b. Sort the sports from lowest to highest average age.
+
+c. Develop one new question based on these data. What makes you interested
+in it? Provide a visualization that supports the comparisons needed to
+arrive at an answer.

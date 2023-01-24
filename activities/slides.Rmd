@@ -139,7 +139,7 @@ Also feel free to speak with me after class.
 ### Preparation
 
 * For next lecture, bring your laptops
-* Make sure you can run the Rmarkdown starter code for In-Class Demo [1-1]
+* Make sure you can run the Rmarkdown [starter code](https://github.com/krisrs1128/stat436_s23/blob/main/activities/demos/demo1-1-starter.Rmd) for In-Class Demo [1-1]
   - I recommend using Rstudio
   - You can install the tidyverse package using
   
@@ -183,7 +183,7 @@ dataset. What question does it help to answer?
 
 ---
 
-### In-Class Demo 1-1
+### [In-Class Demo 1-1](https://github.com/krisrs1128/stat436_s23/blob/main/activities/demos/demo1-1-starter.Rmd)
 
 [London Olympics] The data at this
 [link](https://uwmadison.box.com/s/rzw8h2x6dp5693gdbpgxaf2koqijo12l) describes
