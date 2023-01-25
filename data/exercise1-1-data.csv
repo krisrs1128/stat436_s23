@@ -32,7 +32,7 @@ US CO2 Emissions,https://www.kaggle.com/datasets/thedevastator/global-fossil-co2
 Car Insurance,https://www.kaggle.com/datasets/doaaalsenani/usa-cers-dataset,kaggle,economics,scatterplot,ggplot2,yes,3
 House Prices,https://www.kaggle.com/code/burhanykiyakoglu/predicting-house-prices/data,kaggle,purchases,scatterplot,ggplot2,no,3
 Music Labels,https://datasetsearch.research.google.com/search?src=3&query=music&docid=L2cvMTFqOWIxbGY0Yg%3D%3D  ,Google Datasets,arts_culture,barplot,ggplot2,no,2
-Billboard Hits and Lyrics,NA,Data Is Plural,arts_culture,time series,python,matplotlib,2
+Billboard Hits and Lyrics,NA,Data Is Plural,arts_culture,time series,matplotlib,no,2
 P2P Loans,https://www.bondora.com/en/public-reports#shared-legend,bondora.com,finance,barplot,base R,yes,2
 Spotify Top 10000,https://www.kaggle.com/datasets/rakkesharv/spotify-top-10000-streamed-songs?resource=download,kaggle,arts_culture,barplot,ggplot2,no,2
 Apple Stocks,NA,NA,finance,candlestick,matplotlib,no,3
