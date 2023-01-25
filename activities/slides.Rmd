@@ -189,6 +189,17 @@ dataset. What question does it help to answer?
 
 ---
 
+### Announcements
+
+1. We will accept responses to the Office Hours Poll () until Friday at 5pm. Let
+us know your preferences!
+1. Project Milestones 0 and 1 have been posted on Gradescope. Due February 6 and
+13.
+1. For in-class exercises, please submit a compiled PDF, HTML or DOCX file. We
+will only need your original code in the HW submissions.
+
+---
+
 ### Exercise Review
 
 ---
