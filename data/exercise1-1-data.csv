@@ -7,7 +7,7 @@ Olympics Medals,https://www.kaggle.com/datasets/the-guardian/olympic-games?resou
 Ski Resorts,https://www.kaggle.com/datasets/the-guardian/olympic-games?resource=download&select=summer.csv,kaggle,sports,scatterplot,ggplot2,yes,3
 Stock Prices,https://www.kaggle.com/datasets/andrewmvd/sp-500-stocks?resource=download&select=sp500_stocks.csv,kaggle,finance,time series,base R,no,3
 Sports Earners,https://www.kaggle.com/datasets/parulpandey/forbes-highest-paid-athletes-19902019?resource=download,kaggle,sports,scatterplot,ggplot2,no,3
-Eurovision,https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-05-17/eu rovision.csv,TidyTuesday,arts_culture,facetetd time series,ggplot2,yes,3
+Eurovision,https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-05-17/eu rovision.csv,TidyTuesday,arts_culture,faceted time series,ggplot2,yes,3
 Car Prices,https://archive.ics.uci.edu/ml/datasets/Automobile,UCI,purchases,scatterplot,ggplot2,no,4
 Spatial Genomics,https://www.10xgenomics.com/resources/datasets/adult-mouse-brain-section-1-coronal-stains- dapi-anti-neu-n-1-standard-1-1-0,10X,molecular biology,linked views,multiple,no,4
 Tech Layoffs,https://www.kaggle.com/datasets/salimwid/technology-company-layoffs-20222023-data?resource=download,TidyTuesday,economics,barplot,ggplot2,no,2

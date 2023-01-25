@@ -326,10 +326,10 @@ to study changes in temperature over time.
     Read about [Simpson's paradox](https://en.wikipedia.org/wiki/Simpson%27s_paradox) and summarize it in your own words. Then, explain how part (i) provides a real-world example of this paradox.
 
 1. [Student Exercise Responses] The data
-[here](https://raw.githubusercontent.com/krisrs1128/stat679_code/main/examples/week1/formulating_questions.csv)
+here ([STAT 679, F22](https://raw.githubusercontent.com/krisrs1128/stat679_code/main/examples/week1/formulating_questions.csv), [STAT 436, S23](https://github.com/krisrs1128/stat436_s23/raw/main/data/exercise1-1-data.csv))
 give an (anonymized) summary of responses to the [Formulating Questions]
-exercise, given by students in Stat 679 / 992 in Fall 2022. It describes the
-dataset topic, its source, the submitted visualization type, and the software
+exercise. It describes the dataset topic, its source, the submitted
+visualization type, and the software
 used to create it.
     a. What types of topics seem to interest students in this class?
     b. What types of visualization techniques and software to students seem most

@@ -166,11 +166,224 @@ dataset. What question does it help to answer?
 
 ---
 
+### Announcements
+
+1. We will accept responses to the Office Hours Poll () until Friday at 5pm. Let
+us know your preferences!
+1. Project Milestones 0 and 1 have been posted on Gradescope. Due February 6 and
+13.
+1. For in-class exercises, please submit a compiled PDF, HTML or DOCX file. We
+will only need your original code in the HW submissions.
+
+---
+
 ### Exercise Review
 
----
+You can see responses at this link: https://go.wisc.edu/vp50pd
+
+
+```r
+responses &lt;- read_csv("https://github.com/krisrs1128/stat436_s23/raw/main/data/exercise1-1-data.csv")
+head(responses)
+```
+
+```
+## # A tibble: 6 × 8
+##   dataset             link                            source categ…¹ visua…² package defau…³ encod…⁴
+##   &lt;chr&gt;               &lt;chr&gt;                           &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt;
+## 1 Heart Health        https://www.kaggle.com/dataset… kaggle health… histog… ggplot2 yes           2
+## 2 NHL Games           https://www.kaggle.com/martine… kaggle sports  barplot ggplot2 yes           2
+## 3 Art Narratives      https://github.com/rfordatasci… TidyT… arts_c… barplot ggplot2 yes           2
+## 4 Yoga and Screentime https://www.kaggle.com/dataset… kaggle health… scatte… base R  yes           2
+## 5 Olympics Medals     https://www.kaggle.com/dataset… kaggle sports  barplot ggplot2 no            2
+## 6 Ski Resorts         https://www.kaggle.com/dataset… kaggle sports  scatte… ggplot2 yes           3
+## # … with abbreviated variable names ¹​category, ²​visualization, ³​defaults, ⁴​encodings
+```
+
 
 ---
+
+### Exercise Review
+
+What types of topics seem to interest students in this class?
+
+
+```r
+responses %&gt;%
+  count(category) %&gt;%
+  arrange(-n)
+```
+
+```
+## # A tibble: 12 × 2
+##    category              n
+##    &lt;chr&gt;             &lt;int&gt;
+##  1 arts_culture          9
+##  2 economics             5
+##  3 sports                5
+##  4 finance               4
+##  5 health_physical       3
+##  6 purchases             3
+##  7 society_gov           3
+##  8 education             2
+##  9 geology               1
+## 10 health_mental         1
+## 11 internet              1
+## 12 molecular biology     1
+```
+
+---
+
+### Exercise Review
+
+
+```r
+responses %&gt;%
+  count(category) %&gt;%
+  ggplot() +
+  geom_col(aes(category, n))
+```
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-4-1.png" width="650" style="display: block; margin: auto;" /&gt;
+
+---
+
+### Exercise Review
+
+
+```r
+responses %&gt;%
+  count(category) %&gt;%
+  ggplot() +
+  geom_col(aes(n, category))
+```
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-5-1.png" width="650" style="display: block; margin: auto;" /&gt;
+
+---
+
+### Exercise Review
+
+
+```r
+responses %&gt;%
+  count(category) %&gt;%
+  ggplot() +
+  geom_col(aes(n, reorder(category, n)))
+```
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-6-1.png" width="650" style="display: block; margin: auto;" /&gt;
+
+---
+
+### Exercise Review
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-7-1.png" width="650" style="display: block; margin: auto;" /&gt;
+
+---
+
+### Exercise Review
+
+
+```r
+responses %&gt;%
+  count(category) %&gt;%
+  ggplot() +
+  geom_col(aes(n, reorder(category, n))) +
+  scale_x_continuous(expand = c(0, 0, 0.1, 0)) +
+  labs(x = "Count", y = "Topic")
+```
+
+
+---
+
+### Exercise Review
+
+What types of visualization techniques and software to students seem most
+familiar with?
+
+
+```r
+responses %&gt;%
+  count(visualization, package, defaults) %&gt;%
+  arrange(-n)
+```
+
+```
+## # A tibble: 21 × 4
+##    visualization package defaults     n
+##    &lt;chr&gt;         &lt;chr&gt;   &lt;chr&gt;    &lt;int&gt;
+##  1 barplot       ggplot2 no           6
+##  2 scatterplot   ggplot2 no           5
+##  3 scatterplot   base R  yes          4
+##  4 scatterplot   ggplot2 yes          3
+##  5 barplot       ggplot2 yes          2
+##  6 time series   base R  no           2
+##  7 time series   ggplot2 no           2
+##  8 barplot       base R  yes          1
+##  9 boxplot       ggplot2 no           1
+## 10 candlestick   base R  no           1
+## # … with 11 more rows
+```
+
+
+---
+
+### Exercise Review
+
+What types of visualization techniques and software to students seem most
+familiar with?
+
+
+```r
+responses %&gt;%
+  count(visualization, package, defaults) %&gt;%
+  ggplot() +
+  geom_col(aes(n, reorder(visualization, n, sum)))
+```
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-10-1.png" width="650" style="display: block; margin: auto;" /&gt;
+
+---
+
+### Exercise Review
+
+What types of visualization techniques and software to students seem most
+familiar with?
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-11-1.png" width="650" style="display: block; margin: auto;" /&gt;
+
+---
+
+### Exercise Review
+
+What types of visualization techniques and software to students seem most
+familiar with?
+
+
+```r
+responses %&gt;%
+  count(visualization, package, defaults) %&gt;%
+  ggplot() +
+  geom_col(aes(n, reorder(visualization, n, sum), fill = defaults)) +
+  scale_fill_brewer(palette = "Set2") +
+  labs(x = "Count", y = "Vis Type", fill = "Used Defaults?") +
+  scale_x_continuous(expand = c(0, 0, 0.1, 0)) +
+  theme(legend.text = element_text(size = 12))
+```
+
+---
+
+
+### Exercise Review
+
+What types of visualization techniques and software to students seem most
+familiar with?
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-13-1.png" width="650" style="display: block; margin: auto;" /&gt;
+
+---
+
 
 ### [In-Class Demo 1-1](https://github.com/krisrs1128/stat436_s23/blob/main/activities/demos/demo1-1-starter.Rmd)
 

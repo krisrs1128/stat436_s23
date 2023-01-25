@@ -202,9 +202,175 @@ will only need your original code in the HW submissions.
 
 ### Exercise Review
 
----
+You can see responses at this link: https://go.wisc.edu/vp50pd
+
+```{r}
+responses <- read_csv("https://github.com/krisrs1128/stat436_s23/raw/main/data/exercise1-1-data.csv")
+head(responses)
+```
+
 
 ---
+
+### Exercise Review
+
+What types of topics seem to interest students in this class?
+
+```{r}
+responses %>%
+  count(category) %>%
+  arrange(-n)
+```
+
+---
+
+### Exercise Review
+
+```{r}
+responses %>%
+  count(category) %>%
+  ggplot() +
+  geom_col(aes(category, n))
+```
+
+---
+
+### Exercise Review
+
+```{r}
+responses %>%
+  count(category) %>%
+  ggplot() +
+  geom_col(aes(n, category))
+```
+
+---
+
+### Exercise Review
+
+```{r}
+responses %>%
+  count(category) %>%
+  ggplot() +
+  geom_col(aes(n, reorder(category, n)))
+```
+
+---
+
+### Exercise Review
+
+```{r, fig.height = 4, fig.width = 8, echo = FALSE}
+responses %>%
+  count(category) %>%
+  ggplot() +
+  geom_col(aes(n, reorder(category, n))) +
+  scale_x_continuous(expand = c(0, 0, 0.1, 0)) +
+  labs(x = "Count", y = "Topic")
+```
+
+---
+
+### Exercise Review
+
+```{r, fig.height = 4, fig.width = 8, eval = FALSE}
+responses %>%
+  count(category) %>%
+  ggplot() +
+  geom_col(aes(n, reorder(category, n))) +
+  scale_x_continuous(expand = c(0, 0, 0.1, 0)) +
+  labs(x = "Count", y = "Topic")
+```
+
+
+---
+
+### Exercise Review
+
+What types of visualization techniques and software to students seem most
+familiar with?
+
+```{r}
+responses %>%
+  count(visualization, package, defaults) %>%
+  arrange(-n)
+```
+
+
+---
+
+### Exercise Review
+
+What types of visualization techniques and software to students seem most
+familiar with?
+
+```{r, fig.width = 8, fig.height = 4}
+responses %>%
+  count(visualization, package, defaults) %>%
+  ggplot() +
+  geom_col(aes(n, reorder(visualization, n, sum)))
+```
+
+---
+
+### Exercise Review
+
+What types of visualization techniques and software to students seem most
+familiar with?
+
+```{r, fig.width = 8, fig.height = 4, echo = FALSE}
+responses %>%
+  count(visualization, package, defaults) %>%
+  ggplot() +
+  geom_col(aes(n, reorder(visualization, n, sum), fill = defaults)) +
+  scale_fill_brewer(palette = "Set2") +
+  labs(x = "Count", y = "Vis Type", fill = "Used Defaults?") +
+  scale_x_continuous(expand = c(0, 0, 0.1, 0)) +
+  theme(legend.text = element_text(size = 12))
+```
+
+---
+
+### Exercise Review
+
+What types of visualization techniques and software to students seem most
+familiar with?
+
+```{r, fig.width = 8, fig.height = 4, eval = FALSE}
+responses %>%
+  count(visualization, package, defaults) %>%
+  ggplot() +
+  geom_col(aes(n, reorder(visualization, n, sum), fill = defaults)) +
+  scale_fill_brewer(palette = "Set2") +
+  labs(x = "Count", y = "Vis Type", fill = "Used Defaults?") +
+  scale_x_continuous(expand = c(0, 0, 0.1, 0)) +
+  theme(legend.text = element_text(size = 12))
+```
+
+---
+
+
+### Exercise Review
+
+What types of visualization techniques and software to students seem most
+familiar with?
+
+```{r, fig.width = 8, fig.height = 6, echo = FALSE}
+responses %>%
+  count(visualization, package, defaults) %>%
+  ggplot() +
+  geom_col(aes(n, reorder(visualization, n), fill = defaults)) +
+  facet_grid(reorder(package, n, max, decreasing = TRUE) ~ ., scales = "free_y", space = "free_y") +
+  scale_fill_brewer(palette = "Set2") +
+  labs(x = "Count", y = "Vis Type", fill = "Used Defaults?") +
+  scale_x_continuous(expand = c(0, 0, 0.1, 0)) +
+  theme(
+    legend.text = element_text(size = 12),
+    strip.text.y = element_text(angle = 0, size = 14)
+    )
+```
+
+---
+
 
 ### [In-Class Demo 1-1](https://github.com/krisrs1128/stat436_s23/blob/main/activities/demos/demo1-1-starter.Rmd)
 
