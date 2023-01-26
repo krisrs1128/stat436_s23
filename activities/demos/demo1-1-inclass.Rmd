@@ -1,0 +1,67 @@
+---
+title: "Untitled"
+output: html_document
+date: "`r Sys.Date()`"
+---
+
+The data below measures properties of various Antarctic penguins.
+
+```{r, echo = TRUE}
+library(tidyverse)
+theme_set(theme_bw())
+penguins <- read_csv("https://uwmadison.box.com/shared/static/ijh7iipc9ect1jf0z8qa2n3j7dgem1gh.csv")
+penguins
+```
+
+Create a single plot that makes it easy to answer both of these questions, (i)
+How is bill length related to bill depth within and across species? (ii) On
+which islands are which species found?
+
+
+X Bill length vs Depth -> Scatterplot
+  - ggplot()
+  - geom_point()
+  - aes(bill length and depth)
+
+Across species -> Colors
+  - aes(add color)
+
+
+Different islands -> Shape
+  - aes(add shape)
+
+
+```{r, fig.width = 6, fig.height = 5}
+ggplot(penguins) +
+  geom_point(aes(bill_length_mm, bill_depth_mm, col = species, shape = island), size = 3, alpha = 0.5) +
+  labs(x = "Bill Length (mm)", y = "Bill Depth (mm)", col = "Species", shape = "Island", title = "Bill Properties across Species")
+```
+
+
+```{r, fig.width = 6, fig.height = 3}
+ggplot(penguins, aes(bill_length_mm, bill_depth_mm)) +
+  stat_smooth(method = "lm", col = "#0c0c0c", alpha = 0.2, size = 0.4) +
+  stat_smooth(aes(col = species, fill = species), method = "lm", alpha = 0.2, size = 0.4) +
+  geom_point(aes(col = species), size = 1) +
+  facet_wrap(vars(island)) +
+  labs(x = "Bill Length (mm)", y = "Bill Depth (mm)", col = "Species", shape = "Island", title = "Bill Properties across Species")
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
