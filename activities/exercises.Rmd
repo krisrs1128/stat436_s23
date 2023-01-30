@@ -554,8 +554,8 @@ visualizing new variables.
     olympics <- read_csv("https://uwmadison.box.com/shared/static/rzw8h2x6dp5693gdbpgxaf2koqijo12l.csv")
     ```
     
-1. The following questions refer to the NYC flights dataset. The first few lines
-are printed below.
+1. [NYC Flights Summaries] The following questions refer to the NYC flights
+dataset. The first few lines are printed below.
 
     ```{r}
     library(nycflights13)
