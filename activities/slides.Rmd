@@ -509,6 +509,190 @@ these in the next lecture).
 
 ### Exercise Review
 
+Several students were confused about `pivot_fun` in the Pivoting notes
+
+```{r}
+pivot_fun <- function(x, value_column = "cases") {
+  x %>%
+    pivot_longer(c(`1999`, `2000`), names_to = "year", values_to = value_column)
+}
+```
+
+---
+
+### Exercise Review
+
+To understand this, first consider the inputs and outputs of the ordinary
+`pivot_longer` function.
+
+```{r}
+table4a
+```
+
+---
+
+### Exercise Review
+
+To understand this, first consider the inputs and outputs of the ordinary
+`pivot_longer` function.
+
+```{r}
+table4a %>%
+  pivot_longer(c(`1999`, `2000`))
+```
+
+---
+
+### Exercise Review
+
+To understand this, first consider the inputs and outputs of the ordinary
+`pivot_longer` function.
+
+```{r}
+table4a %>%
+  pivot_longer(c(`1999`, `2000`), names_to = "year", values_to = "cases")
+```
+
+---
+
+### Exercise Review
+
+Next, note that the transformations for the two example tables were very similar
+to one another. The only thing that changed is the `values_to` argument.
+
+```{r}
+table4b %>%
+  pivot_longer(c(`1999`, `2000`), names_to = "year", values_to = "population")
+```
+
+---
+
+### Exercise Review
+
+Whenever I find myself copying and pasting code, I ask whether it might be
+better to write a function instead. Advantages:
+
+* If I ever need to change the code, I only need to change it in one place.
+* Overall, there would be fewer lines of code (easier for someone new to read)
+* Creates an abstraction (makes higher-level logic clearer)
+
+---
+
+### Exercise Review
+
+Since the two pivot commands were so similar, I created a function with an
+argument for the only piece that varied.
+
+```{r}
+pivot_fun <- function(x, value_column = "cases") {
+  x %>%
+    pivot_longer(c(`1999`, `2000`), names_to = "year", values_to = value_column)
+}
+```
+
+---
+
+### Exercise Review
+
+.pull-left[
+```{r}
+pivot_fun(table4a, "cases")
+```
+]
+
+.pull-right[
+```{r}
+pivot_fun(table4b, "population")
+```
+]
+
+---
+
+### Exercise Review
+
+There was a question about compound figures (this is only in next week's
+notes):
+
+```{r, include = FALSE}
+library(patchwork)
+athletes =
+  read_csv("https://raw.githubusercontent.com/krisrs1128/stat436_s23/main/data/athletes.csv") %>%
+#filter out "basketball", "field", "rowing", "swimming", "tennis", "track (400m)" in the sports column
+   filter(sport %in% c("basketball", "field", "rowing", "swimming", "tennis", "track (400m)")) %>%
+#redefine the "m" and "f" to male and female
+   mutate(sex = recode(sex, "m" = "male", "f" = "female"))
+
+ p <- list()
+ p[["bar"]] <- ggplot(count(athletes, sex)) + #count observations of athletes of different sex 
+   geom_bar(aes(sex, n, fill = sex), stat = "identity") + #set x, y, and different colors to fill the bar depending on sex
+   scale_y_continuous(expand = c(0, 0)) + #absolute
+   scale_fill_brewer(palette = "Set1") + #customize colors
+   labs(y = "number") # set name of y axis
+ 
+ p[["scatter"]] <- ggplot(athletes) +
+   geom_point(aes(rcc, wcc, col = sex)) + # set x,y, and colors of different sex
+   scale_color_brewer(palette = "Set1") + #customize colors
+   theme(legend.position = "none") + #no legend
+   labs(x = "RBC count", y = "WBC Count") #set names of x and y axis
+ 
+ p[["box"]] <- ggplot(athletes) +
+   geom_boxplot(aes(sport, pcBfat, col = sex, fill = sex), alpha = 0.5) +
+   scale_color_brewer(palette = "Set1") + #customize colors
+   scale_fill_brewer(palette = "Set1") + #fill box with colors
+   theme(legend.position = "none") + #no legend
+   labs(y = "% body fat", x = NULL) #set names of x and y axis
+
+
+p[["bar"]] <- p[["bar"]] + ggtitle("a")
+p[["scatter"]] <- p[["scatter"]] + ggtitle("b")
+p[["box"]] <- p[["box"]] + ggtitle("c")
+```
+
+```{r, fig.height = 4, fig.width = 8}
+ (p[["bar"]] + p[["scatter"]]) / p[["box"]] +
+   plot_layout(guides = "collect") &
+   plot_annotation(theme = theme(legend.position = "bottom", title = element_text(size = 10)))
+```
+
+---
+
+### Exercise Review
+
+The difference in the figures is small -- it just moves the legend to the bottom
+of the overall figure.
+
+```{r, fig.height = 4, fig.width = 8}
+ (p[["bar"]] + p[["scatter"]]) / p[["box"]] +
+   plot_annotation(theme = theme(legend.position = "bottom", title = element_text(size = 10)))
+```
+
+---
+
+### Miscellaneous Comments
+
+* I encourage you to remove extraneous package loading messages from your
+exercise and homework solutions (give example)
+* Pipe syntax seems to be a new concept. The main idea is to avoid storing
+intermediate computations.
+
+.pull-left[
+```{r, eval = FALSE}
+df2 <- f(df1)
+df3 <- g(df2)
+```
+]
+
+.pull-right[
+```{r, eval = FALSE}
+df3 <- df1 %>%
+  f() %>%
+  g()
+```
+]
+
+
+
+
 ---
 
 ### In-Class Demo [2-2]
