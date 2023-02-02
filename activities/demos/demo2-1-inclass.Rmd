@@ -1,0 +1,114 @@
+---
+title: "Untitled"
+output: html_document
+date: "`r Sys.Date()`"
+---
+
+```{r}
+knitr::opts_chunk$set(warnings = FALSE, message = FALSE)
+```
+
+
+[Plant Growth Experiment] This problem will give you practice with tidying a
+dataset so that it can be easily visualized. The data describe the height of
+several plants measured every 7 days. The plants have been treated with
+different amounts of a growth stimulant. The first few rows are printed below --
+`height.x` denotes the height of the plant on day `x`.
+
+```{r}
+library(tidyverse)
+plants <- read_csv("https://uwmadison.box.com/shared/static/qg9gwk2ldjdtcmmmiropcunf34ddonya.csv")
+plants
+```
+
+a. Propose an alternative arrangement of rows and columns that conforms to the
+tidy data principle.
+
+| treatment | plant_id | time | height
+| ... | ... | 0 | ...
+| ... | ... | 7 | ...
+| ... | ... | 14 | ...
+| ... | ... | 21 | ...
+
+b. Implement your proposed arrangement from part (a).
+
+```{r}
+plants %>%
+  pivot_longer(c("height.0", "height.7", "height.14", "height.21"))
+
+plants %>%
+  pivot_longer(paste0("height.", c(0, 7, 14, 21)))
+
+plants_long <- plants %>%
+  pivot_longer(starts_with("height")) %>%
+  mutate(
+    day = as.integer(str_extract(name, "[0-9]+"))
+  )
+  
+plants_long
+```
+
+c. Using the dataset from (b), design and implement a visualization showing the
+growth of the plants over time according to different treatments.
+
+
+```{r}
+theme_set(theme_classic())
+ggplot(plants_long, aes(day, value, col = treatment)) +
+  geom_line(aes(group = plantid)) +
+  geom_point() +
+  scale_color_brewer(palette = "Set2") +
+  facet_wrap(~ treatment)
+
+```
+
+
+[NYC Flights Summaries] The following questions refer to the NYC flights
+dataset. The first few lines are printed below.
+
+```{r}
+library(nycflights13)
+flights %>% select(carrier, air_time, distance)
+```
+
+a. Provide code to create a new column giving the average speed of
+the flight: $\texttt{speed} := \frac{\texttt{distance}}{\texttt{air\_time}}$.
+
+```{r}
+flights %>%
+  mutate(speed = distance / air_time)
+```
+
+b. Is there a large variation in flight speed across carriers? Design
+and sketch code for a visualization that could be used to answer this
+question (you may assume the output of (a)).
+
+
+```{r}
+flights %>%
+  mutate(speed = distance / air_time) %>%
+  ggplot() +
+  geom_boxplot(aes(speed, reorder(carrier, speed, median, na.rm = T)))
+  #geom_boxplot(aes(speed, carrier))
+
+flights %>%
+  mutate(speed = distance / air_time) %>%
+  ggplot() +
+  geom_point(
+    aes(speed, reorder(carrier, speed, median, na.rm = T)),
+    alpha = 0.05, size = 0.5, position = position_jitter(h = 0.1)
+    )
+```
+
+
+
+
+```{r, fig.height = 3, fig.width = 10}
+flights %>%
+  mutate(speed = distance / air_time) %>%
+  ggplot() +
+  geom_histogram(aes(speed)) +
+  facet_wrap(~ reorder(carrier, speed, mean, na.rm = TRUE), ncol = 8)
+
+```
+
