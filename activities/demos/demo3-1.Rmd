@@ -21,12 +21,45 @@ pokemon <- read_csv("https://uwmadison.box.com/shared/static/hf5cmx3ew3ch0v6t0c2
 a. Derive a new column containing the attack-to-defense ratio, defined as
 $\frac{\text{Attack}}{\text{Defense}}$.
 
+```{r}
+pokemon <- pokemon %>%
+  mutate(attack_to_defense = Attack / Defense)
+```
+
+
 b. For each `type_1` group of Pokemon, compute the median attack-to-defense
 ratio.
+
+```{r}
+pokemon %>%
+  group_by(type_1) %>%
+  summarise(attack_to_defense = median(attack_to_defense))
+```
 
 c. Plot the attack vs. defense scores for each Pokemon, faceted by `type_1`. Use
 the result of (b) to ensure that the panels are sorted from types with highest
 to lowest attack-to-defense ratio.
+
+```{r}
+ggplot(pokemon) + 
+  geom_abline(slope = 1, col = "#d3d3d3") +
+  geom_point(aes(Defense, Attack)) +
+  facet_wrap(~ reorder(type_1, attack_to_defense, median), ncol = 6)
+```
+
+```{r}
+ggplot(pokemon) + 
+  geom_abline(slope = 1, col = "#d3d3d3") +
+  geom_point(aes(Defense, Attack, col = Legendary)) +
+  facet_wrap(~ reorder(type_1, attack_to_defense, median), ncol = 6) +
+  scale_color_manual(values = c("#89C893", "#B74555")) +
+  guides(color = guide_legend(override.aes = list(size = 6))) +
+  facet_wrap(~ type_1, ncol = 6) +
+  theme(
+    panel.grid.minor = element_blank(),
+    legend.position = "bottom"
+  )
+```
 
 d. Propose, but do not implement, a visualization of this dataset that makes use
 of dynamic queries. What questions would the visualization answer? What would be
