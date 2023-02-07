@@ -4,7 +4,7 @@ output: html_document
 date: "`r Sys.Date()`"
 ---
 
-```{r}
+```{r, echo = FALSE}
 knitr::opts_chunk$set(warnings = FALSE, message = FALSE)
 ```
 
