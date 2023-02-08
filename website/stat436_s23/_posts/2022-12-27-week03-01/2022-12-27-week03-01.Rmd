@@ -6,6 +6,7 @@ author:
   - name: Kris Sankaran
   - affiliation: UW Madison
 layout: post
+date: "2023-01-10"
 output:
   distill::distill_article:
     self_contained: false
@@ -27,7 +28,7 @@ data is the idea of small multiples. It turns out that our eyes are pretty good
 at making sense of many small plots, as long as there is some shared structure
 across the plots.
 
-![](assets/sparklines.png)
+![](https://krisrs1128.github.io/stat479/posts/2021-01-20-week2-1/assets/sparklines.png)
 
 Let's see these ideas in action. These are libraries we need.
 
