@@ -128,6 +128,16 @@ abstract concepts and practical examples, summarized concisely into short
 phrases. It will also include well-justified links between nodes, with text
 explanations for edges whose interpretation might not be obvious at first.
 
+1. [3 - 2 - 1] This exercise asks you to self-reflect on your current conceptual
+and practical understanding of interactive data visualization. Respond to the
+following three questions,
+
+   a. What are three specific pieces of information you have registered through
+   the last week's readings? These can be related to either visual design or
+   code implementation.
+   b. What are two aspects of the last week's readings that you found interesting?
+   c. What is one point that still seems confusing or opaque?
+
 1. [Mini-presentation] Prepare a short presentation to summarize the last week
 of reading material. Make sure to include coverage of both important concepts
 and practical implementation details. Prepare either a short set of slides or an
