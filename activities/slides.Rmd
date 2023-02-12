@@ -883,6 +883,7 @@ team members in the submission.
 members whose contributions (or lack of) you want to highlight, you can share it
 there.
 * The Project Milestone 2 description has been released.
+* I will post the in-class demo solutions only on the [github page](https://github.com/krisrs1128/stat436_s23/tree/main/activities/demos).
 
 ---
 
