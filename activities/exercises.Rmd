@@ -763,34 +763,17 @@ species abundance over time in an antibiotics dataset.
     
     a. Approach 1
     ```{r, echo = FALSE, out.width = "0.55\\textwidth"}
-    ggplot(antibiotic, aes(x = time)) +
-      geom_line(aes(y = svalue), size = 1.2) +
-      geom_point(aes(y = value, col = antibiotic), size = 0.5, alpha = 0.8) +
-      facet_grid(species ~ ind, scale = "free_y") +
-      scale_color_brewer(palette = "Set2") +
-      theme(strip.text.y = element_text(angle = 0))
     ```
     
     b. Approach 2
     ```{r, echo = FALSE, out.width = "0.55\\textwidth"}
-    ggplot(antibiotic) +
-      geom_tile(aes(time, ind, fill = value)) +
-      scale_x_continuous(expand = c(0, 0)) +
-      scale_fill_distiller(direction = 1) +
-      facet_grid(species ~ .) +
-      theme(strip.text.y = element_text(angle = 0))
     ```
     
     c. Approach 3
     ```{r, echo = FALSE, out.width = "0.55\\textwidth"}
-    ggplot(antibiotic) +
-      geom_line(aes(time, svalue, col = species, group = interaction(species, ind))) +
-      facet_grid(ind ~ .) +
-      scale_color_brewer(palette = "Set2")
     ```
     
       d. Sketch code that could be used to make one of the three visualizations above.
-    
     
 1. [Name app bugs] The following versions of the Name app all have errors that
 will raise an error if you try running them in R. For each part, isolate the
