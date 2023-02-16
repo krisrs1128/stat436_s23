@@ -961,10 +961,7 @@ team members in the submission.
 ## Announcements
 
 * Homework 1 is due on February 19.
-* Project Milestone 1 team evaluation form is available. If there were any team
-members whose contributions (or lack of) you want to highlight, you can share it
-there.
-* The Project Milestone 2 description has been released.
+* The Project Milestones 2 and 3 description have been released.
 * I will post the in-class demo solutions only on the [github page](https://github.com/krisrs1128/stat436_s23/tree/main/activities/demos).
 
 ---
@@ -1043,14 +1040,73 @@ from the exercises sheet.
 
 * Homework 1 is due on February 19.
   - No In-Class Exercise today
-* Project Milestone 1 team evaluation form is available. If there were any team
-members whose contributions (or lack of) you want to highlight, you can share it
-there.
-* The Project Milestone 2 description has been released.
+* The Project Milestones 2 and 3 descriptions have been released.
 
 ---
 
-### Exercise Review
+### Exercise Review (Part (a))
+
+We cannot refer to `input$name` outside of a `render` or `reactive` environment.
+
+
+```r
+ui &lt;- fluidPage(
+  titlePanel("Hello!"),
+  textInput("name", "Enter your name"),
+  textOutput("printed_name")
+)
+
+server &lt;- function(input, output) {
+  input$name &lt;- paste0("Welcome to shiny, ", input$name, "!")
+  output$printed_names &lt;- renderText({ input$name })
+}
+```
+
+---
+
+### Exercise Review (Part (b))
+
+There is a mismatch between the `textOutput` and `renderText` elements. The
+names need to match exactly for the `ui` and `server` elements to be properly
+associated.
+
+
+```r
+ui &lt;- fluidPage(
+  titlePanel("Hello!"),
+  textInput("name", "Enter your name"),
+  textOutput("printed_name")
+)
+    
+server &lt;- function(input, output) {
+  output$printed_names &lt;- renderText({
+    paste0("Welcome to shiny, ", input$name, "!")
+  })
+}
+```
+
+---
+
+### Exercise Review (Part (c))
+
+There is a mismatch in the `ui` and `server` element for `printed_name`. If we
+have a `textOutput` in `ui`, it needs to be matched with a `renderText`, not a
+`renderDataTable`.
+
+
+```r
+ui &lt;- fluidPage(
+  titlePanel("Hello!"),
+  textInput("name", "Enter your name"),
+  textOutput("printed_name")
+)
+    
+server &lt;- function(input, output) {
+  output$printed_name &lt;- renderDataTable({
+    paste0("Welcome to shiny, ", input$name, "!")
+  })
+}
+```
 
 ---
 
