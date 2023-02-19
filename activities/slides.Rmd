@@ -1027,7 +1027,7 @@ server <- function(input, output) {
 
 ### In-Class Demo [4 - 2 - 2]
 
-* Before we work through the demo together, discuss your initial attempt here: https://go.wisc.edu/6bw633
+* Before we work through the demo together, discuss your initial attempt here: https://go.wisc.edu/g0u74j
 * We will work through [Interactive German Traffic] in the exercises sheet.
 * Starter code is available here: https://go.wisc.edu/2yu4ht
 
@@ -1035,7 +1035,7 @@ server <- function(input, output) {
 
 ### In-Class Discussion [4 - 2]
 
-* Respond to the prompt at https://go.wisc.edu/spa0mz/ . This is designed to
+* Respond to the prompt at https://go.wisc.edu/g0u74j . This is designed to
 help you consolidate the last week's introduction to Shiny.
 * Discuss and answer the prompts with your project group. Include your project
 group number next to  your answer.
