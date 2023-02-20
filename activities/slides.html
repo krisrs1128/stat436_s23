@@ -1136,9 +1136,176 @@ group number next to  your answer.
 
 ## February 21, 2023
 
+1. Discussion Review
+1. In-Class Demo [5 - 1]
+1. In-Class Discussion [5 - 1]
+1. In-Class Exercise [5 - 1]
+
+---
+
+### Discussion Review
+
+A few main themes came up in Thursday's discussion (https://go.wisc.edu/g0u74j)
+
+* Making sense of Shiny-specific vocabulary and syntax
+* Which Shiny components should we use when? What considerations guide the
+choice?
+* How to debug Shiny apps?
+
+---
+
+### Shiny-specific Syntax
+
+What is the difference between `ui` and `server`?
+
+* The `ui` defines what the user sees and can interact with.
+* The `server` defines how the visualization responds to inputs.
+
+---
+
+### Shiny-specific Syntax
+
+What is the difference between `observe` and `reactive`?
+
+From Mastering Shiny, Section 3.6,
+
+&gt; [S]ometimes you need to reach outside of the app and cause side-effects to
+happen elsewhere in the world. This might be saving a file to a shared network
+drive, sending data to a web API, updating a database, or (most commonly)
+printing a debugging message to the console. These actions don’t affect how your
+app looks, so you shouldn’t use an output and a render function. Instead you
+need to use an observer.
+
+---
+
+### Which Components to Use When?
+
+* For choosing between different inputs and outputs, the [Shiny Cheat
+Sheet](https://shiny.rstudio.com/images/shiny-cheatsheet.pdf) is helpful. It
+shows screenshots of each type of input / output.
+* Many authors have implemented inputs / outputs beyond those available in the main Shiny package. E.g., there are specialized widgets in the [`shinyWidgets`](https://shinyapps.dreamrs.fr/shinyWidgets/) package
+
+---
+
+### Which Components to Use When?
+
+* For more complex displays, you may want to use `sidebarLayout`, `tabsetPanel`,
+or `navbarPage`
+* We will practice with alternatives during the Thursday demo
+
+---
+
+### Debugging Shiny Apps
+
+In addition to printing to the R console or inserting a `browser()` call, you
+can create UI elements that print variables of interest.
+  * `verbatimOutput` will print arbitrary R objects to the shiny UI
+
+
+
+```r
+server &lt;- function(input, output) {
+  output$debug &lt;- verbatimOutput({
+    # intermediate data structure 
+  })
+}
+```
+
+---
+
+### Debugging Shiny Apps
+
+A general principle for debugging: If you are very stuck, it helps to simplify
+the problem. Pare away parts of the code that seem unrelated to the bug until
+you arrive at a minimal example that reproduces the same buggy behavior. In the
+process, you may discover the solution, and even if not, you will have a version
+of the code that others can easily give feedback on.
+
+---
+
+### In-Class Demo [5 - 1]
+
+* We will give a new solution to part (c) of [California Wildfires] in the
+exercise sheet, but this time using graphical queries.
+* Starter code is available here: https://go.wisc.edu/oldyzu
+
+---
+
+### In-Class Discussion [5 - 1]
+
+Document: https://go.wisc.edu/2ac0fg
+
+Prompt: Right now, the dotplot responds to the brushed histogram. However,
+
+  * The dotplot does not allow any user inputs.
+  * The histogram does not reflect year or user selections.
+
+Imagine someone came to your statistical consulting hours with this application.
+They want your expertise to improve the app so that it conveys more information.
+How would you approach this? What might be some first steps towards
+implementation?
+
+---
+
+### In-Class Exercise [5 - 1]
+
+We will work through the [Code Analysis] exercise again, but for material from
+Shiny. https://go.wisc.edu/3pr7v5
+
+[Code Analysis] Pick one code example from this week’s lecture notes. Provide a
+3 - 4 sentence summary of the overall implementation strategy. Then, add
+comments every 10 - 15 lines describing what each section of code is doing. If
+there are parts that you do not understand, add a ??? next to it (we will review
+these in the next lecture).
+
 ---
 
 ## February 23, 2023
+
+1. In-Class Demo [5 - 2]
+1. In-Class Discussion [5 - 2]
+1. In-Class Exercise [5 - 2]
+
+---
+
+### Announcements
+
+* Any late homework must be turned in by end-of-day Friday.
+
+---
+
+### Exercise Review
+
+---
+
+### In-Class Demo [5 - 2]
+
+* We will work through [Customizing a Shiny App] in the exercise sheet.
+* Starter code is available here: https://go.wisc.edu/1fzadf
+
+---
+
+### In-Class Discussion [5 - 2]
+
+* Today closes the "Foundations" module in the course. We will move on to more
+specialized data and problem contexts beginning next week. 
+* Now that you have some more experience with data visualization, I would like
+you to reflect on ways you might further develop the skills you learn in this
+class after you graduate.
+* More detailed prompt: https://go.wisc.edu/f05xr3
+
+---
+
+### In-Class Exercise [5 - 2]
+
+With your project group, prepare a concept map to summarize the last week of
+reading material. An effective submission will include a thorough coverage of
+both abstract concepts and practical examples, summarized concisely into short
+phrases. It will also include well-justified links between nodes, with text
+explanations for edges whose interpretation might not be obvious at first.
+
+* Submission: https://go.wisc.edu/fw0i3n
+* Optional: Share your concept map in Piazza.
 
 ---
 
