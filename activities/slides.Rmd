@@ -1176,6 +1176,7 @@ these in the next lecture).
 
 ## February 23, 2023
 
+1. Exercise Review
 1. In-Class Demo [5 - 2]
 1. In-Class Discussion [5 - 2]
 1. In-Class Exercise [5 - 2]
@@ -1184,29 +1185,150 @@ these in the next lecture).
 
 ### Announcements
 
-* Any late homework must be turned in by end-of-day Friday.
+* We are done with the first course module (Fundamentals of Data Visualization).
+* There is a new Gradescope item where you can (optionally) share comments about
+your teammate's contributions to Project Milestone 1.
+* Important Dates: HW2 (March 13), Midterm 2 (March 23), Project Milestone 2
+(March 27)
 
 ---
 
 ### Exercise Review
+
+A few people had questions about the `reset_selection()` function in ["Graphical Queries - Brush Events."](https://krisrs1128.github.io/stat436_s23/posts/2022-12-27-week05-02/)
+
+```{r, eval = FALSE}
+ reset_selection <- function(x, brush) {
+   brushedPoints(x, brush, allRows = TRUE)$selected_
+ }
+
+...
+
+server <- function(input, output) {
+ selected <- reactiveVal(rep(TRUE, nrow(mtcars)))
+ observeEvent(
+   input$plot_brush,
+   selected(reset_selection(mtcars, input$plot_brush))
+ )
+```
+
+---
+
+### Exercise Review
+
+This was defined just to simplify the server code. We could have alternatively
+written the `brushedPoints()` call within the server.
+
+```{r, eval = FALSE}
+server <- function(input, output) {
+ selected <- reactiveVal(rep(TRUE, nrow(mtcars)))
+ observeEvent(
+   input$plot_brush, {
+     new_selection <- brushedPoints(mtcars, input$plot_brush, allRows = TRUE)$selected_
+     selected(new_selection)
+   }
+ )
+```
+
+---
+
+### Exercise Review
+
+The `column()` function is used to place two `plotOutput`s side-by-side within a
+single `fluidRow()`. The first argument specifies the relative width (12 is the
+full screen width, 1 is 1/12 of the screen width).
+
+```{r, eval = FALSE}
+ui <- fluidPage(
+  fluidRow(
+    column(6, plotOutput("scatter1", brush = "plot_brush")),
+    column(6, plotOutput("scatter2", brush = "plot_brush"))
+```
+
+---
+
+### Exercise Review
+
+In the ["Introduction to Reactivity"](https://krisrs1128.github.io/stat436_s23/posts/2022-12-27-week04-02/) notes, we need to create a new sample with
+every user interaction because we want to be able to compute test results
+on-the-fly.
+
+```{r eval = FALSE}
+output$histogram <- renderPlot(
+  histogram_fun(generate_data(input$n, input$mean1, input$mean2, input$sigma))
+) # ??? Why is a new dataset generated for each rendering call? What is the point of creating the samples variable?
+```
+
+---
+
+### Exercise Review
+
+This is unrelated to Shiny, but we wanted to include `NA` as a genre in the
+visualization's legend. By default, `ggplot2` would have dropped those movies.
+
+```{r, eval = FALSE}
+movies <- read_csv("https://raw.githubusercontent.com/krisrs1128/stat479_s22/main/_posts/2022-02-10-week04-03/apps/data/movies.csv") %>% #import csv dataset
+ mutate(
+   date = as_date(Release_Date, format = "%b %d %Y"),
+   year = year(date), #extract the year from the date
+   Major_Genre = fct_explicit_na(Major_Genre), #??? why should we make the NA values explicit, can't we just delete it or filling a new value?
+```
+
+---
+
+### Exercise Review
+
+* We had questions about the use of `.data[[var_name]]` and `aes_string()`.
+* These are both ways to let variables be passed into `ggplot2`'s aesthetic
+mapping. It is useful whenever we use `ggplot` within functions.
+
+```{r eval = FALSE}
+# Doesn't work
+penguins <- read_csv("https://uwmadison.box.com/shared/static/ijh7iipc9ect1jf0z8qa2n3j7dgem1gh.csv")
+
+var_name <- "bill_length_mm"
+ggplot(penguins) +
+  geom_histogram(aes(var_name))
+```
+
+---
+
+### Exercise Review
+
+* We had questions about the use of `.data[[var_name]]` and `aes_string()`.
+* These are both ways to let variables be passed into `ggplot2`'s aesthetic
+mapping. It is useful whenever we use `ggplot` within functions.
+
+```{r}
+# Works
+var_name <- "bill_length_mm"
+ggplot(penguins) +
+  geom_histogram(aes_string(var_name))
+```
+
+---
+
+### Exercise Review
+
+* We had questions about the use of `.data[[var_name]]` and `aes_string()`.
+* These are both ways to let variables be passed into `ggplot2`'s aesthetic
+mapping. It is useful whenever we use `ggplot` within functions.
+
+```{r}
+# Works
+var_name <- "bill_length_mm"
+ggplot(penguins) +
+  geom_histogram(aes(.data[[var_name]]))
+```
 
 ---
 
 ### In-Class Demo [5 - 2]
 
 * We will work through [Customizing a Shiny App] in the exercise sheet.
+* Before we work through this together, try your best to improve / customize our
+earlier traffic Shiny app: https://go.wisc.edu/f05xr3
 * Starter code is available here: https://go.wisc.edu/1fzadf
-
----
-
-### In-Class Discussion [5 - 2]
-
-* Today closes the "Foundations" module in the course. We will move on to more
-specialized data and problem contexts beginning next week. 
-* Now that you have some more experience with data visualization, I would like
-you to reflect on ways you might further develop the skills you learn in this
-class after you graduate.
-* More detailed prompt: https://go.wisc.edu/f05xr3
 
 ---
 
