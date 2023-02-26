@@ -87,6 +87,9 @@ ggplot(carbon_ts) +
   scale_x_continuous(expand = c(0, 0))
 ```
 
+I was surprised, but it seems that the Bahamas really did have a period of
+intense carbon emissions due to [petroleum exploration](https://doi.org/10.1017/S0010417517000184).
+
 d. Create a lag plot of the series for the United States. How do you
 interpret this figure?
 
