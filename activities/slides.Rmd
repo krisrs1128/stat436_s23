@@ -1405,19 +1405,32 @@ Gradescope.
 
 ## March 2, 2023
 
+1. In-Class Demo [6 - 2]
+1. In-Class Exercise [6 - 2]
+
+---
+
+### Announcements
+
 ---
 
 ### In-Class Demo [6 - 2]
 
 * We will work through [Global Carbon Footprint II].
-* Before we do this...
+* Before we do this, work with your neighbors to brainstorm a response to part
+(b). Summarize your discussion:
 * Starter code is available here:
 
 ---
 
 ### In-Class Exercise [6 - 2]
 
-
+* Work through parts (a - b) in the [Spotify Time Series I] problem on the
+exercise sheet.
+* You can discuss this with your neighbors, but make your submission
+individually.
+* You will get full credit if you make an honest attempt -- if you become stuck
+at some step, describe the difficulty that you encountered.
 
 ---
 
