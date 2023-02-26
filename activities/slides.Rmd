@@ -1354,6 +1354,7 @@ explanations for edges whose interpretation might not be obvious at first.
 
 ### Announcements
 
+* We've left comments on some of the Discussion [5 - 2] notes
 * Important Dates: HW2 (March 13), Midterm 2 (March 23), Project Milestone 2
 (March 27)
 
@@ -1398,7 +1399,8 @@ Gradescope.
 ### In-Class Demo [6 - 1]
 
 * We will work through as much of [Global Carbon Footprint Network] as we can.
-* Before we do this...
+* Before we do this, take a look at the data with  your group and respond to
+part (a).
 * Starter code is available here:
 
 ---
