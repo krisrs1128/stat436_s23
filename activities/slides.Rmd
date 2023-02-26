@@ -1347,9 +1347,77 @@ explanations for edges whose interpretation might not be obvious at first.
 
 ## February 28, 2023
 
+1. In-Class Demo [6.1]
+1. In-Class Exercise [6.1]
+
+---
+
+### Announcements
+
+* Important Dates: HW2 (March 13), Midterm 2 (March 23), Project Milestone 2
+(March 27)
+
+---
+
+### Module 2 [Visualizing Structured Data]
+
+Over the next three weeks, we'll study techniques to visualization time series,
+geospatial data, and trees / networks.
+
+[Add figures]
+
+---
+
+### Today
+
+By the end of the class, you should be able to...
+
+* Construct and visualize a `tsibble` time series object
+* Discuss the presence of trend, seasonal, or cyclic structure in a time series
+
+---
+
+### In-Class Exercise [6 - 1]
+
+* I will pause at a few points during the demo today, and I want you to guess
+what the next step in the analysis is.
+* At the end of the demo, you can summarize your guesses and submit them to
+Gradescope.
+* You should be able to make your submission before the end of class.
+
+---
+
+### In-Class Demo: Expectations
+
+* Take out your laptops, follow-along, and ask questions (raise your hand, or comment on google doc)
+* You and I will both run into bugs -- this is a normal part of the process
+* We will try to balance conceptual sketches with practical implementation
+
+---
+
+### In-Class Demo [6 - 1]
+
+* We will work through as much of [Global Carbon Footprint Network] as we can.
+* Before we do this...
+* Starter code is available here:
+
 ---
 
 ## March 2, 2023
+
+---
+
+### In-Class Demo [6 - 2]
+
+* We will work through [Global Carbon Footprint II].
+* Before we do this...
+* Starter code is available here:
+
+---
+
+### In-Class Exercise [6 - 2]
+
+
 
 ---
 
