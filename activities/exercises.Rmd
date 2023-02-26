@@ -256,6 +256,17 @@ to support the literature review for your course project.
 	description of each theme. How are the groups of papers similar / different
 	from one another?
 
+1. [Goals Self-Reflection] Data visualization has a variety of real-world
+applications (scientific, journalistic, humanistic, healthcare, sports, …). We
+have been practicing a variety of skills relevant to data visualization –
+studying visual encodings, learning to critique well, and designing for
+interactivity.
+
+    a. What are some future scenarios where you imagine you may use these
+    skills? Try to be as specific as possible.
+
+    b. What are some skills you would hope to refine further in the long-run?
+
 1. [Milestone Reflection] In this exercise, you will have a chance to reflect on
 your team's workflow for the upcoming project milestone. Please respond to the
 following prompts,
@@ -763,17 +774,34 @@ species abundance over time in an antibiotics dataset.
     
     a. Approach 1
     ```{r, echo = FALSE, out.width = "0.55\\textwidth"}
+    ggplot(antibiotic, aes(x = time)) +
+      geom_line(aes(y = svalue), size = 1.2) +
+      geom_point(aes(y = value, col = antibiotic), size = 0.5, alpha = 0.8) +
+      facet_grid(species ~ ind, scale = "free_y") +
+      scale_color_brewer(palette = "Set2") +
+      theme(strip.text.y = element_text(angle = 0))
     ```
     
     b. Approach 2
     ```{r, echo = FALSE, out.width = "0.55\\textwidth"}
+    ggplot(antibiotic) +
+      geom_tile(aes(time, ind, fill = value)) +
+      scale_x_continuous(expand = c(0, 0)) +
+      scale_fill_distiller(direction = 1) +
+      facet_grid(species ~ .) +
+      theme(strip.text.y = element_text(angle = 0))
     ```
     
     c. Approach 3
     ```{r, echo = FALSE, out.width = "0.55\\textwidth"}
+    ggplot(antibiotic) +
+      geom_line(aes(time, svalue, col = species, group = interaction(species, ind))) +
+      facet_grid(ind ~ .) +
+      scale_color_brewer(palette = "Set2")
     ```
     
       d. Sketch code that could be used to make one of the three visualizations above.
+    
     
 1. [Name app bugs] The following versions of the Name app all have errors that
 will raise an error if you try running them in R. For each part, isolate the
@@ -1587,8 +1615,54 @@ strategies that can be used to visualize this time series collection.
     c. Building from the static views from (a - b), propose, but do not implement,
   a visualization of this dataset that makes use of dynamic queries. What would
   be the structure of interaction, and how would the display update when the
-  user provides a cue? Explain how you would use one type of D3 selection or
+  user provides a cue? Explain how you would uyou would use one type of D3 selection or
   mouse event to implement this hypothetical interactivity.
+  
+1. [Global Carbon Footprint Network I] This problem studies a dataset of global
+carbon emissions collected by the Global Carbon Footprint Network. It was the
+subject of a previous [course
+project](https://observablehq.com/@wang2274/milestone-4-team-4). We will first
+quality check and structure the raw data. Then, we'll try answering some time
+series questions visually.
+
+    a. The first few rows of the dataset are printed below. Write down 
+    two interesting questions that you think the dataset could help to answer.
+    Refer to at least one of the following vocabulary terms: trend, seasonality,
+    autocorrelation, cross-correlation, cyclic behavior.
+        
+    ```{r}
+        carbon <- read_csv("https://raw.githubusercontent.com/krisrs1128/stat479_s22/main/_slides/week6/data/cleaned.csv")
+        head(carbon)
+    ```
+      
+      
+    b. Build a `tsibble` object from the data above. Discuss why it can be
+    useful to convert the original `data.frame` object to this new `tsibble`
+    class.
+
+    c. Create either a line or heatmap visualization of the time series across
+    all countries. Create a new version that zooms into a subset of countries of
+    interest. Why did you choose those countries, and what did you learn?
+    
+    d. Create a lag plot of the series for the United States. How do you
+    interpret this figure?
+    
+    e. Create a lineplot across all countries after taking a moving aver
+    neighboring years. What are the advantages and disadvantages of smoothing
+    the original line plot?
+    
+1. [Global Carbon Footprint Network II] This problem creates interactive
+versions of the carbon emissions dataset introduced in the previous problem.
+
+    a. Using `ggplotly`, create a line plot where country names can be revelaed
+    on hover.
+    
+    b. Propose an interactive time series visualization that graphically queries
+    a time series feature that can be generated using the `feasts` package. What
+    questions is your visualization particularly well-suited to? What questions
+    is it not appropriate for?
+    
+    c. Implement your proposal from part (b).
 
 1. [Bike Demand] This problem asks you to visualize a [dataset](https://uwmadison.box.com/shared/static/f16jmkkskylfl1hnd5rpslzduja929g2.csv) of hourly bikeshare demand. Provide your code and make sure it is readable.
 
