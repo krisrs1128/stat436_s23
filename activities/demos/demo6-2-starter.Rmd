@@ -50,14 +50,10 @@ ggplotly(p)
 
 What if we want to be able to hover and get the country names?
 
-b. Propose an interactive time series visualization that graphically queries
-a time series feature that can be generated using the `feasts` package. What
-questions is your visualization particularly well-suited to? What questions
-is it not appropriate for?
-
-We will try querying series according to their `spikiness` and `curvature`. The
-graphical query will allow us to highlight countries using a scatterplot of
-these feature values.
+b. Propose an interactive time series visualization that graphically queries a
+time series feature (or several features) that can be generated using the
+`feasts` package. What questions is your visualization particularly well-suited
+to? What questions is it not appropriate for?
 
 c. Implement your proposal from part (b).
 
