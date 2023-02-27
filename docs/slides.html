@@ -1262,6 +1262,7 @@ these in the next lecture).
 
 ## February 23, 2023
 
+1. Exercise Review
 1. In-Class Demo [5 - 2]
 1. In-Class Discussion [5 - 2]
 1. In-Class Exercise [5 - 2]
@@ -1270,29 +1271,162 @@ these in the next lecture).
 
 ### Announcements
 
-* Any late homework must be turned in by end-of-day Friday.
+* We are done with the first course module (Fundamentals of Data Visualization).
+* There is a new Gradescope item where you can (optionally) share comments about
+your teammate's contributions to Project Milestone 1.
+* Important Dates: HW2 (March 13), Midterm 2 (March 23), Project Milestone 2
+(March 27)
 
 ---
 
 ### Exercise Review
+
+A few people had questions about the `reset_selection()` function in ["Graphical Queries - Brush Events."](https://krisrs1128.github.io/stat436_s23/posts/2022-12-27-week05-02/)
+
+
+```r
+ reset_selection &lt;- function(x, brush) {
+   brushedPoints(x, brush, allRows = TRUE)$selected_
+ }
+
+...
+
+server &lt;- function(input, output) {
+ selected &lt;- reactiveVal(rep(TRUE, nrow(mtcars)))
+ observeEvent(
+   input$plot_brush,
+   selected(reset_selection(mtcars, input$plot_brush))
+ )
+```
+
+---
+
+### Exercise Review
+
+This was defined just to simplify the server code. We could have alternatively
+written the `brushedPoints()` call within the server.
+
+
+```r
+server &lt;- function(input, output) {
+ selected &lt;- reactiveVal(rep(TRUE, nrow(mtcars)))
+ observeEvent(
+   input$plot_brush, {
+     new_selection &lt;- brushedPoints(mtcars, input$plot_brush, allRows = TRUE)$selected_
+     selected(new_selection)
+   }
+ )
+```
+
+---
+
+### Exercise Review
+
+The `column()` function is used to place two `plotOutput`s side-by-side within a
+single `fluidRow()`. The first argument specifies the relative width (12 is the
+full screen width, 1 is 1/12 of the screen width).
+
+
+```r
+ui &lt;- fluidPage(
+  fluidRow(
+    column(6, plotOutput("scatter1", brush = "plot_brush")),
+    column(6, plotOutput("scatter2", brush = "plot_brush"))
+```
+
+---
+
+### Exercise Review
+
+In the ["Introduction to Reactivity"](https://krisrs1128.github.io/stat436_s23/posts/2022-12-27-week04-02/) notes, we need to create a new sample with
+every user interaction because we want to be able to compute test results
+on-the-fly.
+
+
+```r
+output$histogram &lt;- renderPlot(
+  histogram_fun(generate_data(input$n, input$mean1, input$mean2, input$sigma))
+) # ??? Why is a new dataset generated for each rendering call? What is the point of creating the samples variable?
+```
+
+---
+
+### Exercise Review
+
+This is unrelated to Shiny, but we wanted to include `NA` as a genre in the
+visualization's legend. By default, `ggplot2` would have dropped those movies.
+
+
+```r
+movies &lt;- read_csv("https://raw.githubusercontent.com/krisrs1128/stat479_s22/main/_posts/2022-02-10-week04-03/apps/data/movies.csv") %&gt;% #import csv dataset
+ mutate(
+   date = as_date(Release_Date, format = "%b %d %Y"),
+   year = year(date), #extract the year from the date
+   Major_Genre = fct_explicit_na(Major_Genre), #??? why should we make the NA values explicit, can't we just delete it or filling a new value?
+```
+
+---
+
+### Exercise Review
+
+* We had questions about the use of `.data[[var_name]]` and `aes_string()`.
+* These are both ways to let variables be passed into `ggplot2`'s aesthetic
+mapping. It is useful whenever we use `ggplot` within functions.
+
+
+```r
+# Doesn't work
+penguins &lt;- read_csv("https://uwmadison.box.com/shared/static/ijh7iipc9ect1jf0z8qa2n3j7dgem1gh.csv")
+
+var_name &lt;- "bill_length_mm"
+ggplot(penguins) +
+  geom_histogram(aes(var_name))
+```
+
+---
+
+### Exercise Review
+
+* We had questions about the use of `.data[[var_name]]` and `aes_string()`.
+* These are both ways to let variables be passed into `ggplot2`'s aesthetic
+mapping. It is useful whenever we use `ggplot` within functions.
+
+
+```r
+# Works
+var_name &lt;- "bill_length_mm"
+ggplot(penguins) +
+  geom_histogram(aes_string(var_name))
+```
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-44-1.png" width="650" style="display: block; margin: auto;" /&gt;
+
+---
+
+### Exercise Review
+
+* We had questions about the use of `.data[[var_name]]` and `aes_string()`.
+* These are both ways to let variables be passed into `ggplot2`'s aesthetic
+mapping. It is useful whenever we use `ggplot` within functions.
+
+
+```r
+# Works
+var_name &lt;- "bill_length_mm"
+ggplot(penguins) +
+  geom_histogram(aes(.data[[var_name]]))
+```
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-45-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 
 ### In-Class Demo [5 - 2]
 
 * We will work through [Customizing a Shiny App] in the exercise sheet.
+* Before we work through this together, try your best to improve / customize our
+earlier traffic Shiny app: https://go.wisc.edu/f05xr3
 * Starter code is available here: https://go.wisc.edu/1fzadf
-
----
-
-### In-Class Discussion [5 - 2]
-
-* Today closes the "Foundations" module in the course. We will move on to more
-specialized data and problem contexts beginning next week. 
-* Now that you have some more experience with data visualization, I would like
-you to reflect on ways you might further develop the skills you learn in this
-class after you graduate.
-* More detailed prompt: https://go.wisc.edu/f05xr3
 
 ---
 
@@ -1311,9 +1445,99 @@ explanations for edges whose interpretation might not be obvious at first.
 
 ## February 28, 2023
 
+1. In-Class Discussion [6 - 1]
+1. In-Class Demo [6 - 1]
+1. In-Class Exercise [6 - 1]
+
+---
+
+### Announcements
+
+* We've left comments on some of the Discussion [5 - 2] notes
+* Important Dates: HW2 (March 13), Midterm 2 (March 23), Project Milestone 2
+(March 27)
+
+---
+
+### Module 2 [Visualizing Structured Data]
+
+Over the next three weeks, we'll study techniques to visualization time series,
+geospatial data, and trees / networks.
+
+.pull-left[
+&lt;img src="https://krisrs1128.github.io/stat436_s23/posts/2022-12-27-week06-02/2022-12-27-week06-02_files/figure-html5/unnamed-chunk-2-2.png"/&gt;
+]
+.pull-right[
+&lt;img src="https://krisrs1128.github.io/stat436_s23/posts/2022-12-27-week08-02/2022-12-27-week08-02_files/figure-html5/unnamed-chunk-3-1.png"/&gt;
+]
+
+---
+
+### Today
+
+By the end of the class, you should be able to...
+
+* Construct and visualize a `tsibble` time series object
+* Discuss the presence of trend, seasonal, or cyclic structure in a time series
+
+---
+
+### In-Class Exercise [6 - 1]
+
+* I will pause at a few points during the demo today, and I want you to guess
+what the next step in the analysis is.
+* At the end of the demo, you can summarize your guesses and submit them to
+Gradescope: https://go.wisc.edu/rc7li7
+* You should be able to make your submission before the end of class.
+
+---
+
+### In-Class Demo: Expectations
+
+* Take out your laptops, follow-along, and ask questions (raise your hand, or comment on google doc)
+* You and I will both run into bugs -- this is a normal part of the process
+* We will try to balance conceptual sketches with practical implementation
+
+---
+
+### In-Class Demo [6 - 1]
+
+* We will work through as much of [Global Carbon Footprint Network] as we can.
+Before we do this, take a look at the data with  your group and respond to part
+(a): https://go.wisc.edu/wi625o
+* Starter code is available here: https://go.wisc.edu/98vpl5
+
 ---
 
 ## March 2, 2023
+
+1. In-Class Discussion [6 - 2]
+1. In-Class Demo [6 - 2]
+1. In-Class Exercise [6 - 2]
+
+---
+
+### Announcements
+
+---
+
+### In-Class Demo [6 - 2]
+
+* We will work through [Global Carbon Footprint II].
+* Before we do this, work with your neighbors to brainstorm a response to part
+(b). Summarize your discussion: https://go.wisc.edu/k96khu
+* Starter code is available here: https://go.wisc.edu/k99j43
+
+---
+
+### In-Class Exercise [6 - 2]
+
+* Work through parts (a - b) in the [Spotify Time Series I] problem on the
+exercise sheet: https://go.wisc.edu/6hzcz2
+* You can discuss this with your neighbors, but make your submission
+individually.
+* You will get full credit if you make an honest attempt -- if you become stuck
+at some step, describe the difficulty that you encountered.
 
 ---
 
