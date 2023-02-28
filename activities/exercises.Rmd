@@ -1631,17 +1631,18 @@ series questions visually.
     autocorrelation, cross-correlation, cyclic behavior.
         
     ```{r}
-    carbon <- read_csv("https://raw.githubusercontent.com/krisrs1128/stat479_s22/main/_slides/week6/data/cleaned.csv")
-    head(carbon)
+        carbon <- read_csv("https://raw.githubusercontent.com/krisrs1128/stat479_s22/main/_slides/week6/data/cleaned.csv")
+        head(carbon)
     ```
       
       
     b. Build a `tsibble` object from the data above. Discuss why it can be
     useful to convert the original `data.frame` object to this new `tsibble`
     class.
-    
-    c. Create either a line or heatmap visualization of the time series across all
-    countries. What have you learned from your visualization?
+
+    c. Create either a line or heatmap visualization of the time series across
+    all countries. Create a new version that zooms into a subset of countries of
+    interest. Why did you choose those countries, and what did you learn?
     
     d. Create a lag plot of the series for the United States. How do you
     interpret this figure?
@@ -1656,10 +1657,10 @@ versions of the carbon emissions dataset introduced in the previous problem.
     a. Using `ggplotly`, create a line plot where country names can be revelaed
     on hover.
     
-    b. Propose an interactive time series visualization that graphically queries a
-    time series feature (or several features) that can be generated using the
-    `feasts` package. What questions is your visualization particularly well-suited
-    to? What questions is it not appropriate for?
+    b. Propose an interactive time series visualization that graphically queries
+    a time series feature that can be generated using the `feasts` package. What
+    questions is your visualization particularly well-suited to? What questions
+    is it not appropriate for?
     
     c. Implement your proposal from part (b).
 
