@@ -20,6 +20,8 @@ knitr::opts_chunk$set(cache = FALSE, message = FALSE, warning = FALSE, echo = TR
 ```{r}
 library(raster)
 library(tidyverse)
+library(terra)
+library(tmap)
 theme_set(theme_bw())
 ```
 
@@ -78,34 +80,30 @@ satellite
 8. Base R’s `plot` function supports plotting one layer of a raster at a time. To plot more than one layer in a multichannel image (like ordinary RGB images) you can use the `plotRGB` function.
 
 ```{r}
-plotRGB(satellite)
+plotRGB(satellite, stretch = "lin")
 ```
 
 9. Sometimes, it’s useful to overlay several visual marks on top of a raster
-image. In this case, the `ggRGB` function from the `RStoolbox` package can be
-used.
+image. 
 
 ```{r}
 satellite <- projectRaster(satellite, crs = 4326)
-ggRGB(satellite) +
-  geom_point(
-    data = data.frame(x = -113, y = 37.3), 
-    aes(x = x, y = y), 
-    col = "red", size = 10
-  )
+point <- data.frame(geom = st_sfc(st_point(c(-113, 37.3)))) %>%
+  st_as_sf()
+
+tm_shape(satellite) +
+  tm_raster() +
+  tm_shape(point) +
+  tm_dots(col = "red", size = 10)
 ```
 
-10. If we want to visualize just a single layer using ggplot2, we can use
-`geom_raster`. This assumes that the data are in "tall" format, which can be
-accomplished by (1) subsetting to the relevant layer and (2) converting it to a
-data.frame. We use `xy = TRUE` to remember the original locations of each pixel.
+10. If we want to visualize just a single layer, we can use `tm_rgb` with all
+color channels set to the layer of interest. Note that, here, I've rescaled the
+maximum value of each pixel to 255, since this is the default maximum value for
+a color image.
 
 ```{r}
-sat_df <- subset(satellite, 1) %>%
-  as.data.frame(xy = TRUE)
-ggplot(sat_df) +
-  geom_raster(aes(x = x, y = y, fill = landsat.1)) +
-  scale_fill_gradient(low = "white", high = "black") +
-  coord_fixed()
+tm_shape(satellite / max(satellite) * 255) +
+  tm_rgb(r = 1, g = 1, b = 1)
 ```
 
