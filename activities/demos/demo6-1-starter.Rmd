@@ -30,6 +30,9 @@ autocorrelation, cross-correlation, cyclic behavior.
 ```{r}
 carbon <- read_csv("https://raw.githubusercontent.com/krisrs1128/stat479_s22/main/_slides/week6/data/cleaned.csv")
 head(carbon)
+
+carbon <- carbon %>%
+  pivot_longer(-c("country", "Country code"), names_to = "year")
 ```
   
 b. Build a `tsibble` object from the data above. Discuss why it can be
@@ -45,3 +48,11 @@ interpret this figure?
 e. Create a lineplot across all countries after taking a moving aver
 neighboring years. What are the advantages and disadvantages of smoothing
 the original line plot?
+
+```{r}
+library(slider)
+#smoothed_carbon <- carbon_ts %>%
+#  group_by(country) %>%
+#  mutate(smoothed = slide_dbl(value, ~ mean(.), .before = 5, .after = 5))
+```
+
