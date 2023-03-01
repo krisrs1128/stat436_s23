@@ -119,13 +119,6 @@ downstream visualization.</description>
       <pubDate>Tue, 10 Jan 2023 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Graphical Queries - Click Events</title>
-      <link>https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-27-week05-01</link>
-      <description>An introduction to click events in Shiny</description>
-      <guid>https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-27-week05-01</guid>
-      <pubDate>Tue, 10 Jan 2023 00:00:00 +0000</pubDate>
-    </item>
-    <item>
       <title>Graphical Queries - Brush Events</title>
       <link>https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-27-week05-02</link>
       <description>An introduction to brush events in Shiny.</description>
@@ -199,6 +192,7 @@ downstream visualization.</description>
       <description>An overview of common formats, with illustrative examples.</description>
       <guid>https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-27-week07-01</guid>
       <pubDate>Tue, 10 Jan 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-27-week07-01/2022-12-27-week07-01_files/figure-html5/unnamed-chunk-3-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
       <title>Vector Data</title>
@@ -215,6 +209,7 @@ downstream visualization.</description>
       <description>Storing spatially gridded information in rasters.</description>
       <guid>https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-27-week07-03</guid>
       <pubDate>Tue, 10 Jan 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-27-week07-03/2022-12-27-week07-03_files/figure-html5/unnamed-chunk-4-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
       <title>Coordinate Reference Systems</title>
@@ -223,6 +218,7 @@ downstream visualization.</description>
       <description>The projection problem, and how to check your CRS.</description>
       <guid>https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-27-week07-04</guid>
       <pubDate>Tue, 10 Jan 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-27-week07-04/2022-12-27-week07-04_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
       <title>Geospatial Interaction</title>
@@ -507,6 +503,13 @@ downstream visualization.</description>
       <guid>https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-27-week14-4</guid>
       <pubDate>Wed, 28 Dec 2022 00:00:00 +0000</pubDate>
       <media:content url="https://uwmadison.box.com/shared/static/c79fbmfc3mff9ota1tzxtvv4gp7e3pul.jpeg" medium="image" type="image/jpeg"/>
+    </item>
+    <item>
+      <title>Graphical Queries - Click Events</title>
+      <link>https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-27-week05-01</link>
+      <description>An introduction to click events in Shiny</description>
+      <guid>https://krisrs1128.github.io/stat436_s23/website/stat436_s23/posts/2022-12-27-week05-01</guid>
+      <pubDate>Mon, 10 Jan 2022 00:00:00 +0000</pubDate>
     </item>
   </channel>
 </rss>

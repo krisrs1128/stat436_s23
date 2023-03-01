@@ -3,6 +3,7 @@ title: Geospatial Interaction
 layout: post
 description: |
   Idioms for interacting with geographic data.
+date: 2023-01-10
 output:
   distill::distill_article:
     self_contained: false
@@ -24,7 +25,7 @@ opts_chunk$set(
 library(tidyverse)
 library(leaflet)
 ```
-
+    
 1. Maps can be information dense, so it’s often useful to make them interactive.
 These notes review some basic strategies for interactive spatial data
 visualization.
@@ -37,7 +38,7 @@ new vector features on top of the map. It’s worth noting that the vector
 features were created automatically – there was no need to create or read in any
 type of sf object.
 
-    ```{r, eval = FALSE}
+    ```{r}
     cities <- read_csv("https://uwmadison.box.com/shared/static/j98anvdoasfb1h651qxzrow2ua45oap1.csv")
     leaflet(cities) %>%
       addTiles() %>%

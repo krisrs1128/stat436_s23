@@ -6,6 +6,7 @@ author:
   - name: Kris Sankaran
     affiliation: UW Madison
 layout: post
+date: 2023-01-10
 output:
   distill::distill_article:
     self_contained: false
@@ -14,12 +15,14 @@ output:
 _[Reading](https://geocompr.robinlovelace.net/spatial-class.html), [Recording](https://mediaspace.wisc.edu/media/Week%207%20%5B4%5D%20Coordinate%20Reference%20Systems/1_f6tizaj7), [Rmarkdown](https://github.com/krisrs1128/stat479/blob/master/_posts/2021-03-02-week7-4/week7-4.Rmd)_
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(cache = FALSE, message = FALSE, warning = FALSE, echo = TRUE, eval = FALSE)
+knitr::opts_chunk$set(cache = FALSE, message = FALSE, warning = FALSE, echo = TRUE, eval = TRUE)
 ```
 
 ```{r}
 library(tidyverse)
+library(tmap)
 library(sf)
+library(spData)
 theme_set(theme_minimal())
 ```
 
@@ -37,18 +40,20 @@ coordinates on the earth, and it’s common to find different projections in
 practice. For example, the block below shows how North America gets projected
 according to two different CRSs.
 
-```{r}
-# some test projections, don't worry about this syntax
-miller <- "+proj=mill +lat_0=0 +lon_0=0 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs"
-lambert <- "+proj=lcc +lat_1=20 +lat_2=60 +lat_0=40 +lon_0=-96 +x_0=0 +y_0=0 +ellps=GRS80 +datum=NAD83 +units=m +no_defs"
+    ```{r}
+    # some test projections, don't worry about this syntax
+    miller <- "+proj=mill +lat_0=0 +lon_0=0 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs"
+    lambert <- "+proj=lcc +lat_1=20 +lat_2=60 +lat_0=40 +lon_0=-96 +x_0=0 +y_0=0 +ellps=GRS80 +datum=NAD83 +units=m +no_defs"
 
-north_america <- world %>%
-  filter(continent == "North America")
+    north_america <- world %>%
+      filter(continent == "North America")
 
-ggplot(st_transform(north_america, miller)) + geom_sf() 
-ggplot(st_transform(north_america, lambert)) + geom_sf()
-```
+    tm_shape(st_transform(north_america, miller)) +
+      tm_polygons()
 
+    tm_shape(st_transform(north_america, lambert)) +
+      tm_polygons()
+    ```
 
 5. Both vector and raster spatial data will be associated with CRS’s. In either
 `sf` or `raster` objects, they can be accessed using the `crs` function.
