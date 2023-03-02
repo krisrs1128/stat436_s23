@@ -1439,6 +1439,27 @@ By the end of the class, you should be able to...
 
 ---
 
+### Inpsiration
+
+I think of this course as a foundation for long-term study of visualization, so
+I thought it might be interesting to occasionally share some "inspirational"
+visualizations.
+
+<iframe src="https://player.vimeo.com/video/363453522?h=ea9887b2e6" width="750" height="450" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+<p><a href="https://vimeo.com/363453522">[VIS19 Preview] Periphery Plots for Contextualizing Heterogeneous Time-Based Charts (short paper)</a></p>
+
+---
+
+### Inspiration
+
+Figure 1 from [_StoryFlow: Tracking the Evolution of Stories_](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=6634164).
+
+```{r, echo = FALSE, out.width = 1000}
+include_graphics("figure/storyflow.png")
+```
+
+---
+
 ### In-Class Demo [6 - 2]
 
 * We will work through [Global Carbon Footprint II].
