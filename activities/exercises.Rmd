@@ -515,7 +515,7 @@ potential?
 1. [Reshaping practice] The following parts ask you to provide R code that
 transforms one dataset (I) into another (II).
     a. Regional murder rates: Turn [I](https://uwmadison.box.com/shared/static/h4gau9heqy3uue9rmpq9b55s3kw37zd8.csv) into [II](https://uwmadison.box.com/shared/static/shy7od3ydtiqu3lmqvy4nbi17qkg2ys4.csv). 
-    b. Antiobitics and bacteria. Turn [I](https://uwmadison.box.com/shared/static/bq4afq9kl2zn9qlb89q2rxhrrv73iuil.csv) into [II](https://uwmadison.box.com/shared/static/gmzul7bp78o6kwtutl73hkiyxea4dr21.csv)
+    b. Antibiotics and bacteria. Turn [I](https://uwmadison.box.com/shared/static/bq4afq9kl2zn9qlb89q2rxhrrv73iuil.csv) into [II](https://uwmadison.box.com/shared/static/gmzul7bp78o6kwtutl73hkiyxea4dr21.csv)
 
 1. [Sales summaries] Consider the sales data below.
             
