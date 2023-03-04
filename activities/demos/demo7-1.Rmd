@@ -1,0 +1,32 @@
+---
+title: "Untitled"
+output: html_document
+date: "`r Sys.Date()`"
+---
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(warnings = FALSE, message = FALSE)
+```
+
+[NYC Trees] In this problem, we'll use vector data to enrich a visualization
+of trees in New York City. In the process, we'll practice reading in and
+generating summaries of geospatial data.
+    
+a. The data at this
+[link](https://uwmadison.box.com/shared/static/t1mk6i4u5ks5bjxaw2c7soe2z8i75m2o.csv)
+include a subset of data from the New York City Tree Census. Make a scatterplot
+of the locations of all trees in the data, coloring in by tree species group and
+faceting by health.
+
+b. Suppose we wanted to relate these data to characteristics of the built
+environment. We have curated public data on
+[roads](https://uwmadison.box.com/shared/static/28y5003s1d0w9nqjnk9xme2n86xazuuj.geojson)
+and
+[buildings](https://uwmadison.box.com/shared/static/qfmrp9srsoq0a7oj0e7xmgu5spojr33e.geojson)
+within the same neighborhood. Read these data into `sf` objects using `read_sf`.
+For both datasets, report (i) the associated CRS and (ii) the geometry type
+(i.e., one of point, linestring, polygon, multipoint, multilinestring,
+multipolygon, geometry collection).
+
+c. Generate a version of the plot in (a) that has the roads and buildings in the
+background.

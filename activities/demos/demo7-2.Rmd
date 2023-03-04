@@ -1,0 +1,28 @@
+---
+title: "Untitled"
+output: html_document
+date: "`r Sys.Date()`"
+---
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(warnings = FALSE, message = FALSE)
+```
+
+```{r}
+library(tidyverse)
+theme_set(theme_bw())
+```
+
+[Himalayan Glaciers] In this problem, we'll apply the reading's discussion of
+raster data to understand a
+[dataset](https://uwmadison.box.com/shared/static/2z3apyg4t7ct5qd4mcwh9rpr63t02jql.tif)
+containing Landsat 7 satellite imagery of a Himalayan glacier system.
+    
+a. Read the raster data. What is the spatial extent of the file (that is,
+within what geographic coordinates do we have data)? How many layers of
+sensor measurements are available?
+
+b. Generate an RGB image of this area. In Landsat 7, the first three layers
+(B1, B2, and B3) provide the red, green, and blue channels.
+
+c. Make a plot of the slopes associated with each pixel within this region.

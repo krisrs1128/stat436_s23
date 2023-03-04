@@ -1865,12 +1865,12 @@ raster data to understand a
 [dataset](https://uwmadison.box.com/shared/static/2z3apyg4t7ct5qd4mcwh9rpr63t02jql.tif)
 containing Landsat 7 satellite imagery of a Himalayan glacier system.
     
-    a. Read the data into a `brick` object. What is the spatial extent of the file
-    (that is, within what geographic coordinates do we have data)? How many layers
-    of sensor measurements are available?
+    a. Read the raster data. What is the spatial extent of the file (that is,
+    within what geographic coordinates do we have data)? How many layers of
+    sensor measurements are available?
     
-    b. Generate an RGB image of this area. In Landsat 7, the first three layers (B1,
-    B2, and B3) provide the red, green, and blue channels.
+    b. Generate an RGB image of this area. In Landsat 7, the first three layers
+    (B1, B2, and B3) provide the red, green, and blue channels.
     
     c. Make a plot of the slopes associated with each pixel within this region.
   
@@ -2010,8 +2010,8 @@ site](http://www.bom.gov.au/jsp/awap/temp/index.jsp?colour=colour&time=latest&st
 from the Australian Bureau of Meteorology. It presents some new ideas related to
 raster masking.
 
-    a. Read in the raster data, directly convert it to a data.frame, and use a
-    `geom_raster` layer to visualize raw temperature data.
+    a. Read in the raster data and visualize the variation temperature over
+    space.
     
     b. The data includes temperature over the ocean! We really only want to
     visualize the temperatures over land. Using the `mask` function from the
