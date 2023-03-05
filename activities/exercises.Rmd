@@ -1924,6 +1924,9 @@ nutritional assistance program in California. We will use D3 in this problem.
     are brushed, or updating choropleth colors when a subsetted time range is selected.
     d. Implement your proposal from part (c).
 
+1. [Why vector data?] In your own words, explain the key characteristics of
+vector datasets. Why can't vector data simply be stored as csv files?
+
 1. [Geospatial Datasets] For each of the datasets below, specify whether it is in a vector or raster
 data format. If it is in a vector data format, explain which types of geometries
 it contains (e.g., a point or linestring). Explain your reasoning.
@@ -1974,11 +1977,16 @@ one example visualization from this webpage.
     c. Have you ever worked with a dataset where the type of visualization you
     just created might have been helpful? If so, describe how. If not, imagine a
     hypothetical data analysis project where you might use this code.
-
-1. [Glacial Lakes]. The data at this [link](https://github.com/krisrs1128/stat479_s22/tree/main/_slides/week7/exercises/data/glacial_lakes) contain labels of glacial lakes the
+    
+1. [Glacial Lakes]. The data at this [link](https://raw.githubusercontent.com/krisrs1128/stat436_s23/main/data/GL_3basins_2015.topojson) contain labels of glacial lakes the
 Hindu Kush Himalaya, created during an ecological survey in 2015 by the
 International Centre for Integrated Mountain Development.
-
+    
+    ```{r}
+    lakes <- read_sf("https://raw.githubusercontent.com/krisrs1128/stat436_s23/main/data/GL_3basins_2015.topojson") %>%
+      mutate(log_area = log(Area))
+    ```
+  
     a. How many lakes are in this dataset? What are the latitude / longitude
     coordinates of the largest lakes in each Sub-basin?
     
@@ -1992,6 +2000,15 @@ International Centre for Integrated Mountain Development.
     longitude between 85.8 and 86. Optionally, add a basemap associated with
     each lake.
     
+    d. Part (c) allowed us to visualize the lake data within a vary small region.
+    How might you use interactivity to navigate the full collection of lakes?
+    Describe at least one query that allows us to filter by a property of the lake
+    and another that allows us to filter by spatial extent. How would you lay out
+    the visualization components to streamline these queries?
+    
+    e. Implement an interactive visualization with one of the queries discussed in
+    part (d).
+
 1. [Population Density] The problem below visualizes [population
 data](https://github.com/krisrs1128/stat479_s22/blob/main/_slides/week7/exercises/data/afripop2020.tif?raw=true)
 from the `afrilearndata` package.
@@ -2029,6 +2046,28 @@ raster masking.
     that the masked NA values are left out of the visualization. Bonus: Use a
     binned color scale (e.g., `scale_fill_viridis_b`) to make the temperature
     variations even clearer.
+
+1. [Geospatial Portfolio] The links below are from past portfolio projects. Pick
+_two_ of these links and answer the following prompts.
+
+    * [Wisconsin Library Budgets](https://krisrs1128.github.io/portfolio_site_s22/education/2022/05/22/ough.html)
+    * [Analysis of Terrorist Attacks](https://krisrs1128.github.io/portfolio_site_s22/society/2022/05/22/yangjina.html)
+    * [Augsburg Landcover Classification](https://krisrs1128.github.io/portfolio_site_s22/remote%20sensing/2022/05/22/lyu.html)
+    * [Mass Shooting in the US (2018-2021)](https://krisrs1128.github.io/portfolio_site_s22/society/2022/05/22/mishra.html)
+    * [Traffic Accidents in United States](https://krisrs1128.github.io/portfolio_site_s22/society/2022/05/22/mi.html)
+    * [California Housing Costs](https://krisrs1128.github.io/portfolio_site_s22/economics/2022/05/22/kim.html)
+    * [Finland Population Change](https://krisrs1128.github.io/portfolio_site_s22/demography/2022/05/22/fu.html)
+    * [World Happiness](https://krisrs1128.github.io/portfolio_site_s22/society/2022/05/22/bhutada.html)
+    * [Michelin Awarded Restaurants](https://krisrs1128.github.io/portfolio_site_s22/food%20and%20drink/2022/05/22/tu.html)
+  
+    a. Summarize the goals and data sources behind the visualization. Are the
+    underlying data vector or raster spatial format?
+    
+    b. What interactive queries did the students implement? Discuss the visual
+    design and offer at least one alternative design approach that supports the same
+    queries.
+
+
 
 1. [Interactive NYC Trees] This problem walks through the creation of an
 interactive map of the [NYC Trees Dataset](https://uwmadison.box.com/shared/static/t1mk6i4u5ks5bjxaw2c7soe2z8i75m2o.csv).
