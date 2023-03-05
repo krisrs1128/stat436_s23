@@ -10,19 +10,97 @@ knitr::opts_chunk$set(warnings = FALSE, message = FALSE)
 
 ```{r}
 library(tidyverse)
+library(shiny)
+library(sf)
+library(leaflet)
 theme_set(theme_bw())
 ```
 
-[Himalayan Glaciers] In this problem, we'll apply the reading's discussion of
-raster data to understand a
-[dataset](https://uwmadison.box.com/shared/static/2z3apyg4t7ct5qd4mcwh9rpr63t02jql.tif)
-containing Landsat 7 satellite imagery of a Himalayan glacier system.
+[Glacial Lakes]. The data at this
+[link](https://raw.githubusercontent.com/krisrs1128/stat436_s23/main/data/GL_3basins_2015.topojson)
+contain labels of glacial lakes the Hindu Kush Himalaya, created during an
+ecological survey in 2015 by the International Centre for Integrated Mountain
+Development.
+
+```{r}
+lakes <- read_sf("https://raw.githubusercontent.com/krisrs1128/stat436_s23/main/data/GL_3basins_2015.topojson") %>%
+  mutate(log_area = log(Area))
+cols <- c("#023859", "#99ADBF")
+
+```
+
+d. Part (c) allowed us to visualize the lake data within a vary small region.
+How might you use interactivity to navigate the full collection of lakes?
+Describe at least one query that allows us to filter by a property of the lake
+and another that allows us to filter by spatial extent. How would you lay out
+the visualization components to streamline these queries?
+
+e. Implement an interactive visualization with one of the queries discussed in
+part (d).
+
+```{r}
+ui <- fluidPage(
+  fluidRow(
+    column(6, plotOutput("histogram", brush = brushOpts("plot_brush", direction = "x"))),
+    column(6, leafletOutput("map"))
+  ),
+  dataTableOutput("table")
+)
+
+server <- function(input, output) {
+  # setup the brush interaction
+  selected <- reactiveVal(rep(TRUE, nrow(lakes)))
+  observeEvent(
+    input$plot_brush, {
+      clicked(NULL)
+      selected(brushedPoints(lakes, input$plot_brush, allRows = TRUE)$selected_)
+    }
+  )
+  
+  # draw the histogram
+  output$histogram <- renderPlot({
+    ggplot(lakes, aes(log_area)) +
+      geom_histogram(fill = cols[2]) +
+      geom_histogram(data = filter(lakes, selected()), fill = cols[1]) +
+      scale_y_continuous(expand = c(0, 0, 0, 0.9))
+  })
+  
+  # filter the table based on interactions
+  output$table <- renderDataTable({
+    current_lakes <- lakes %>%
+      filter(selected())
     
-a. Read the raster data. What is the spatial extent of the file (that is,
-within what geographic coordinates do we have data)? How many layers of
-sensor measurements are available?
+    clicked_lake <- clicked()$id
+    if (!is.null(clicked_lake)) {
+      current_lakes <- current_lakes %>%
+        filter(GL_ID == clicked_lake)
+    }
+    current_lakes %>%
+      arrange(-Area)
+  })
+  
+  # initial map render
+  output$map <- renderLeaflet({
+    lakes %>%
+      leaflet() %>%
+      addProviderTiles("Esri.WorldImagery") %>%
+      addPolygons(color = cols[1])
+  })
+  
+  # rerender the polygons without resetting the whole map
+  observe({
+    leafletProxy("map", data = filter(lakes, selected())) %>%
+      clearShapes() %>%
+      addPolygons(color = cols[1], label = ~ GL_ID, layerId = ~ GL_ID)
+  })
+  
+  # check whether we've clicked on any polygon
+  clicked <- reactiveVal()
+  observeEvent(input$map_shape_click, { 
+    clicked(input$map_shape_click)
+  })
+  
+}
 
-b. Generate an RGB image of this area. In Landsat 7, the first three layers
-(B1, B2, and B3) provide the red, green, and blue channels.
-
-c. Make a plot of the slopes associated with each pixel within this region.
+shinyApp(ui, server)
+```

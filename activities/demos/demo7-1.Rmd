@@ -8,25 +8,92 @@ date: "`r Sys.Date()`"
 knitr::opts_chunk$set(warnings = FALSE, message = FALSE)
 ```
 
-[NYC Trees] In this problem, we'll use vector data to enrich a visualization
-of trees in New York City. In the process, we'll practice reading in and
-generating summaries of geospatial data.
-    
-a. The data at this
-[link](https://uwmadison.box.com/shared/static/t1mk6i4u5ks5bjxaw2c7soe2z8i75m2o.csv)
-include a subset of data from the New York City Tree Census. Make a scatterplot
-of the locations of all trees in the data, coloring in by tree species group and
-faceting by health.
+```{r}
+library(sf)
+library(tmap)
+library(tidyverse)
+library(ceramic)
+theme_set(theme_bw())
+```
 
-b. Suppose we wanted to relate these data to characteristics of the built
-environment. We have curated public data on
-[roads](https://uwmadison.box.com/shared/static/28y5003s1d0w9nqjnk9xme2n86xazuuj.geojson)
-and
-[buildings](https://uwmadison.box.com/shared/static/qfmrp9srsoq0a7oj0e7xmgu5spojr33e.geojson)
-within the same neighborhood. Read these data into `sf` objects using `read_sf`.
-For both datasets, report (i) the associated CRS and (ii) the geometry type
-(i.e., one of point, linestring, polygon, multipoint, multilinestring,
-multipolygon, geometry collection).
+[Glacial Lakes]. The data at this [link](https://raw.githubusercontent.com/krisrs1128/stat436_s23/main/data/GL_3basins_2015.topojson) contain labels of glacial lakes the
+Hindu Kush Himalaya, created during an ecological survey in 2015 by the
+International Centre for Integrated Mountain Development.
 
-c. Generate a version of the plot in (a) that has the roads and buildings in the
-background.
+```{r}
+lakes <- read_sf("https://raw.githubusercontent.com/krisrs1128/stat436_s23/main/data/GL_3basins_2015.topojson") %>%
+  mutate(log_area = log(Area))
+
+cols <- c("#023859", "#99ADBF")
+```
+
+a. How many lakes are in this dataset? What are the latitude / longitude
+coordinates of the largest lakes in each Sub-basin?
+
+There are `r nrow(lakes)` lakes in this dataset.
+
+```{r}
+top_lakes <- lakes %>%
+  group_by(Sub_Basin) %>%
+  slice_max(Area)
+```
+
+b. Plot the polygons associated with each of the lakes identified in step
+(a). _Hint: You may find it useful to split lakes across panels using the
+`tmap_facets` function. If you use this approach, make sure to include a
+scale with `tm_scale_bar()`, so that it is clear that lakes have different
+sizes.
+
+```{r}
+tm_shape(top_lakes) +
+  tm_polygons() +
+  tm_facets("Sub_Basin") +
+  tm_scale_bar()
+```
+
+Let's refine this figure. One improvement is to sort the lakes by decreasing
+size. We can't use `reorder()` like in the usual ggplot `facet` commands, but we
+can manually set the factors levels to sort the faceting panels.
+
+```{r}
+basin_order <- top_lakes %>%
+  arrange(-Area) %>%
+  pull(Sub_Basin) 
+
+top_lakes <- top_lakes %>%
+  mutate(Sub_Basin = factor(Sub_Basin, levels = basin_order))
+```
+
+The final refinement is to change the lake color and add a scale for reference.
+
+```{r}
+tm_shape(top_lakes) +
+  tm_polygons(col = cols[1]) +
+  tm_facets("Sub_Basin") +
+  tm_scale_bar()
+```
+
+c. Visualize all lakes with latitude between 28.2 and 28.4 and with
+longitude between 85.8 and 86. Optionally, add a basemap associated with
+each lake.
+
+```{r}
+lakes_sub <- lakes %>%
+  filter(
+    Latitude > 28.2, Latitude < 28.4,
+    Longitude > 85.8, Longitude < 86
+  )
+
+tm_shape(lakes_sub) +
+  tm_polygons(col = cols[1])
+```
+
+```{r}
+#Sys.setenv(MAPBOX_API_KEY="pk.eyJ1Ijoia3Jpc3JzMTEyOCIsImEiOiJjbDYzdjJzczQya3JzM2Jtb2E0NWU1a3B3In0.Mk4-pmKi_klg3EKfTw-JbQ")
+
+basemap <- cc_location(cbind(85.9, 28.3), buffer = 1e4)
+tm_shape(basemap) +
+  tm_rgb() +
+  tm_shape(lakes_sub) +
+  tm_polygons(col = cols[1])
+```
