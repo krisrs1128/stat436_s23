@@ -2000,7 +2000,7 @@ International Centre for Integrated Mountain Development.
     longitude between 85.8 and 86. Optionally, add a basemap associated with
     each lake.
     
-    d. Part (c) allowed us to visualize the lake data within a vary small region.
+    d. Part (c) allowed us to visualize the lake data within a very small region.
     How might you use interactivity to navigate the full collection of lakes?
     Describe at least one query that allows us to filter by a property of the lake
     and another that allows us to filter by spatial extent. How would you lay out

@@ -1592,6 +1592,78 @@ at some step, describe the difficulty that you encountered.
 
 ### Exercise Review
 
+Let's look at the most streamed song of 2017, which was "Shape of You." The
+dataset
+[here](https://uwmadison.box.com/shared/static/hvplyr3jy6vbt7s80lqgfx81ai4hdl0q.csv)
+contains the number of streams for this song across regions, for each day in
+which it was in the Spotify 100 most streamed songs for that region. Create a
+`tsibble` object from this dataset, keying by `region` and indexing by `date`.
+
+
+```r
+song &lt;- read_csv("https://uwmadison.box.com/shared/static/hvplyr3jy6vbt7s80lqgfx81ai4hdl0q.csv")
+head(song)
+```
+
+```
+## # A tibble: 6 × 5
+##   artist     track_name   region date       streams
+##   &lt;chr&gt;      &lt;chr&gt;        &lt;chr&gt;  &lt;date&gt;       &lt;dbl&gt;
+## 1 Ed Sheeran Shape of You ar     2017-01-06   57617
+## 2 Ed Sheeran Shape of You ar     2017-01-07   51212
+## 3 Ed Sheeran Shape of You ar     2017-01-08   47299
+## 4 Ed Sheeran Shape of You ar     2017-01-09   58157
+## 5 Ed Sheeran Shape of You ar     2017-01-10   56384
+## 6 Ed Sheeran Shape of You ar     2017-01-11   59494
+```
+
+---
+
+### Exercise Review
+
+
+```r
+library(tsibble)
+song_ts &lt;- as_tsibble(song, key = "region", index = "date")
+song_ts
+```
+
+```
+## # A tsibble: 19,907 x 5 [1D]
+## # Key:       region [54]
+##    artist     track_name   region date       streams
+##    &lt;chr&gt;      &lt;chr&gt;        &lt;chr&gt;  &lt;date&gt;       &lt;dbl&gt;
+##  1 Ed Sheeran Shape of You ar     2017-01-06   57617
+##  2 Ed Sheeran Shape of You ar     2017-01-07   51212
+##  3 Ed Sheeran Shape of You ar     2017-01-08   47299
+##  4 Ed Sheeran Shape of You ar     2017-01-09   58157
+##  5 Ed Sheeran Shape of You ar     2017-01-10   56384
+##  6 Ed Sheeran Shape of You ar     2017-01-11   59494
+##  7 Ed Sheeran Shape of You ar     2017-01-12   59565
+##  8 Ed Sheeran Shape of You ar     2017-01-13   64899
+##  9 Ed Sheeran Shape of You ar     2017-01-14   71555
+## 10 Ed Sheeran Shape of You ar     2017-01-15   62253
+## # … with 19,897 more rows
+```
+
+---
+
+### Exercise Review
+
+Filter to `region == "global"`, and make a `gg_season` plot by month. Comment
+on the what you see.
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-49-1.png" width="650" style="display: block; margin: auto;" /&gt;
+
+---
+
+### Exercise Review
+
+Filter to `region == "global"`, and make a `gg_season` plot by month. Comment
+on the what you see.
+
+
+
 ---
 
 ### Today
@@ -1606,7 +1678,7 @@ frame.
 
 ### In-Class Discussion [7 - 1]
 
-Document: https://go.wisc.edu/
+Document: https://go.wisc.edu/mce6cq
 
 Prompt: In your own words, explain the key characteristics of vector datasets.
 Why can't vector data simply be stored as `csv` files?
@@ -1618,7 +1690,7 @@ Why can't vector data simply be stored as `csv` files?
 * I will pause at a few points during the demo today, and I want you to guess
 what the next step in the analysis is.
 * At the end of the demo, you can summarize your guesses and submit them to
-Gradescope: 
+Gradescope: https://go.wisc.edu/75hiln
 * You should be able to make your submission before the end of class.
 
 ---
@@ -1627,7 +1699,7 @@ Gradescope:
 ### In-Class Demo [7 - 1]
 
 * We will work through parts (a - c) of [Glacial Lakes].
-* Starter code is available here: 
+* Starter code is available here: https://go.wisc.edu/przc3a
 
 ---
 
@@ -1658,19 +1730,39 @@ dataset.
 
 ### Inspiration
 
+"Visualizing Urban Accessibility: Investigating Multi-Stakeholder Perspectives through a Map-based Design Probe Study" by Saha et al. (2022)
+
+&lt;img src="figure/accessibility.png" width="900" style="display: block; margin: auto;" /&gt;
+
+---
+
+### Inspiration
+
+http://nbremer.github.io/urbanization/
+
+&lt;img src="figure/bremer-ea.png" width="790" style="display: block; margin: auto;" /&gt;
+
+---
+
+### Inspiration
+
+https://truth-and-beauty.net/projects/climate-and-conflict
+
+&lt;img src="figure/climate-conflict.png" width="800" style="display: block; margin: auto;" /&gt;
+
 ---
 
 ### In-Class Demo [7 - 2]
 
 * We will work through part (e) of [Glacial Lakes].
-Before we do this, brainstorm with your group for solutions to part (d): https://go.wisc.edu/
-* Starter code is available here: 
+Before we do this, brainstorm with your group for solutions to part (d): https://go.wisc.edu/v3p541
+* Starter code is available here: https://go.wisc.edu/qogipo
 
 ---
 
 ### In-Class Exercise [7 - 2]
 
-* Please work through [Geospatial Portfolio] in the exercise sheet: https://go.wisc.edu/
+* Work through [Geospatial Portfolio] in the exercise sheet: https://go.wisc.edu/9206e5
 * You can make submissions with your project team.
 
 ---

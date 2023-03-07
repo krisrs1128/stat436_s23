@@ -1496,6 +1496,58 @@ at some step, describe the difficulty that you encountered.
 
 ### Exercise Review
 
+Let's look at the most streamed song of 2017, which was "Shape of You." The
+dataset
+[here](https://uwmadison.box.com/shared/static/hvplyr3jy6vbt7s80lqgfx81ai4hdl0q.csv)
+contains the number of streams for this song across regions, for each day in
+which it was in the Spotify 100 most streamed songs for that region. Create a
+`tsibble` object from this dataset, keying by `region` and indexing by `date`.
+
+```{r}
+song <- read_csv("https://uwmadison.box.com/shared/static/hvplyr3jy6vbt7s80lqgfx81ai4hdl0q.csv")
+head(song)
+```
+
+---
+
+### Exercise Review
+
+```{r}
+library(tsibble)
+song_ts <- as_tsibble(song, key = "region", index = "date")
+song_ts
+```
+
+---
+
+### Exercise Review
+
+Filter to `region == "global"`, and make a `gg_season` plot by month. Comment
+on the what you see.
+
+```{r, echo = FALSE, fig.width = 6}
+library(feasts)
+song_ts %>%
+  filter(region == "global") %>%
+  gg_season(period = "month") +
+  theme(legend.key.width = unit(1.5, "cm"))
+```
+
+---
+
+### Exercise Review
+
+Filter to `region == "global"`, and make a `gg_season` plot by month. Comment
+on the what you see.
+
+```{r, echo = TRUE, include = FALSE}
+library(feasts)
+song_ts %>%
+  filter(region == "global") %>%
+  gg_season(period = "month") +
+  theme(legend.key.width = unit(1.5, "cm"))
+```
+
 ---
 
 ### Today
@@ -1510,7 +1562,7 @@ frame.
 
 ### In-Class Discussion [7 - 1]
 
-Document: https://go.wisc.edu/
+Document: https://go.wisc.edu/mce6cq
 
 Prompt: In your own words, explain the key characteristics of vector datasets.
 Why can't vector data simply be stored as `csv` files?
@@ -1522,7 +1574,7 @@ Why can't vector data simply be stored as `csv` files?
 * I will pause at a few points during the demo today, and I want you to guess
 what the next step in the analysis is.
 * At the end of the demo, you can summarize your guesses and submit them to
-Gradescope: 
+Gradescope: https://go.wisc.edu/75hiln
 * You should be able to make your submission before the end of class.
 
 ---
@@ -1531,7 +1583,7 @@ Gradescope:
 ### In-Class Demo [7 - 1]
 
 * We will work through parts (a - c) of [Glacial Lakes].
-* Starter code is available here: 
+* Starter code is available here: https://go.wisc.edu/przc3a
 
 ---
 
@@ -1562,19 +1614,45 @@ dataset.
 
 ### Inspiration
 
+"Visualizing Urban Accessibility: Investigating Multi-Stakeholder Perspectives through a Map-based Design Probe Study" by Saha et al. (2022)
+
+```{r, out.width = 900, echo = FALSE}
+include_graphics("figure/accessibility.png")
+```
+
+---
+
+### Inspiration
+
+http://nbremer.github.io/urbanization/
+
+```{r, out.width = 790, echo = FALSE}
+include_graphics("figure/bremer-ea.png")
+```
+
+---
+
+### Inspiration
+
+https://climate-conflict.org/
+
+```{r, out.width = 800, echo = FALSE}
+include_graphics("figure/climate-conflict.png")
+```
+
 ---
 
 ### In-Class Demo [7 - 2]
 
 * We will work through part (e) of [Glacial Lakes].
-Before we do this, brainstorm with your group for solutions to part (d): https://go.wisc.edu/
-* Starter code is available here: 
+Before we do this, brainstorm with your group for solutions to part (d): https://go.wisc.edu/v3p541
+* Starter code is available here: https://go.wisc.edu/qogipo
 
 ---
 
 ### In-Class Exercise [7 - 2]
 
-* Please work through [Geospatial Portfolio] in the exercise sheet: https://go.wisc.edu/
+* Work through [Geospatial Portfolio] in the exercise sheet: https://go.wisc.edu/9206e5
 * You can make submissions with your project team.
 
 ---
