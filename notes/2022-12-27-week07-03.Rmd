@@ -12,7 +12,7 @@ output:
     self_contained: false
 ---
 
-_[Reading](https://geocompr.robinlovelace.net/spatial-class.html), [Recording](https://mediaspace.wisc.edu/media/Week%207%20%5B3%5D%20Raster%20Data/1_k5px5f53), [Rmarkdown](https://github.com/krisrs1128/stat479/blob/master/_posts/2021-03-02-week7-3/week7-3.Rmd)_
+_[Reading](https://geocompr.robinlovelace.net/spatial-class.html), [Recording](https://mediaspace.wisc.edu/media/Week%207%20%5B3%5D%20Raster%20Data/1_k5px5f53), [Rmarkdown](https://github.com/krisrs1128/stat436_s23/blob/main/notes/2022-12-27-week07-03.Rmd)_
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(cache = FALSE, message = FALSE, warning = FALSE, echo = TRUE, eval = TRUE)
