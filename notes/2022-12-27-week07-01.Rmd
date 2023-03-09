@@ -12,7 +12,7 @@ output:
     self_contained: false
 ---
 
-_[Reading](https://geocompr.robinlovelace.net/spatial-class.html), [Recording](https://mediaspace.wisc.edu/media/Week%207%20%5B1%5D%20Spatial%20Data%20Formats/1_r6gnm2cv), [Rmarkdown](https://github.com/krisrs1128/stat479/blob/master/_posts/2021-03-02-week7-1/week7-1.Rmd)_
+_[Reading](https://geocompr.robinlovelace.net/spatial-class.html), [Recording](https://mediaspace.wisc.edu/media/Week%207%20%5B1%5D%20Spatial%20Data%20Formats/1_r6gnm2cv), [Rmarkdown](https://github.com/krisrs1128/stat436_s23/blob/main/notes/2022-12-27-week07-01.Rmd)_
 
 ```{r setup}
 knitr::opts_chunk$set(cache = FALSE, message = FALSE, warning = FALSE, echo = TRUE, eval = TRUE)
@@ -61,7 +61,7 @@ containing the boundaries of lakes in Madison.
     We'll discuss plotting in the next lecture, but for a preview, this is how you
     can visualize the lakes using ggplot2.
   
-    ```{r, echo = FALSE}
+    ```{r, echo = TRUE}
     lakes <- lakes %>%
       group_by(id) %>%
       mutate(
@@ -76,7 +76,7 @@ containing the boundaries of lakes in Madison.
     With a little extra effort, we can overlay the features onto public map
     backgrounds (these are often called "basemaps").
 
-    ```{r, echo = FALSE}
+    ```{r, echo = TRUE}
     # you can get your own at https://account.mapbox.com/access-tokens/
     Sys.setenv(MAPBOX_API_KEY="pk.eyJ1Ijoia3Jpc3JzMTEyOCIsImEiOiJjbDYzdjJzczQya3JzM2Jtb2E0NWU1a3B3In0.Mk4-pmKi_klg3EKfTw-JbQ")
     basemap <- cc_location(loc= c(-89.401230, 43.073051), buffer = 15e3)

@@ -2092,7 +2092,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <!--/radix_placeholder_distill-->
-  <script src="../../site_libs/header-attrs-2.18/header-attrs.js"></script>
+  <script src="../../site_libs/header-attrs-2.20/header-attrs.js"></script>
   <script src="../../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
   <script src="../../site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="../../site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
@@ -2181,7 +2181,7 @@ representation of a 3D object, it’s hard to tell what it is,</p></li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-2"></span>
-<img src="https://www.huber.embl.de/msmb/images/CAM3.png" alt="What is this object?" width="60" />
+<img src="https://web.stanford.edu/class/bios221/imgs/CAM3.png" alt="What is this object?" width="60" />
 <p class="caption">
 Figure 1: What is this object?
 </p>
@@ -2190,7 +2190,7 @@ Figure 1: What is this object?
 <p>But when viewing an alternative reduction which has higher variance…</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-3"></span>
-<img src="https://www.huber.embl.de/msmb/images/CAM4.png" alt="Not so complicated now. Credit for this example goes to Professor Julie Josse, at Ecole Polytechnique." width="170" data-distill-preview=1 />
+<img src="https://web.stanford.edu/class/bios221/imgs/CAM4.png" alt="Not so complicated now. Credit for this example goes to Professor Julie Josse, at Ecole Polytechnique." width="170" data-distill-preview=1 />
 <p class="caption">
 Figure 2: Not so complicated now. Credit for this example goes to Professor Julie Josse, at Ecole Polytechnique.
 </p>
@@ -2280,21 +2280,21 @@ to visualize and interpret these results in the next lecture.</p></li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://generics.r-lib.org/reference/tidy.html'>tidy</a></span><span class='op'>(</span><span class='va'>pca_prep</span>, <span class='fl'>2</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>tidy</span><span class='op'>(</span><span class='va'>pca_prep</span>, <span class='fl'>2</span><span class='op'>)</span></span></code></pre>
 </div>
 <pre><code># A tibble: 1,600 × 4
    terms             value component id       
    &lt;chr&gt;             &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;    
- 1 light_rum        0.163  PC1       pca_cUzoa
- 2 lemon_juice     -0.0140 PC1       pca_cUzoa
- 3 lime_juice       0.224  PC1       pca_cUzoa
- 4 sweet_vermouth  -0.0661 PC1       pca_cUzoa
- 5 orange_juice     0.0308 PC1       pca_cUzoa
- 6 powdered_sugar  -0.476  PC1       pca_cUzoa
- 7 dark_rum         0.124  PC1       pca_cUzoa
- 8 cranberry_juice  0.0954 PC1       pca_cUzoa
- 9 pineapple_juice  0.119  PC1       pca_cUzoa
-10 bourbon_whiskey  0.0963 PC1       pca_cUzoa
+ 1 light_rum        0.163  PC1       pca_DMW4l
+ 2 lemon_juice     -0.0140 PC1       pca_DMW4l
+ 3 lime_juice       0.224  PC1       pca_DMW4l
+ 4 sweet_vermouth  -0.0661 PC1       pca_DMW4l
+ 5 orange_juice     0.0308 PC1       pca_DMW4l
+ 6 powdered_sugar  -0.476  PC1       pca_DMW4l
+ 7 dark_rum         0.124  PC1       pca_DMW4l
+ 8 cranberry_juice  0.0954 PC1       pca_DMW4l
+ 9 pineapple_juice  0.119  PC1       pca_DMW4l
+10 bourbon_whiskey  0.0963 PC1       pca_DMW4l
 # … with 1,590 more rows</code></pre>
 </div>
 <div class="layout-chunk" data-layout="l-body">
@@ -2318,21 +2318,21 @@ to visualize and interpret these results in the next lecture.</p></li>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://generics.r-lib.org/reference/tidy.html'>tidy</a></span><span class='op'>(</span><span class='va'>pca_prep</span>, <span class='fl'>2</span>, type <span class='op'>=</span> <span class='st'>"variance"</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>tidy</span><span class='op'>(</span><span class='va'>pca_prep</span>, <span class='fl'>2</span>, type <span class='op'>=</span> <span class='st'>"variance"</span><span class='op'>)</span></span></code></pre>
 </div>
 <pre><code># A tibble: 160 × 4
    terms    value component id       
    &lt;chr&gt;    &lt;dbl&gt;     &lt;int&gt; &lt;chr&gt;    
- 1 variance  2.00         1 pca_cUzoa
- 2 variance  1.71         2 pca_cUzoa
- 3 variance  1.50         3 pca_cUzoa
- 4 variance  1.48         4 pca_cUzoa
- 5 variance  1.37         5 pca_cUzoa
- 6 variance  1.32         6 pca_cUzoa
- 7 variance  1.30         7 pca_cUzoa
- 8 variance  1.20         8 pca_cUzoa
- 9 variance  1.19         9 pca_cUzoa
-10 variance  1.18        10 pca_cUzoa
+ 1 variance  2.00         1 pca_DMW4l
+ 2 variance  1.71         2 pca_DMW4l
+ 3 variance  1.50         3 pca_DMW4l
+ 4 variance  1.48         4 pca_DMW4l
+ 5 variance  1.37         5 pca_DMW4l
+ 6 variance  1.32         6 pca_DMW4l
+ 7 variance  1.30         7 pca_DMW4l
+ 8 variance  1.20         8 pca_DMW4l
+ 9 variance  1.19         9 pca_DMW4l
+10 variance  1.18        10 pca_DMW4l
 # … with 150 more rows</code></pre>
 </div>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
