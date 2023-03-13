@@ -1,7 +1,10 @@
 ---
-title: "HW1 [Solutions]"
-output: pdf_document
-date: "`r Sys.Date()`"
+title: "STAT 436 HW1"
+author: "Solutions"
+output: 
+  pdf_document:
+    highlight: "kate"
+date: "March 2023"
 header-includes: 
   \usepackage{fullpage}
   \usepackage[colorlinks=true, linkcolor=violet, citecolor=black]{hyperref}
@@ -9,7 +12,8 @@ header-includes:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, fig.align = "center", cache = TRUE)
+library(knitr)
+opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, fig.align = "center")
 ```
 
 ```{r}
@@ -114,7 +118,7 @@ averages <- temperature %>%
   group_by(new_month = month(date, label = TRUE), city) %>%
   summarise(mean_temp = mean(temperature))
 
-averages
+head(averages, 4)
 ```
 
 _c. Using the data generated in (b), Make a version of Figure 2.4 using a tile mark (`geom_tile`). Try either (i) adding the `scale_fill_viridis_c(option = "magma")` scale to match the color scheme from the reading or (ii) adding `coord_fixed()` to make sure the marks are squares, not rectangles._
@@ -156,11 +160,13 @@ space available within the larger report.
 ### Soccer Code Review [3 points]
 
 _This exercise asks you to conduct an imaginary code review. These are often used in data science teams to,_
+
    * _Catch potential bugs_ 
    * _Make sure code is transparent to others_ 
    * _Create a shared knowledge base_  
      
 _It is important to be perceptive but friendly._  
+
   * _Can the code be made more compact?_ 
   * _Are there visual design choices / encodings that could be refined?_ 
   * _If your colleague did something well, say so!_  
@@ -201,14 +207,15 @@ of points also resolves the issue of empty visual space. Note that, in our
 implementation below, we manually set the color palette's midpoint to 0.5. Teams
 are in different colors depending on whether they win more games than they lose.
 
-```{r, fig.width = 10, fig.height = 9, out.width = "0.55\\textwidth"}
+```{r, fig.width = 10, fig.height = 6, out.width = "0.9\\textwidth"}
 win_props <- filter(win_props, team %in% best_teams)
 ggplot(win_props) +
   geom_tile(aes(year, reorder(team, wins), fill = wins, col = wins)) +
   scale_x_continuous(expand = c(0, 0)) +
   scale_y_discrete(expand = c(0, 0)) +
   scale_fill_gradient2(midpoint = 0.5) +
-  scale_color_gradient2(midpoint = 0.5)
+  scale_color_gradient2(midpoint = 0.5) +
+  labs(x = "Year", y = "Team")
 ```
 
 Our second approach gives up on encoding year positionally. This allows us to
@@ -219,7 +226,7 @@ transparency, as in the previous versions of the figure. Note the use of
 `scale_size` in the implementation below. This makes the points smaller than
 they would have been by default.
 
-```{r, fig.height = 6, fig.width = 10, out.width = "0.6\\textwidth"}
+```{r, fig.height = 5, fig.width = 12, out.width = "0.9\\textwidth"}
 ggplot(win_props) +
   geom_point(aes(wins, reorder(team, wins), size = n_games, col = year)) +
   scale_size(range = c(0, 2)) +
@@ -234,7 +241,7 @@ _Below, we provide three approaches to visualizing species abundance over time i
 
 ```{r}
 antibiotic <- read_csv("https://uwmadison.box.com/shared/static/5jmd9pku62291ek20lioevsw1c588ahx.csv")
-antibiotic
+head(antibiotic, 4)
 ```
 
 _For each approach, describe,_
@@ -245,7 +252,7 @@ _For each approach, describe,_
 _Make sure to explain your reasoning._
 
 _a. [1.5 points] Approach 1_
-```{r, echo = TRUE, out.width = "0.55\\textwidth"}
+```{r, echo = TRUE, out.width = "0.65\\textwidth"}
 ggplot(antibiotic, aes(x = time)) +
   geom_line(aes(y = svalue), size = 1.2) +
   geom_point(aes(y = value, col = antibiotic), size = 0.5, alpha = 0.8) +
@@ -278,7 +285,7 @@ Ineffective:
   
 _b. [1.5 points] Approach 2_
 
-```{r, echo = TRUE, out.width = "0.55\\textwidth"}
+```{r, echo = TRUE, out.width = "0.65\\textwidth"}
 ggplot(antibiotic) +
   geom_tile(aes(time, ind, fill = value)) +
   scale_x_continuous(expand = c(0, 0)) +
@@ -309,7 +316,7 @@ Ineffective
   across the three panels to make comparisons about a single species.
 
 _c. [1.5 points] Approach 3_
-```{r, echo = FALSE, out.width = "0.55\\textwidth"}
+```{r, echo = FALSE, out.width = "0.65\\textwidth"}
 ggplot(antibiotic) +
   geom_line(aes(time, svalue, col = species, group = interaction(species, ind))) +
   facet_grid(ind ~ .) +
@@ -339,4 +346,56 @@ The code is given in the blocks above.
 
 ### Homelessness [3 points]
 
+_Take a static screenshot from any of the visualizations in this [article](https://www.theguardian.com/us-news/ng-interactive/2017/dec/20/bussed-out-america-moves-homeless-people-country-study), and deconstruct its associated visual encodings._
+
+We will analyze this screenshot,
+```{r, echo = FALSE, out.width = 300}
+include_graphics("figure/bussed_out_detail_3.jpg")
+```
+
+_a. What do you think was the underlying data behind the current view? What where the rows, and what were the columns?_
+
+The data would have had to include origin-destination city pairs for all the
+individuals who were bussed out, the median incomes in each of those cities, and
+either (i) the number of people associated with each origin-destination pair or
+(ii) a person-level record of trips. These data could have been formed from a
+join between two tables: one including all origin-destination counts and another
+including city names with their median incomes. In the first of these tables,
+the rows would be specific travel routes, the columns might have been `origin`,
+`destination` and `count`. In the second table, each row is a city, and the
+columns might have been `city` and `median_income`.
+
+_b. What were the data types of each of the columns?_
+
+* `origin`: Categorical
+* `destination`: Categorical
+* `count`: Numeric (positive integer)
+* `median_income`: Numeric (positive real)
+
+_c. What encodings were used? How are properties of marks on the page derived from the underlying abstract data?_
+
+* Edge $x$-positions: Distinguishes between origin and destination of travel.
+* Edge and histogram $y$-positions: What is the difference in median income
+between the origin and destination city?
+* Edge thickness: How many of the records followed that edge's
+origin-destination pair?
+* Histogram $x$-position: The distance from the base of the histogram describes
+how many cities had that particular difference between origin an ddestination
+incomes.
+* Color: Does the destination city have a higher median income than the source city?
+
+In addition to these purely graphical elements, there is annotation that
+describes both how to read the figure ("origin city of the homeless traveler")
+and its main takeaways (12% vs. 88% higher vs. lower income destinations).
+
+_d. Is multi-view composition being used? If so, how?_
+
+Yes, this is a compound figure. The left hand side is a weighted network
+visualization while the right hand side is a histogram. The two figures share
+the same color and $y$-axis encodings, as described in the previous part. This
+makes it possible to analyze specific origin-destination pairs together with an
+overall summary of changes. This design can be justified both aesthetically --
+the edges in the network evoke the mapped routes shown earlier in the piece --
+as well as formally, as a way of giving route-level details (the network)
+together with population-level overviews (the histogram).
 
